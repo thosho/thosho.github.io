@@ -13,7 +13,9 @@
             --card-color: #1E1E1E;
             --primary-text-color: #E0E0E0;
             --secondary-text-color: #BDBDBD;
-            --accent-color: #03A9F4; /* A nice, clean blue */
+            --accent-color: #03A9F4; /* A nice, clean blue for published */
+            --wip-color: #FFA000;      /* A warm orange for work-in-progress */
+            --disabled-color: #757575;
             --border-color: #333333;
         }
 
@@ -70,6 +72,8 @@
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 25px;
+            display: flex;
+            flex-direction: column;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -92,13 +96,22 @@
             font-weight: 400;
             padding: 4px 10px;
             border-radius: 12px;
-            background-color: var(--accent-color);
             color: #ffffff;
+            white-space: nowrap;
+        }
+
+        .project-card .status.published {
+            background-color: var(--accent-color);
+        }
+
+        .project-card .status.in-development {
+            background-color: var(--wip-color);
         }
 
         .project-card p {
             color: var(--secondary-text-color);
             font-size: 1em;
+            flex-grow: 1; /* Makes description take up available space */
             margin-bottom: 20px;
         }
 
@@ -110,11 +123,17 @@
             border-radius: 5px;
             text-decoration: none;
             font-weight: 700;
+            text-align: center;
             transition: background-color 0.3s ease;
         }
 
         .project-card .btn:hover {
             background-color: #0288D1;
+        }
+
+        .project-card .btn.disabled {
+            background-color: var(--disabled-color);
+            cursor: not-allowed;
         }
 
         /* --- Footer --- */
@@ -142,18 +161,42 @@
                 <div class="projects-grid">
                     
                     <div class="project-card">
-                        <h3>Toscript <span class="status">Published</span></h3>
+                        <h3>Toscript <span class="status published">Published</span></h3>
                         <p>A minimalist yet powerful screenplay writing application designed for writers on the go. Focus on your story, not the formatting.</p>
                         <a href="https://play.google.com/store/apps/details?id=com.thosho.toscript" class="btn">View on Play Store</a>
                     </div>
                     
                     <div class="project-card">
-                        <h3>Tosched <span class="status">Published</span></h3>
+                        <h3>Tosched <span class="status published">Published</span></h3>
                         <p>An intuitive film shooting schedule app that helps directors and production managers organize their scenes, locations, and cast efficiently.</p>
                         <a href="#" class="btn">View on Play Store</a>
                     </div>
-                    
+
+                    <div class="project-card">
+                        <h3>wrAiter <span class="status in-development">In Development</span></h3>
+                        <p>The next generation of writing assistants. Powered by AI, wrAiter helps you proofread, rewrite, and break through creative blocks effortlessly.</p>
+                        <a href="#" class="btn disabled">Coming Soon</a>
                     </div>
+
+                    <div class="project-card">
+                        <h3>To Make <span class="status in-development">In Development</span></h3>
+                        <p>A comprehensive pre-production toolkit to organize your ideas, tasks, and resources before you even start shooting.</p>
+                        <a href="#" class="btn disabled">Coming Soon</a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>To Shoot <span class="status in-development">In Development</span></h3>
+                        <p>Your on-set digital assistant. Manage shot lists, camera logs, and daily progress with a simple, robust interface designed for the film crew.</p>
+                        <a href="#" class="btn disabled">Coming Soon</a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>ToDO <span class="status in-development">In Development</span></h3>
+                        <p>A smart and simple task manager to help you organize your day, track your goals, and get things done without the clutter.</p>
+                        <a href="#" class="btn disabled">Coming Soon</a>
+                    </div>
+
+                </div>
             </section>
         </main>
         
