@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thosho Tech | Independent Developer</title>
-    <style>
+   <style>
         /* --- General Styles & Dark Theme --- */
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Share+Tech+Mono&display=swap');
 
         :root {
             --bg-color: #121212;
             --card-color: #1E1E1E;
             --primary-text-color: #E0E0E0;
             --secondary-text-color: #BDBDBD;
-            --accent-color: #03A9F4; /* A nice, clean blue for published */
+           --accent-color: #03A9F4; /* Standard Tech Blue */
             --wip-color: #FFA000;      /* A warm orange for work-in-progress */
             --disabled-color: #757575;
             --border-color: #333333;
@@ -41,16 +41,18 @@
         }
 
         header h1 {
-            font-size: 3em;
+            font-size: 3.2em;
             font-weight: 700;
             margin-bottom: 10px;
-            color: #ffffff;
+            color: var(--accent-color); /* Use the new color */
+            font-family: 'Share Tech Mono', monospace; /* New clean, digital font */
         }
 
         header .subtitle {
-            font-size: 1.2em;
+            
             font-weight: 300;
-            color: var(--accent-color);
+            color: var(--secondary-text-color); /* Subtitle uses a more subtle color now */
+            line-height: 1.5; 
         }
 
         /* --- Projects Section --- */
@@ -76,13 +78,12 @@
             flex-direction: column;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
+        
         .project-logo {
-             max-width: 70px;
-             margin-bottom: 15px;
-             border-radius: 8px; /* Optional: adds slightly rounded corners to the logo */
-         }
-
+            max-width: 70px;
+            margin-bottom: 15px;
+            border-radius: 8px; /* Optional: adds slightly rounded corners to the logo */
+        }
 
         .project-card:hover {
             transform: translateY(-5px);
@@ -108,7 +109,7 @@
         }
 
         .project-card .status.published {
-            background-color: var(--accent-color);
+            background-color: #03A9F4; /* Kept original blue for buttons/tags for contrast */
         }
 
         .project-card .status.in-development {
@@ -124,7 +125,7 @@
 
         .project-card .btn {
             display: inline-block;
-            background-color: var(--accent-color);
+            background-color: #03A9F4; /* Kept original blue for buttons/tags for contrast */
             color: #ffffff;
             padding: 10px 20px;
             border-radius: 5px;
