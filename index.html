@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thosho Tech | Independent Developer</title>
+    <style>
+        /* --- General Styles & Dark Theme --- */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+        :root {
+            --bg-color: #121212;
+            --card-color: #1E1E1E;
+            --primary-text-color: #E0E0E0;
+            --secondary-text-color: #BDBDBD;
+            --accent-color: #03A9F4; /* A nice, clean blue */
+            --border-color: #333333;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-text-color);
+            line-height: 1.6;
+        }
+
+        /* --- Layout & Container --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- Header / Hero Section --- */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        header h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        header .subtitle {
+            font-size: 1.2em;
+            font-weight: 300;
+            color: var(--accent-color);
+        }
+
+        /* --- Projects Section --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .project-card {
+            background-color: var(--card-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card h3 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .project-card .status {
+            font-size: 0.7em;
+            font-weight: 400;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        .project-card p {
+            color: var(--secondary-text-color);
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .project-card .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-card .btn:hover {
+            background-color: #0288D1;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 20px;
+            color: var(--secondary-text-color);
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <h1>Thosho Tech</h1>
+            <p class="subtitle">Independent App Developer</p>
+        </header>
+        
+        <main>
+            <section id="projects">
+                <h2>My Projects</h2>
+                <div class="projects-grid">
+                    
+                    <div class="project-card">
+                        <h3>Toscript <span class="status">Published</span></h3>
+                        <p>A minimalist yet powerful screenplay writing application designed for writers on the go. Focus on your story, not the formatting.</p>
+                        <a href="#" class="btn">View on Play Store</a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3>Tosched <span class="status">Published</span></h3>
+                        <p>An intuitive film shooting schedule app that helps directors and production managers organize their scenes, locations, and cast efficiently.</p>
+                        <a href="#" class="btn">View on Play Store</a>
+                    </div>
+                    
+                    </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Thosho Tech. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
