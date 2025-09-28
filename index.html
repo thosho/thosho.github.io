@@ -77,6 +77,13 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
+        .project-logo {
+             max-width: 70px;
+             margin-bottom: 15px;
+             border-radius: 8px; /* Optional: adds slightly rounded corners to the logo */
+         }
+
+
         .project-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
@@ -161,12 +168,14 @@
                 <div class="projects-grid">
                     
                     <div class="project-card">
+                        <img src="./images/toscript_logo.png" alt="Toscript App Logo" class="project-logo">
                         <h3>Toscript <span class="status published">Published</span></h3>
                         <p>A minimalist yet powerful screenplay writing application designed for writers on the go. Focus on your story, not the formatting.</p>
-                        <a href="https://play.google.com/store/apps/details?id=com.thosho.toscript" class="btn">View on Play Store</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.thosho.toscript" target="_blank" rel="noopener noreferrer" class="btn">View on Play Store</a>
                     </div>
                     
                     <div class="project-card">
+                        <img src="./images/tosched_logo.png" alt="Tosched App Logo" class="project-logo">
                         <h3>Tosched <span class="status published">Published</span></h3>
                         <p>An intuitive film shooting schedule app that helps directors and production managers organize their scenes, locations, and cast efficiently.</p>
                         <a href="https://play.google.com/store/apps/details?id=com.thosho.tosched" class="btn">View on Play Store</a>
