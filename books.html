@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thosho Tech | Library & Translations</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600&family=Roboto:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Specific page styling to make the digital library look premium */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+
+        .book-card {
+            background: #181818;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            align-items: center;
+        }
+
+        .book-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-color);
+            box-shadow: 0 12px 35px rgba(3, 169, 244, 0.25);
+        }
+
+        .book-cover-container {
+            width: 170px;
+            aspect-ratio: 2/3;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            background: #252525;
+        }
+
+        .book-card:hover .book-cover-container {
+            transform: scale(1.05);
+            box-shadow: 0 12px 25px rgba(3, 169, 244, 0.3);
+        }
+
+        .book-cover-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .book-info {
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .book-title {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .book-desc {
+            color: var(--secondary-text-color);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .book-badge {
+            display: inline-block;
+            align-self: center;
+            padding: 4px 12px;
+            background: rgba(3, 169, 244, 0.1);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 20px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .book-credit {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--secondary-text-color);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .book-credit strong {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo">
+                <i class="fas fa-code"></i> Thosho<span>Tech</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#books">Books</a>
+                <a href="index.html#blog">Blog</a>
+                <a href="index.html#contact" class="btn btn-outline">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Library Section -->
+    <section class="section" style="margin-top: 100px;">
+        <div class="container">
+            <div style="margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                <a href="index.html#books" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h1 style="font-size: 3rem; color: var(--primary-text-color); font-family: 'Share Tech Mono', monospace; margin-bottom: 10px;">Thosho Library</h1>
+                <p style="color: var(--secondary-text-color); max-width: 600px; margin: 0 auto; font-size: 1.1rem;">
+                    Tamil translation projects of science fiction, historical achievements, and classic publications.
+                </p>
+            </div>
+
+            <!-- Grid of Books -->
+            <div class="books-grid">
+                <!-- Book 1 -->
+                <div class="book-card">
+                    <div class="book-cover-container">
+                        <img src="backup/images/book_airplane.jpg" alt="விமானத்தின் ஆரம்ப வரலாறு Cover">
+                    </div>
+                    <div class="book-info">
+                        <span class="book-badge">History & Science</span>
+                        <h3 class="book-title">விமானத்தின் ஆரம்ப வரலாறு</h3>
+                        <p class="book-desc">Early History of the Airplane - A comprehensive Tamil translation of the historical engineering, records, and journey of the Wright Brothers' invention of the airplane.</p>
+                        <a href="https://www.amazon.in/விமானத்தின்-ஆரம்ப-வரலாறு-Santhosh-Natarajan-ebook/dp/B0DYZD5QZB?ref_=ast_author_dp&th=1&psc=1" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width: 100%; border-radius: 30px;">
+                            <i class="fab fa-amazon" style="margin-right: 8px;"></i> Buy on Amazon
+                        </a>
+                        <div class="book-credit">
+                            Translated by <strong>Santhosh Natarajan</strong> as a hobby.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 2 -->
+                <div class="book-card">
+                    <div class="book-cover-container">
+                        <img src="backup/images/book_theekol.jpg" alt="தீக்கோள் Cover">
+                    </div>
+                    <div class="book-info">
+                        <span class="book-badge">Thriller & Sci-Fi</span>
+                        <h3 class="book-title">தீக்கோள்</h3>
+                        <p class="book-desc">An engaging and thrilling translation bringing the mysteries and suspense of the sci-fi thriller genre to Tamil readers.</p>
+                        <a href="https://www.amazon.in/தீக்கோள்-Tamil-Santhosh-Natarajan-ebook/dp/B0F2CXKFCV?ref_=ast_author_mpb" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width: 100%; border-radius: 30px;">
+                            <i class="fab fa-amazon" style="margin-right: 8px;"></i> Buy on Amazon
+                        </a>
+                        <div class="book-credit">
+                            Translated by <strong>Santhosh Natarajan</strong> as a hobby.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 3 -->
+                <div class="book-card">
+                    <div class="book-cover-container">
+                        <img src="backup/images/book_irobot.jpg" alt="நான் ரோபோ Cover">
+                    </div>
+                    <div class="book-info">
+                        <span class="book-badge">Sci-Fi Classic</span>
+                        <h3 class="book-title">நான் ரோபோ</h3>
+                        <p class="book-desc">I, Robot - A classic science fiction translation exploring Isaac Asimov's three laws of robotics and the futuristic relationship between humans and machines.</p>
+                        <a href="https://www.amazon.in/நான்-ரோபோ-Tamil-Santhosh-Natarajan-ebook/dp/B0F1DF8BWB?ref_=ast_author_dp&th=1&psc=1" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width: 100%; border-radius: 30px;">
+                            <i class="fab fa-amazon" style="margin-right: 8px;"></i> Buy on Amazon
+                        </a>
+                        <div class="book-credit">
+                            Translated by <strong>Santhosh Natarajan</strong> as a hobby.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 4 -->
+                <div class="book-card">
+                    <div class="book-cover-container">
+                        <img src="backup/images/book_duvakki.jpg" alt="துவக்கி Cover">
+                    </div>
+                    <div class="book-info">
+                        <span class="book-badge">Sci-Fi Thriller</span>
+                        <h3 class="book-title">துவக்கி</h3>
+                        <p class="book-desc">The Trigger - A thrilling translation detailing futuristic events and technical science fiction elements in a captivating Tamil narrative.</p>
+                        <a href="https://www.amazon.in/துவக்கி-Tamil-Santhosh-Natarajan-ebook/dp/B0DZL4N9S6?ref_=ast_author_dp&th=1&psc=1" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width: 100%; border-radius: 30px;">
+                            <i class="fab fa-amazon" style="margin-right: 8px;"></i> Buy on Amazon
+                        </a>
+                        <div class="book-credit">
+                            Translated by <strong>Santhosh Natarajan</strong> as a hobby.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-code"></i> Thosho<span>Tech</span>
+                </a>
+                <p>Empowering businesses through innovative technology.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#books">Books</a>
+                <a href="index.html#blog">Blog</a>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <a href="https://thosho.github.io/" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://thosho.blogspot.com/" target="_blank"><i class="fab fa-blogger"></i> Blog</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Thosho Tech. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
