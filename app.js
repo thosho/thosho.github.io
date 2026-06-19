@@ -2,7 +2,6 @@ const designedWebsites = [
     "https://clanfit.in",
     "https://moviestory.vercel.app",
     "https://jampictures.in",
-    "https://castling.in",
     "https://janakikanagaraj.github.io/demo/",
     "https://janakikanagaraj.github.io/in/",
     "https://ovor.in",
