@@ -294,6 +294,54 @@ p {
     100% { transform: translateY(0px); }
 }
 
+/* --- Published Projects Section --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-logo {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    border-radius: 12px;
+}
+
+.project-card h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.badge-published { background-color: var(--accent-color); color: #fff; }
+.badge-testing { background-color: #FFA000; color: #fff; }
+.badge-dev { background-color: var(--border-color); color: var(--secondary-text-color); }
+
+.project-card p {
+    flex-grow: 1;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
 /* --- Blog Section --- */
 .blog-grid {
     display: grid;
