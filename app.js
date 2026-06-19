@@ -1,11 +1,12 @@
 const designedWebsites = [
+    "https://clanfit.in",
     "https://moviestory.vercel.app",
-    "https://tamilreaders.github.io/tamil-library-app/",
+    "https://jampictures.in",
+    "https://castling.in",
     "https://janakikanagaraj.github.io/demo/",
     "https://janakikanagaraj.github.io/in/",
     "https://ovor.in",
-    "https://clanfit.in",
-    "https://jampictures.in",
+    "https://tamilreaders.github.io/tamil-library-app/",
     "https://hmsfruits.com"
 ];
 
@@ -136,7 +137,7 @@ async function fetchPortfolioSites() {
 
     for (const url of designedWebsites) {
         try {
-            const response = await fetch(`https://api.microlink.io?url=${encodeURIComponent(url)}&screenshot=true&meta=true`);
+            const response = await fetch(`https://api.microlink.io?url=${encodeURIComponent(url)}&screenshot=true&meta=true&waitForTimeout=5000`);
             const data = await response.json();
             
             if (data.status === 'success') {
