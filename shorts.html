@@ -3,10 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thosho Stories | YouTube Shorts Showcase</title>
+    <title>Thosho Stories | YouTube Shorts</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600&family=Roboto:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Specific page styling to make embedded shorts look stunning and not ugly */
+        .shorts-page-banner {
+            width: 100%;
+            height: 200px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .shorts-page-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .shorts-page-banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(18,18,18,0.2) 0%, rgba(18,18,18,0.8) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px 30px;
+        }
+
+        .shorts-page-banner-title {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 2.2rem;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .shorts-display-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 40px;
+            justify-content: center;
+            align-content: center;
+            margin-bottom: 60px;
+        }
+
+        .premium-short-card {
+            background: #181818;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .premium-short-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-color);
+            box-shadow: 0 12px 35px rgba(3, 169, 244, 0.25);
+        }
+
+        .premium-short-video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 9/16;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .premium-short-video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .short-card-info {
+            width: 100%;
+            padding: 15px 5px 5px 5px;
+            text-align: center;
+        }
+
+        .short-card-info h4 {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--primary-text-color);
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -18,7 +117,7 @@
             <nav class="nav-menu">
                 <a href="index.html">Home</a>
                 <a href="index.html#services">Services</a>
-                <a href="index.html#filmmaking">Film Making</a>
+                <a href="filmmaking.html">Film Making</a>
                 <a href="index.html#blog">Blog</a>
                 <a href="index.html#contact" class="btn btn-outline">Contact Us</a>
             </nav>
@@ -26,45 +125,84 @@
     </header>
 
     <!-- Shorts Showcase Section -->
-    <section class="section" style="margin-top: 80px;">
+    <section class="section" style="margin-top: 100px;">
         <div class="container">
-            <div style="margin-bottom: 40px; text-align: center;">
-                <a href="index.html#filmmaking" class="btn btn-outline" style="margin-bottom: 20px; display: inline-flex; align-items: center; gap: 8px;">
+            <div style="margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                <a href="filmmaking.html" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 8px;">
                     <i class="fas fa-arrow-left"></i> Back to Film Making
                 </a>
-                <h1 style="font-size: 3rem; color: var(--accent-color); font-family: 'Share Tech Mono', monospace; margin-bottom: 10px;">Thosho Stories</h1>
-                <p style="color: var(--secondary-text-color); max-width: 600px; margin: 0 auto;">Watch our featured shorts, cinematic experiments, and bite-sized stories direct from our channel.</p>
+                <a href="https://www.youtube.com/@thosho_stories" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+                    <i class="fab fa-youtube"></i> Visit Channel on YouTube
+                </a>
             </div>
 
-            <div class="shorts-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px;">
-                <div class="short-card">
-                    <div class="short-video-container">
-                        <iframe src="https://www.youtube.com/embed/ii1YLTUIMnY" title="Thosho Stories Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <!-- YouTube Channel Banner at Top -->
+            <div class="shorts-page-banner">
+                <img src="https://yt3.googleusercontent.com/cAwcfv2jVDkWnSUrC5sJi2aTLvb6RFHIBUPO_AZE9Q-V_AxV4Kq5XB9aVv113oaYwjr-jjIGcA=w1060-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj" alt="Thosho Stories Banner">
+                <div class="shorts-page-banner-overlay">
+                    <h1 class="shorts-page-banner-title"><i class="fab fa-youtube" style="color: #FF0000; margin-right: 10px;"></i>Thosho Stories Shorts</h1>
+                </div>
+            </div>
+
+            <!-- Grid of properly embedded shorts -->
+            <div class="shorts-display-grid">
+                <!-- Short 1 -->
+                <div class="premium-short-card">
+                    <div class="premium-short-video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/ii1YLTUIMnY?modestbranding=1&rel=0&iv_load_policy=3" title="Thosho Stories Short" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="short-card-info">
+                        <h4>Thosho Short #1</h4>
                     </div>
                 </div>
-                <div class="short-card">
-                    <div class="short-video-container">
-                        <iframe src="https://www.youtube.com/embed/2Y2Y84raHrA" title="Thosho Stories Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+                <!-- Short 2 -->
+                <div class="premium-short-card">
+                    <div class="premium-short-video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/2Y2Y84raHrA?modestbranding=1&rel=0&iv_load_policy=3" title="Thosho Stories Short" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="short-card-info">
+                        <h4>Thosho Short #2</h4>
                     </div>
                 </div>
-                <div class="short-card">
-                    <div class="short-video-container">
-                        <iframe src="https://www.youtube.com/embed/mrzpwtlNXck" title="Thosho Stories Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+                <!-- Short 3 -->
+                <div class="premium-short-card">
+                    <div class="premium-short-video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/mrzpwtlNXck?modestbranding=1&rel=0&iv_load_policy=3" title="Thosho Stories Short" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="short-card-info">
+                        <h4>Thosho Short #3</h4>
                     </div>
                 </div>
-                <div class="short-card">
-                    <div class="short-video-container">
-                        <iframe src="https://www.youtube.com/embed/iISmNGCXbmE" title="Thosho Stories Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+                <!-- Short 4 -->
+                <div class="premium-short-card">
+                    <div class="premium-short-video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/iISmNGCXbmE?modestbranding=1&rel=0&iv_load_policy=3" title="Thosho Stories Short" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="short-card-info">
+                        <h4>Thosho Short #4</h4>
                     </div>
                 </div>
-                <div class="short-card">
-                    <div class="short-video-container">
-                        <iframe src="https://www.youtube.com/embed/AO2GUmEQLMI" title="Thosho Stories Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+                <!-- Short 5 -->
+                <div class="premium-short-card">
+                    <div class="premium-short-video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/AO2GUmEQLMI?modestbranding=1&rel=0&iv_load_policy=3" title="Thosho Stories Short" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="short-card-info">
+                        <h4>Thosho Short #5</h4>
                     </div>
                 </div>
-                <div class="short-card">
-                    <div class="short-video-container">
-                        <iframe src="https://www.youtube.com/embed/DjvgH9YYDW4" title="Thosho Stories Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+                <!-- Short 6 -->
+                <div class="premium-short-card">
+                    <div class="premium-short-video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/DjvgH9YYDW4?modestbranding=1&rel=0&iv_load_policy=3" title="Thosho Stories Short" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="short-card-info">
+                        <h4>Thosho Short #6</h4>
                     </div>
                 </div>
             </div>
@@ -84,7 +222,7 @@
                 <h4>Quick Links</h4>
                 <a href="index.html">Home</a>
                 <a href="index.html#services">Services</a>
-                <a href="index.html#filmmaking">Film Making</a>
+                <a href="filmmaking.html">Film Making</a>
                 <a href="index.html#blog">Blog</a>
             </div>
             <div class="footer-social">
