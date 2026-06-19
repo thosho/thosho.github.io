@@ -1,8 +1,21 @@
+let allBlogPosts = [];
+
 document.addEventListener('DOMContentLoaded', () => {
     // Add JSONP script for Blogger feed
     const script = document.createElement('script');
     script.src = 'https://thosho.blogspot.com/feeds/posts/default?alt=json-in-script&callback=handleBlogPosts';
     document.body.appendChild(script);
+
+    // Modal Events
+    const modalCloseBtn = document.getElementById('blogModalClose');
+    const modalOverlay = document.getElementById('blogModalOverlay');
+
+    if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeBlogModal);
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeBlogModal();
+        });
+    }
 });
 
 function handleBlogPosts(data) {
@@ -18,7 +31,7 @@ function handleBlogPosts(data) {
     // Display up to 3 latest posts
     const recentPosts = posts.slice(0, 3);
 
-    recentPosts.forEach(post => {
+    recentPosts.forEach((post, index) => {
         const title = post.title.$t;
         
         let link = '#';
@@ -46,20 +59,57 @@ function handleBlogPosts(data) {
         let snippet = tempDiv.textContent || tempDiv.innerText || '';
         snippet = snippet.trim().substring(0, 120) + (snippet.length > 120 ? '...' : '');
 
+        // Store parsed data for modal
+        allBlogPosts.push({
+            title: title,
+            date: published,
+            rawContent: contentHtml,
+            link: link
+        });
+
         const cardHTML = `
-            <article class="blog-card">
+            <article class="blog-card" onclick="openBlogModal(${index})" style="cursor: pointer;">
                 <img src="${thumbnailSrc}" alt="${title}" class="blog-thumbnail" loading="lazy">
                 <div class="blog-content">
                     <span class="blog-date"><i class="far fa-calendar-alt"></i> ${published}</span>
                     <h3 class="blog-title">${title}</h3>
                     <p class="blog-excerpt">${snippet}</p>
-                    <a href="${link}" target="_blank" rel="noopener noreferrer" class="read-more">
+                    <span class="read-more">
                         Read Article <i class="fas fa-arrow-right"></i>
-                    </a>
+                    </span>
                 </div>
             </article>
         `;
         
         container.innerHTML += cardHTML;
     });
+}
+
+function openBlogModal(index) {
+    const post = allBlogPosts[index];
+    if (!post) return;
+
+    const overlay = document.getElementById('blogModalOverlay');
+    const contentBody = document.getElementById('blogModalBody');
+    const readMoreBtn = document.getElementById('blogModalReadMore');
+
+    contentBody.innerHTML = `
+        <h2 style="margin-top:0; color: var(--accent-color);">${post.title}</h2>
+        <p style="color: var(--secondary-text-color); margin-bottom: 20px; font-weight: bold;">
+            <i class="far fa-calendar-alt"></i> ${post.date}
+        </p>
+        <div>
+            ${post.rawContent}
+        </div>
+    `;
+
+    readMoreBtn.href = post.link;
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+function closeBlogModal() {
+    const overlay = document.getElementById('blogModalOverlay');
+    overlay.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
 }
