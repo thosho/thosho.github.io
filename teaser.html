@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thosho Tech | Film Teasers</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600&family=Roboto:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Specific styling for Teaser page to make it extremely cinematic and moody */
+        .teaser-container {
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+
+        .teaser-card {
+            background: #151515;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            transition: var(--transition);
+        }
+
+        .teaser-card:hover {
+            border-color: #E65100;
+            box-shadow: 0 15px 40px rgba(230, 81, 0, 0.2);
+        }
+
+        .teaser-video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+        }
+
+        .teaser-video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .teaser-details {
+            padding: 35px;
+            text-align: center;
+        }
+
+        .teaser-tag {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(230, 81, 0, 0.15);
+            color: #FF9800;
+            border: 1px solid #E65100;
+            border-radius: 20px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+        }
+
+        .teaser-details h3 {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .teaser-status {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.4rem;
+            color: #E65100;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            animation: pulse 2s infinite alternate;
+        }
+
+        .teaser-credits {
+            color: var(--secondary-text-color);
+            font-size: 1.1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 20px;
+            margin-top: 25px;
+            line-height: 1.6;
+        }
+
+        .teaser-credits strong {
+            color: #fff;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo">
+                <i class="fas fa-code"></i> Thosho<span>Tech</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="filmmaking.html">Film Making</a>
+                <a href="index.html#blog">Blog</a>
+                <a href="index.html#contact" class="btn btn-outline">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Teaser Section -->
+    <section class="section" style="margin-top: 100px;">
+        <div class="container">
+            <div style="margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                <a href="filmmaking.html" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-arrow-left"></i> Back to Film Making
+                </a>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h1 style="font-size: 3rem; color: var(--primary-text-color); font-family: 'Share Tech Mono', monospace; margin-bottom: 10px;">Film Teasers</h1>
+                <p style="color: var(--secondary-text-color); max-width: 600px; margin: 0 auto; font-size: 1.1rem;">
+                    Get a sneak peek into our upcoming film productions and cinematic releases.
+                </p>
+            </div>
+
+            <div class="teaser-container">
+                <div class="teaser-card">
+                    <div class="teaser-video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/6bz_b9DwY5o?modestbranding=1&rel=0&iv_load_policy=3" title="Independent Horror Short Film Teaser" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="teaser-details">
+                        <span class="teaser-tag">Horror / Thriller</span>
+                        <h3>Independent Horror Short Film</h3>
+                        <p style="color: var(--secondary-text-color); font-size: 1.1rem; line-height: 1.6;">An Independent Horror Short Film</p>
+                        
+                        <div class="teaser-status">Coming Soon</div>
+                        
+                        <div class="teaser-credits">
+                            <i class="fas fa-clapperboard" style="margin-right: 8px; color: #E65100;"></i>
+                            Directed, Cinematography and Edited By <strong>Santhosh Nataraja</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-code"></i> Thosho<span>Tech</span>
+                </a>
+                <p>Empowering businesses through innovative technology.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="filmmaking.html">Film Making</a>
+                <a href="index.html#blog">Blog</a>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <a href="https://thosho.github.io/" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://thosho.blogspot.com/" target="_blank"><i class="fab fa-blogger"></i> Blog</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Thosho Tech. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
