@@ -5,7 +5,8 @@ const designedWebsites = [
     "https://janakikanagaraj.github.io/in/",
     "https://ovor.in",
     "https://clanfit.in",
-    "https://jampictures.in"
+    "https://jampictures.in",
+    "https://hmsfruits.com"
 ];
 
 let allBlogPosts = [];
