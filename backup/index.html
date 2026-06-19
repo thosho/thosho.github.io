@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thosho Tech | Independent Developer</title>
+    <style>
+        /* --- General Styles & Dark Theme --- */
+        @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300&family=Roboto:wght@300;400&family=Share+Tech+Mono&display=swap');
+
+        :root {
+            --bg-color: #121212;
+            --card-color: #1E1E1E;
+            --primary-text-color: #E0E0E0;
+            --secondary-text-color: #BDBDBD;
+            --accent-color: #03A9F4; /* Standard Tech Blue */
+            --wip-color: #FFA000;      /* A warm orange for work-in-progress */
+            --disabled-color: #757575;
+            --border-color: #333333;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-text-color);
+            line-height: 1.6;
+        }
+
+        /* --- Layout & Container --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- Header / Hero Section --- */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        header h1 {
+            font-size: 3.2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent-color); /* Use the new color */
+            font-family: 'Share Tech Mono', monospace; /* New clean, digital font */
+        }
+
+        header .subtitle {
+            font-family: 'Exo 2', sans-serif; /* Modern font for subtitle */
+            font-size: 1.1em; /* Made slightly smaller */
+            font-weight: 300;
+            color: var(--secondary-text-color); /* Subtitle uses a more subtle color now */
+            line-height: 1.5; 
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 20px;
+            padding: 8px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            color: var(--secondary-text-color);
+            text-decoration: none;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        /* --- Projects Section --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        h2 {
+            font-family: 'Share Tech Mono', monospace; /* Match the main header font */
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .project-card {
+            background-color: var(--card-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-logo {
+            max-width: 70px;
+            margin-bottom: 15px;
+            border-radius: 8px; /* Optional: adds slightly rounded corners to the logo */
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card h3 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .project-card .status {
+            font-size: 0.7em;
+            font-weight: 400;
+            padding: 4px 10px;
+            border-radius: 12px;
+            color: #ffffff;
+            white-space: nowrap;
+        }
+
+        .project-card .status.published {
+            background-color: var(--accent-color); 
+        }
+
+        .project-card .status.in-development {
+            background-color: var(--wip-color);
+        }
+
+        .project-card p {
+            color: var(--secondary-text-color);
+            font-size: 1em;
+            flex-grow: 1; /* Makes description take up available space */
+            margin-bottom: 20px;
+        }
+
+        .project-card .btn {
+            display: inline-block;
+            background-color: var(--accent-color); 
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-card .btn:hover {
+            background-color: #0288D1;
+        }
+
+        .project-card .btn.disabled {
+            background-color: var(--disabled-color);
+            cursor: not-allowed;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 20px;
+            color: var(--secondary-text-color);
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+             <h1>THOSHO TECH</h1>
+            <p class="subtitle">Free thinker, Creative Explorer<br>Web Designing & App Developing is my hobby,<br> where creativity meets coding...<br> - Santhosh Nataraja</p>
+            <a href="https://t.me/thosho" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18px" height="18px" style="margin-right: 8px;">
+                    <path d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
+                </svg>
+                Contact Me
+            </a>
+            
+         </header>
+         
+         <main>
+        
+        <main>
+            <section id="projects">
+                <h2>My Projects</h2>
+                <div class="projects-grid">
+                    
+                    <div class="project-card">
+                        <img src="./images/toscript_logo.png" alt="Toscript App Logo" class="project-logo">
+                        <h3>Toscript <span class="status published">Published</span></h3>
+                        <p>A minimalist yet powerful screenplay writing application designed for writers on the go. Focus on your story, not the formatting.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.thosho.toscript" target="_blank" rel="noopener noreferrer" class="btn">View on Play Store</a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <img src="./images/tosched_logo.png" alt="Tosched App Logo" class="project-logo">
+                        <h3>Tosched <span class="status published">Published</span></h3>
+                        <p>An intuitive film shooting schedule app that helps directors and production managers organize their scenes, locations, and cast efficiently.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.thosho.tosched" class="btn">View on Play Store</a>
+                    </div>
+
+                    <div class="project-card">
+                         <img src="./images/wraiter_logo.png" alt="WrAiter App Logo" class="project-logo">
+                        <h3>wrAiter <span class="status in-development">Published</span></h3>
+                        <p>The next generation of writing assistants. Powered by AI, wrAiter helps you proofread, rewrite, and break through creative blocks effortlessly.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.thosho.wraitertask" class="btn">View on Play Store</a>
+                    </div>
+					
+                    <div class="project-card">
+                         <img src="./images/quaiz_logo.png" alt="QuAiz App Logo" class="project-logo">
+                        <h3>Quaiz <span class="status in-development">Published</span></h3>
+                        <p>Your personal AI Quiz maker. Create, play, and master any trivia topic.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.thosho.quaiz" class="btn">View on Play Store</a>
+                    </div>
+					
+                    <div class="project-card">
+                         <img src="./images/voaice_logo.png" alt="VoAice App Logo" class="project-logo">
+                        <h3>Voaice <span class="status in-development">In Testing</span></h3>
+                        <p>Your AI voice note maker, TTS, Speech to Text, & Export as Audio</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.thosho.voise" class="btn">View on Play Store</a>
+                    </div>
+                    
+
+                    <div class="project-card">
+                         <img src="./images/tomake_logo.png" alt="To Make App Logo" class="project-logo">
+                        <h3>To Make <span class="status in-development">In Development</span></h3>
+                        <p>A comprehensive pre-production toolkit to organize your ideas, tasks, and resources before you even start shooting.</p>
+                        <a href="#" class="btn disabled">Coming Soon</a>
+                    </div>
+
+                    <div class="project-card">
+                         <img src="./images/toshoot_logo.png" alt="To Shoot App Logo" class="project-logo">
+                        <h3>To Shoot <span class="status in-development">In Development</span></h3>
+                        <p>Your on-set digital assistant. Manage shot lists, camera logs, and daily progress with a simple, robust interface designed for the film crew.</p>
+                        <a href="#" class="btn disabled">Coming Soon</a>
+                    </div>
+
+                    <div class="project-card">
+                         <img src="./images/todo_logo.png" alt="Todo App Logo" class="project-logo">
+                        <h3>ToDO <span class="status in-development">In Development</span></h3>
+                        <p>A smart and simple task manager to help you organize your day, track your goals, and get things done without the clutter.</p>
+                        <a href="#" class="btn disabled">Coming Soon</a>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Thosho Tech. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
