@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thosho Tech | Album Songs</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600&family=Roboto:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Specific styling for Album Songs page */
+        .songs-display-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .songs-display-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .song-card {
+            background: #181818;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .song-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-color);
+            box-shadow: 0 12px 35px rgba(3, 169, 244, 0.25);
+        }
+
+        .song-video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+        }
+
+        .song-video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .song-details {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .song-details h3 {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.6rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .song-credits {
+            color: var(--primary-text-color);
+            font-size: 1.05rem;
+            font-style: italic;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .song-credits strong {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo">
+                <i class="fas fa-code"></i> Thosho<span>Tech</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="filmmaking.html">Film Making</a>
+                <a href="index.html#blog">Blog</a>
+                <a href="index.html#contact" class="btn btn-outline">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Album Songs Section -->
+    <section class="section" style="margin-top: 100px;">
+        <div class="container">
+            <div style="margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                <a href="filmmaking.html" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-arrow-left"></i> Back to Film Making
+                </a>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h1 style="font-size: 3rem; color: var(--primary-text-color); font-family: 'Share Tech Mono', monospace; margin-bottom: 10px;">Our Album Songs</h1>
+                <p style="color: var(--secondary-text-color); max-width: 600px; margin: 0 auto; font-size: 1.1rem;">
+                    Listen to original compositions, melodies, and creative musical productions.
+                </p>
+            </div>
+
+            <!-- Grid of properly embedded album songs -->
+            <div class="songs-display-grid">
+                <!-- Song 1 -->
+                <div class="song-card">
+                    <div class="song-video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/Ikv7-FY8xhw?modestbranding=1&rel=0&iv_load_policy=3" title="Album Song 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="song-details">
+                        <h3>Original Melody 1</h3>
+                        <p style="color: var(--secondary-text-color); line-height: 1.6;">A beautiful musical composition blending traditional melodies with modern elements.</p>
+                        <div class="song-credits">
+                            <i class="fas fa-music" style="margin-right: 8px; color: var(--accent-color);"></i>
+                            Song composed and lyric written by <strong>Santhosh Nataraja</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Song 2 -->
+                <div class="song-card">
+                    <div class="song-video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/HL5M5sFLLoo?modestbranding=1&rel=0&iv_load_policy=3" title="Album Song 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="song-details">
+                        <h3>Original Melody 2</h3>
+                        <p style="color: var(--secondary-text-color); line-height: 1.6;">An inspiring musical creation capturing deep feelings and expressive storytelling.</p>
+                        <div class="song-credits">
+                            <i class="fas fa-music" style="margin-right: 8px; color: var(--accent-color);"></i>
+                            Song composed and lyric written by <strong>Santhosh Nataraja</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-code"></i> Thosho<span>Tech</span>
+                </a>
+                <p>Empowering businesses through innovative technology.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="filmmaking.html">Film Making</a>
+                <a href="index.html#blog">Blog</a>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <a href="https://thosho.github.io/" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://thosho.blogspot.com/" target="_blank"><i class="fab fa-blogger"></i> Blog</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Thosho Tech. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
