@@ -1,6 +1,16 @@
+const designedWebsites = [
+    "https://moviestory.vercel.app",
+    "https://tamilreaders.github.io/tamil-library-app/",
+    "https://janakikanagaraj.github.io/demo/",
+    "https://janakikanagaraj.github.io/in/"
+];
+
 let allBlogPosts = [];
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Fetch Portfolio Sites
+    fetchPortfolioSites();
+
     // Add JSONP script for Blogger feed
     const script = document.createElement('script');
     script.src = 'https://thosho.blogspot.com/feeds/posts/default?alt=json-in-script&callback=handleBlogPosts';
@@ -112,4 +122,41 @@ function closeBlogModal() {
     const overlay = document.getElementById('blogModalOverlay');
     overlay.classList.remove('active');
     document.body.style.overflow = ''; // Restore scrolling
+}
+
+async function fetchPortfolioSites() {
+    const container = document.getElementById('portfolio-container');
+    if (!container) return;
+
+    container.innerHTML = ''; // Clear loader
+
+    for (const url of designedWebsites) {
+        try {
+            const response = await fetch(`https://api.microlink.io?url=${encodeURIComponent(url)}`);
+            const data = await response.json();
+            
+            if (data.status === 'success') {
+                const meta = data.data;
+                const title = meta.title || url;
+                const desc = meta.description ? meta.description.substring(0, 120) + '...' : 'Visit the website to learn more.';
+                const img = meta.image && meta.image.url ? meta.image.url : 'https://via.placeholder.com/600x400/1E1E1E/03A9F4?text=Website+Preview';
+
+                const cardHTML = `
+                    <article class="blog-card">
+                        <img src="${img}" alt="${title}" class="blog-thumbnail" loading="lazy" style="object-position: top;">
+                        <div class="blog-content">
+                            <h3 class="blog-title">${title}</h3>
+                            <p class="blog-excerpt">${desc}</p>
+                            <a href="${url}" target="_blank" rel="noopener noreferrer" class="read-more">
+                                Visit Website <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </article>
+                `;
+                container.innerHTML += cardHTML;
+            }
+        } catch (error) {
+            console.error('Error fetching preview for:', url, error);
+        }
+    }
 }
