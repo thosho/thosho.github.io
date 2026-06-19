@@ -294,6 +294,65 @@ p {
     100% { transform: translateY(0px); }
 }
 
+/* --- YouTube Shorts Section --- */
+.shorts-section {
+    margin-top: 60px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 40px;
+}
+
+.shorts-title {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 8px;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 1px;
+}
+
+.shorts-desc {
+    margin-bottom: 30px;
+    color: var(--secondary-text-color);
+    font-size: 1rem;
+}
+
+.shorts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+}
+
+.short-card {
+    background: var(--card-color);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+.short-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(3, 169, 244, 0.2);
+}
+
+.short-video-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9/16;
+    overflow: hidden;
+    background: #000;
+}
+
+.short-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
 /* --- Published Projects Section --- */
 .projects-grid {
     display: grid;
