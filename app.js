@@ -2,7 +2,10 @@ const designedWebsites = [
     "https://moviestory.vercel.app",
     "https://tamilreaders.github.io/tamil-library-app/",
     "https://janakikanagaraj.github.io/demo/",
-    "https://janakikanagaraj.github.io/in/"
+    "https://janakikanagaraj.github.io/in/",
+    "https://ovor.in",
+    "https://clanfit.in",
+    "https://jampictures.in"
 ];
 
 let allBlogPosts = [];
@@ -132,18 +135,27 @@ async function fetchPortfolioSites() {
 
     for (const url of designedWebsites) {
         try {
-            const response = await fetch(`https://api.microlink.io?url=${encodeURIComponent(url)}`);
+            const response = await fetch(`https://api.microlink.io?url=${encodeURIComponent(url)}&screenshot=true&meta=true`);
             const data = await response.json();
             
             if (data.status === 'success') {
                 const meta = data.data;
                 const title = meta.title || url;
                 const desc = meta.description ? meta.description.substring(0, 120) + '...' : 'Visit the website to learn more.';
-                const img = meta.image && meta.image.url ? meta.image.url : 'https://via.placeholder.com/600x400/1E1E1E/03A9F4?text=Website+Preview';
+                
+                // Use screenshot if available, otherwise fallback to image/logo
+                let img = 'https://via.placeholder.com/600x400/1E1E1E/03A9F4?text=Website+Preview';
+                if (meta.screenshot && meta.screenshot.url) {
+                    img = meta.screenshot.url;
+                } else if (meta.image && meta.image.url) {
+                    img = meta.image.url;
+                } else if (meta.logo && meta.logo.url) {
+                    img = meta.logo.url;
+                }
 
                 const cardHTML = `
                     <article class="blog-card">
-                        <img src="${img}" alt="${title}" class="blog-thumbnail" loading="lazy" style="object-position: top;">
+                        <img src="${img}" alt="${title}" class="blog-thumbnail" loading="lazy" style="object-fit: cover; object-position: top;">
                         <div class="blog-content">
                             <h3 class="blog-title">${title}</h3>
                             <p class="blog-excerpt">${desc}</p>
