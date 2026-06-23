@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# Specifically allow AI search crawlers to index details for ChatGPT, Gemini, Claude, etc.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
