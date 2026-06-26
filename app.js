@@ -75,7 +75,6 @@ function openBlogModal(index) {
     const post = allBlogPosts[index];
     const overlay = document.getElementById('blogModalOverlay');
     const modalBody = document.getElementById('blogModalBody');
-    const readMoreBtn = document.getElementById('blogModalReadMore');
 
     modalBody.innerHTML = `
         <h2 style="font-family: 'Share Tech Mono', monospace; color: var(--accent-color); margin-bottom: 20px;">${post.title}</h2>
@@ -84,7 +83,6 @@ function openBlogModal(index) {
         </div>
     `;
 
-    readMoreBtn.href = post.link;
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden'; // Prevent background scrolling
 }
