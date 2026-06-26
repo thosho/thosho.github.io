@@ -16,6 +16,31 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target === modalOverlay) closeBlogModal();
         });
     }
+
+    // Mobile Menu Events
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileSidebar = document.getElementById('mobile-sidebar');
+    const mobileCloseBtn = document.getElementById('mobile-close-btn');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+
+    if (mobileMenuBtn && mobileSidebar) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileSidebar.classList.add('open');
+        });
+    }
+
+    if (mobileCloseBtn && mobileSidebar) {
+        mobileCloseBtn.addEventListener('click', () => {
+            mobileSidebar.classList.remove('open');
+        });
+    }
+
+    // Close mobile menu when a link is clicked
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileSidebar.classList.remove('open');
+        });
+    });
 });
 
 function handleBlogPosts(data) {
