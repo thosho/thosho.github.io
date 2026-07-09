@@ -25,3 +25,5 @@ Allow: /
 
 User-agent: Cohere-ai
 Allow: /
+
+Sitemap: https://thoshotech.com/sitemap.xml
