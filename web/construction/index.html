@@ -1,14 +1,918 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>construction</title>
-    <script type="module" crossorigin src="./assets/index-CluAaShz.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-levDI9bb.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildForge | Engineering India's Tomorrow</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #1a2332;
+            --accent: #f59e0b;
+            --accent-hover: #d97706;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6, .brand-logo {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .accent-text {
+            color: var(--accent);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--accent);
+            color: #000;
+            font-weight: 600;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--text-main);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-main);
+            color: #000;
+        }
+
+        /* --- Header --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+            background: rgba(13, 17, 23, 0);
+            backdrop-filter: blur(0px);
+        }
+
+        header.scrolled {
+            background: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand-logo svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- Hero --- */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&auto=format&fit=crop&q=90') center/cover no-repeat;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(13, 17, 23, 0.9), rgba(13, 17, 23, 0.4));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: left;
+            max-width: 800px;
+            width: 100%;
+            padding: 0 2rem;
+        }
+
+        .hero-subtitle {
+            color: var(--accent);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 5.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #d1d5db;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* --- Stats --- */
+        .stats-section {
+            background-color: var(--bg-card);
+            padding: 4rem 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3.5rem;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        /* --- Services --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            padding: 3rem 2rem;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: var(--accent);
+            background-color: #1e293b;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            fill: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- Projects --- */
+        .projects-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--text-main);
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #000;
+            font-weight: 600;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .project-card {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            group;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(13, 17, 23, 0.9), transparent);
+            transform: translateY(20px);
+            opacity: 0.9;
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .project-badge {
+            background: var(--accent);
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.2rem 0.5rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-overlay h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .project-overlay p {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        /* --- Testimonials --- */
+        .testimonials {
+            background-color: var(--bg-card);
+        }
+
+        .testimonial-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .testimonial-slide {
+            display: none;
+            padding: 2rem;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stars {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            color: #f1f5f9;
+        }
+
+        .client-info h4 {
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        .client-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- Contact Form --- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent);
+        }
+
+        input:valid, select:valid, textarea:valid {
+            border-bottom: 2px solid #22c55e;
+        }
+
+        input:invalid:not(:placeholder-shown), select:invalid:not(:placeholder-shown), textarea:invalid:not(:placeholder-shown) {
+            border-bottom: 2px solid #ef4444;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #05080c;
+            padding: 4rem 0 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-about p {
+            color: var(--text-muted);
+            margin-top: 1rem;
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: var(--accent);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.5rem; }
+            .stats-grid, .services-grid, .projects-grid, .contact-wrapper, .footer-grid, .form-row {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="brand-logo">
+                <svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 3.8l6.2 12.2H5.8L12 5.8z"/></svg>
+                BuildForge
+            </a>
+            <nav class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#projects">Projects</a>
+                <a href="#about">About</a>
+                <a href="#contact" class="btn">Get a Quote</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-subtitle gsap-hero">Est. 2009</span>
+            <h1 class="gsap-hero">Engineering <br><span class="accent-text">India's</span> Tomorrow</h1>
+            <p class="gsap-hero">We are a premier construction and infrastructure firm dedicated to delivering world-class commercial and residential projects across the subcontinent.</p>
+            <div class="hero-btns gsap-hero">
+                <a href="#projects" class="btn">Our Projects</a>
+                <a href="#contact" class="btn btn-outline">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats-section">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h3 class="counter" data-target="200">0</h3>
+                <p>Projects Delivered</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="counter" data-target="15">0</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="counter" data-target="48">0</h3>
+                <p>Expert Engineers</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="counter" data-target="99">0</h3>
+                <p>Client Satisfaction (%)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our <span class="accent-text">Services</span></h2>
+                <p>Comprehensive construction solutions tailored to meet the exacting standards of modern development.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card gsap-card">
+                    <svg class="service-icon" viewBox="0 0 24 24"><path d="M4 10h3v7H4zM10.5 10h3v7h-3zM2 19h20v3H2zM17 10h3v7h-3zM12 1L2 6v2h20V6z"/></svg>
+                    <h3>Commercial Construction</h3>
+                    <p>State-of-the-art office buildings, tech parks, and retail spaces designed for the future of business.</p>
+                </div>
+                <div class="service-card gsap-card">
+                    <svg class="service-icon" viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
+                    <h3>Residential Projects</h3>
+                    <p>Luxury apartments and premium villa communities built with uncompromising attention to detail.</p>
+                </div>
+                <div class="service-card gsap-card">
+                    <svg class="service-icon" viewBox="0 0 24 24"><path d="M14 6l-3.8 9.8c-.8 2.1-3 3.2-5.2 2.4-2.1-.8-3.2-3-2.4-5.2L6.4 3.2C6.8 2 8.1 1.2 9.4 1.6l4 1.2c1.3.4 2.1 1.7 1.7 2.9L14 6zM21 21H3v2h18v-2zM19.5 4l-4 11H17l1.5-4h3l1.5 4h1.5L21 4h-1.5zM20 9h-1.5l.8-2 .7 2z"/></svg>
+                    <h3>Civil Infrastructure</h3>
+                    <p>Heavy civil engineering projects including bridges, highways, and urban transit systems.</p>
+                </div>
+                <div class="service-card gsap-card">
+                    <svg class="service-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+                    <h3>Project Management</h3>
+                    <p>End-to-end oversight ensuring projects are delivered on time, within budget, and to specification.</p>
+                </div>
+                <div class="service-card gsap-card">
+                    <svg class="service-icon" viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.1L7.1 4.3 9 6.2 7.6 7.6 5.7 5.7 3.3 8.1c1.3 2.4 1.7 5.4-.3 7.4-1.9 1.9-4.6 2.4-6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l16.1-16.1c.4-.4.4-1 0-1.4z"/></svg>
+                    <h3>Renovation & Fit-out</h3>
+                    <p>Transforming existing spaces into modern, efficient, and aesthetically pleasing environments.</p>
+                </div>
+                <div class="service-card gsap-card">
+                    <svg class="service-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3-8h-2v-2h2v2zm-4 0H9v-2h2v2zm4-4h-2V6h2v2zm-4 0H9V6h2v2z"/></svg>
+                    <h3>Interior Architecture</h3>
+                    <p>Bespoke interior design solutions that blend form, function, and brand identity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section" style="background-color: var(--bg-card);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured <span class="accent-text">Projects</span></h2>
+                <p>A selection of our most significant structural achievements across the nation.</p>
+            </div>
+            
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
+                <button class="filter-btn" data-filter="residential">Residential</button>
+                <button class="filter-btn" data-filter="infra">Infrastructure</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card" data-category="commercial">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop" alt="Cyber City Tower" class="project-img">
+                    <div class="project-overlay">
+                        <span class="project-badge">Commercial</span>
+                        <h3>Cyber City Tower</h3>
+                        <p>Hyderabad, TS • 2024</p>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card" data-category="residential">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&auto=format&fit=crop" alt="The Pinnacle Residences" class="project-img">
+                    <div class="project-overlay">
+                        <span class="project-badge">Residential</span>
+                        <h3>The Pinnacle Residences</h3>
+                        <p>Mumbai, MH • 2023</p>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card" data-category="infra">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&auto=format&fit=crop" alt="Metro Hub Design" class="project-img">
+                    <div class="project-overlay">
+                        <span class="project-badge">Infrastructure</span>
+                        <h3>Metro Hub Terminal</h3>
+                        <p>Chennai, TN • 2025 (Ongoing)</p>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="project-card" data-category="commercial">
+                    <img src="https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?w=800&auto=format&fit=crop" alt="Apex Tech Park" class="project-img">
+                    <div class="project-overlay">
+                        <span class="project-badge">Commercial</span>
+                        <h3>Apex Tech Park</h3>
+                        <p>Bengaluru, KA • 2022</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Client <span class="accent-text">Testimonials</span></h2>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-slide active">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"BuildForge delivered our 500,000 sq ft IT park three months ahead of schedule. Their attention to detail and safety standards are unmatched in the industry."</p>
+                    <div class="client-info">
+                        <h4>Rajiv Menon</h4>
+                        <p>CEO, TechVentures India</p>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"From foundation to finish, their team exhibited pure professionalism. The residential complex they built for us is now a landmark in the city."</p>
+                    <div class="client-info">
+                        <h4>Anita Desai</h4>
+                        <p>Director, Skyline Properties</p>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Exceptional project management. They handled the complexities of our industrial plant expansion with absolute precision."</p>
+                    <div class="client-info">
+                        <h4>Vikram Singhania</h4>
+                        <p>Operations Head, Global Motors</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="section">
+        <div class="container contact-wrapper">
+            <div class="contact-info">
+                <h2>Ready to <span class="accent-text">Build?</span></h2>
+                <p>Discuss your next ambitious project with our engineering experts.</p>
+                <br>
+                <p><strong>Corporate Office:</strong><br>142, Anna Salai, Guindy<br>Chennai, Tamil Nadu 600032</p>
+                <p><strong>Phone:</strong> +91 82485 99468</p>
+                <p><strong>Email:</strong> projects@buildforge.in</p>
+            </div>
+            
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Company Name" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="tel" placeholder="Phone Number" pattern="[0-9]{10}" required>
+                    </div>
+                    <div class="form-group">
+                        <select required>
+                            <option value="" disabled selected>Project Type</option>
+                            <option value="commercial">Commercial</option>
+                            <option value="residential">Residential</option>
+                            <option value="infrastructure">Infrastructure</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Tell us about your project requirements..." required></textarea>
+                </div>
+                <button type="submit" class="btn">Request Proposal</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="brand-logo" style="margin-bottom: 1rem;">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 3.8l6.2 12.2H5.8L12 5.8z"/></svg>
+                        BuildForge
+                    </div>
+                    <p>Engineering excellence for a rapidly growing India. We build structures that define skylines and stand the test of time.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#projects">Portfolio</a></li>
+                        <li><a href="#">Safety Standards</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://wa.me/918248599468" target="_blank">WhatsApp</a></li>
+                        <li><a href="#">Telegram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Designed & Developed by <a href="https://thosho.github.io" target="_blank">Thosho Tech</a>. &copy; 2026 BuildForge Ltd.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Testimonial Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 5000);
+
+        // Project Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                projectCards.forEach(card => {
+                    if(filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Animation
+        gsap.from(".gsap-hero", {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out",
+            delay: 0.2
+        });
+
+        // Service Cards Animation
+        gsap.from(".gsap-card", {
+            scrollTrigger: {
+                trigger: "#services",
+                start: "top 80%"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "power2.out"
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        
+        counters.forEach(counter => {
+            ScrollTrigger.create({
+                trigger: ".stats-section",
+                start: "top 80%",
+                once: true,
+                onEnter: () => {
+                    const target = +counter.getAttribute('data-target');
+                    const duration = 2000; // ms
+                    const step = target / (duration / 16); // 60fps
+                    let current = 0;
+                    
+                    const updateCounter = () => {
+                        current += step;
+                        if(current < target) {
+                            counter.innerText = Math.ceil(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.innerText = target + (target > 50 ? '+' : '');
+                        }
+                    };
+                    updateCounter();
+                }
+            });
+        });
+    </script>
+</body>
 </html>

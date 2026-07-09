@@ -1,14 +1,2209 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>blog</title>
-    <script type="module" crossorigin src="./assets/index-DXh08G2T.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DGQ9f_Dz.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inkflow — Stories that inspire. Thoughts that matter.</title>
+  <meta name="description" content="Inkflow is a premium personal lifestyle blog by Priya Nair covering travel, food, wellness, culture, and life in India. Curated stories for the curious mind." />
+  <meta name="keywords" content="India travel blog, lifestyle blog, food culture, wellness, Priya Nair, Inkflow" />
+  <meta property="og:title" content="Inkflow — Stories that inspire. Thoughts that matter." />
+  <meta property="og:description" content="Premium personal lifestyle blog covering India's most compelling travel, food, and culture stories." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===========================
+       DESIGN TOKENS & RESET
+    =========================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #f8f5f0;
+      --card-bg:     #fff9f4;
+      --ink:         #1a1a1a;
+      --ink-mid:     #4a4a4a;
+      --ink-light:   #8a8a8a;
+      --sienna:      #c0622b;
+      --sienna-dark: #a04f20;
+      --sienna-pale: #fbe8dc;
+      --amber:       #e8924a;
+      --cream:       #fdf0e6;
+      --border:      rgba(26,26,26,0.10);
+      --shadow-sm:   0 2px 12px rgba(26,26,26,0.06);
+      --shadow-md:   0 8px 32px rgba(26,26,26,0.10);
+      --shadow-lg:   0 20px 60px rgba(26,26,26,0.14);
+      --radius-sm:   6px;
+      --radius-md:   12px;
+      --radius-lg:   20px;
+      --radius-xl:   32px;
+      --font-serif:  'Lora', Georgia, serif;
+      --font-sans:   'DM Sans', system-ui, sans-serif;
+      --transition:  0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ===========================
+       READING PROGRESS BAR
+    =========================== */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--sienna), var(--amber));
+      z-index: 9999;
+      transition: width 0.1s linear;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* ===========================
+       HEADER / NAV
+    =========================== */
+    #site-header {
+      position: sticky;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      background: rgba(248,245,240,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 600;
+      font-size: 1.75rem;
+      color: var(--ink);
+      letter-spacing: -0.5px;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .logo::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 100%; height: 2px;
+      background: var(--sienna);
+      border-radius: 2px;
+      transform: scaleX(0.6);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .logo:hover::after { transform: scaleX(1); }
+
+    .nav-pills {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-pills::-webkit-scrollbar { display: none; }
+
+    .nav-pill {
+      font-family: var(--font-sans);
+      font-size: 0.825rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      padding: 7px 16px;
+      border-radius: 100px;
+      color: var(--ink-mid);
+      border: 1px solid transparent;
+      transition: var(--transition);
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .nav-pill:hover, .nav-pill.active {
+      background: var(--sienna-pale);
+      color: var(--sienna);
+      border-color: rgba(192,98,43,0.20);
+    }
+
+    .header-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+
+    .btn-subscribe {
+      background: var(--sienna);
+      color: #fff;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      letter-spacing: 0.2px;
+    }
+    .btn-subscribe:hover {
+      background: var(--sienna-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(192,98,43,0.30);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ===========================
+       HERO SECTION
+    =========================== */
+    #hero {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 80px 32px 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-left {}
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--sienna);
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px; height: 2px;
+      background: var(--sienna);
+      border-radius: 2px;
+    }
+
+    .hero-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--ink);
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--sienna);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--ink-mid);
+      max-width: 420px;
+      margin-bottom: 36px;
+      line-height: 1.75;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+    }
+    .stat-item { display: flex; flex-direction: column; gap: 2px; }
+    .stat-num {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--ink-light);
+      letter-spacing: 0.3px;
+    }
+
+    /* Featured article card in hero */
+    .hero-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      position: relative;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .hero-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 80px rgba(26,26,26,0.16);
+    }
+
+    .hero-card-img {
+      width: 100%; height: 280px;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .hero-card:hover .hero-card-img { transform: scale(1.04); }
+
+    .hero-card-badge {
+      position: absolute;
+      top: 20px; left: 20px;
+      background: var(--sienna);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+    }
+
+    .hero-card-body { padding: 28px; }
+
+    .hero-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.8rem;
+      color: var(--ink-light);
+      margin-bottom: 12px;
+    }
+    .hero-card-meta .dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--ink-light);
+    }
+
+    .hero-card-title {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .hero-card-excerpt {
+      font-size: 0.9rem;
+      color: var(--ink-mid);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .author-chip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .author-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border);
+    }
+    .author-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .read-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--sienna);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s ease;
+    }
+    .read-link:hover { gap: 10px; }
+    .read-link::after { content: '→'; font-size: 1rem; }
+
+    /* Marquee */
+    .marquee-wrapper {
+      margin-top: 64px;
+      overflow: hidden;
+      position: relative;
+      padding: 16px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .marquee-wrapper::before, .marquee-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 80px;
+      z-index: 2;
+    }
+    .marquee-wrapper::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--bg) 0%, transparent 100%);
+    }
+    .marquee-wrapper::after {
+      right: 0;
+      background: linear-gradient(270deg, var(--bg) 0%, transparent 100%);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 12px;
+      width: max-content;
+      animation: marqueeScroll 30s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .marquee-tag {
+      white-space: nowrap;
+      padding: 7px 18px;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--ink-mid);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .marquee-tag:hover {
+      background: var(--sienna-pale);
+      color: var(--sienna);
+      border-color: rgba(192,98,43,0.25);
+    }
+    .marquee-tag.accent {
+      background: var(--sienna-pale);
+      color: var(--sienna);
+      border-color: rgba(192,98,43,0.25);
+    }
+
+    /* ===========================
+       SECTION LABELS & COMMON
+    =========================== */
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--sienna);
+      margin-bottom: 16px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--sienna);
+      border-radius: 2px;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 600;
+      letter-spacing: -0.8px;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--ink-mid);
+      margin-bottom: 48px;
+    }
+
+    /* ===========================
+       FEATURED POSTS
+    =========================== */
+    #featured {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 80px 32px;
+    }
+
+    .featured-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 48px;
+      gap: 24px;
+    }
+
+    .view-all {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--sienna);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: gap 0.2s ease;
+    }
+    .view-all:hover { gap: 10px; }
+    .view-all::after { content: '→'; }
+
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    /* Blog Card */
+    .blog-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    .blog-card.animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-img-wrap {
+      position: relative;
+      overflow: hidden;
+      height: 220px;
+    }
+    .card-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .blog-card:hover .card-img { transform: scale(1.06); }
+
+    .card-badge {
+      position: absolute;
+      top: 14px; left: 14px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 11px;
+      border-radius: 100px;
+      color: #fff;
+    }
+    .badge-travel { background: #2b7bc0; }
+    .badge-food   { background: #c0622b; }
+    .badge-tech   { background: #2b8a6e; }
+    .badge-culture{ background: #7b3fc0; }
+    .badge-wellness { background: #c06e2b; }
+    .badge-lifestyle { background: #c04b2b; }
+    .badge-finance  { background: #2b6ac0; }
+    .badge-photography { background: #5c2bc0; }
+
+    .card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .card-date {
+      font-size: 0.78rem;
+      color: var(--ink-light);
+      letter-spacing: 0.3px;
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--ink);
+      letter-spacing: -0.2px;
+    }
+
+    .card-excerpt {
+      font-size: 0.88rem;
+      color: var(--ink-mid);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      margin-top: 4px;
+    }
+
+    .card-author {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-author img {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--border);
+    }
+    .card-author-info {}
+    .card-author-name {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .card-read-time {
+      font-size: 0.72rem;
+      color: var(--ink-light);
+    }
+
+    .card-read-link {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--sienna);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: gap 0.2s ease;
+    }
+    .card-read-link:hover { gap: 9px; }
+    .card-read-link::after { content: '→'; }
+
+    /* ===========================
+       CATEGORIES STRIP
+    =========================== */
+    #categories {
+      padding: 60px 0;
+      background: var(--card-bg);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .categories-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .categories-header { margin-bottom: 32px; }
+
+    .categories-scroll {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scrollbar-width: none;
+      scroll-snap-type: x mandatory;
+    }
+    .categories-scroll::-webkit-scrollbar { display: none; }
+
+    .cat-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--bg);
+      white-space: nowrap;
+      scroll-snap-align: start;
+      cursor: pointer;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    .cat-pill:hover {
+      background: var(--sienna-pale);
+      border-color: rgba(192,98,43,0.25);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+    .cat-pill .emoji { font-size: 1.3rem; }
+    .cat-pill .cat-label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--ink-mid);
+    }
+    .cat-pill .cat-count {
+      font-size: 0.72rem;
+      color: var(--ink-light);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 2px 8px;
+    }
+    .cat-pill:hover .cat-label { color: var(--sienna); }
+
+    /* ===========================
+       NEWSLETTER
+    =========================== */
+    #newsletter {
+      padding: 100px 32px;
+      background: linear-gradient(135deg, #c0622b 0%, #e8924a 55%, #d4783a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #newsletter::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+    #newsletter::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -40px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .newsletter-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .newsletter-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 20px;
+    }
+    .newsletter-eyebrow::before, .newsletter-eyebrow::after {
+      content: '';
+      display: block;
+      width: 24px; height: 1px;
+      background: rgba(255,255,255,0.5);
+    }
+
+    .newsletter-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: -0.8px;
+      margin-bottom: 16px;
+    }
+    .newsletter-title em { font-style: italic; opacity: 0.85; }
+
+    .newsletter-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 12px;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    #email-input {
+      flex: 1;
+      padding: 14px 20px;
+      border-radius: 100px;
+      border: 2px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      outline: none;
+      backdrop-filter: blur(4px);
+      transition: var(--transition);
+    }
+    #email-input::placeholder { color: rgba(255,255,255,0.6); }
+    #email-input:focus {
+      border-color: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.22);
+    }
+
+    #subscribe-btn {
+      padding: 14px 28px;
+      border-radius: 100px;
+      border: none;
+      background: #fff;
+      color: var(--sienna);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    #subscribe-btn:hover {
+      background: var(--ink);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(26,26,26,0.25);
+    }
+
+    .newsletter-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .success-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+    }
+    .success-msg {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .success-sub {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .newsletter-trust {
+      margin-top: 24px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* ===========================
+       ABOUT AUTHOR
+    =========================== */
+    #about {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 100px 32px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-frame {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      box-shadow: var(--shadow-lg);
+    }
+    .about-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .about-img-deco {
+      position: absolute;
+      top: -20px; left: -20px;
+      width: 100%; height: 100%;
+      border: 2px solid rgba(192,98,43,0.2);
+      border-radius: var(--radius-xl);
+      pointer-events: none;
+    }
+    .about-img-badge {
+      position: absolute;
+      bottom: 24px; right: -20px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .badge-stat {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--sienna);
+    }
+    .badge-label { font-size: 0.75rem; color: var(--ink-light); }
+
+    .about-content {}
+
+    .about-name {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 600;
+      letter-spacing: -1px;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .about-title {
+      font-size: 0.9rem;
+      color: var(--sienna);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 28px;
+    }
+    .about-bio {
+      font-size: 1rem;
+      color: var(--ink-mid);
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+
+    .about-featured {
+      margin-top: 36px;
+    }
+    .featured-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 14px;
+    }
+    .featured-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .pub-badge {
+      padding: 8px 18px;
+      border-radius: 100px;
+      border: 1.5px solid var(--border);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ink-mid);
+      background: var(--card-bg);
+      transition: var(--transition);
+    }
+    .pub-badge:hover {
+      border-color: var(--sienna);
+      color: var(--sienna);
+      background: var(--sienna-pale);
+    }
+
+    .about-social {
+      margin-top: 28px;
+      display: flex;
+      gap: 12px;
+    }
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 100px;
+      border: 1.5px solid var(--border);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ink-mid);
+      background: var(--card-bg);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .social-btn:hover {
+      background: var(--sienna);
+      color: #fff;
+      border-color: var(--sienna);
+      transform: translateY(-2px);
+    }
+    .social-btn svg { width: 16px; height: 16px; }
+
+    /* ===========================
+       RECENT POSTS
+    =========================== */
+    #recent {
+      background: var(--card-bg);
+      border-top: 1px solid var(--border);
+      padding: 80px 32px;
+    }
+
+    .recent-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .recent-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .recent-card {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      background: var(--bg);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      padding: 0;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .recent-card.animated { opacity: 1; transform: translateY(0); }
+    .recent-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .recent-img {
+      width: 130px;
+      height: 130px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .recent-info {
+      padding: 16px 16px 16px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .recent-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--sienna);
+    }
+
+    .recent-title {
+      font-family: var(--font-serif);
+      font-size: 0.98rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--ink);
+      letter-spacing: -0.1px;
+    }
+    .recent-title:hover { color: var(--sienna); }
+
+    .recent-date {
+      font-size: 0.76rem;
+      color: var(--ink-light);
+      margin-top: 4px;
+    }
+
+    /* ===========================
+       FOOTER
+    =========================== */
+    #footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.7);
+      padding: 64px 32px 36px;
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 320px 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 36px;
+    }
+
+    .footer-brand {}
+    .footer-logo {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .footer-tagline {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      color: rgba(255,255,255,0.55);
+    }
+    .footer-social {
+      display: flex;
+      gap: 10px;
+    }
+    .footer-social-btn {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 1rem;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .footer-social-btn:hover {
+      background: var(--sienna);
+      border-color: var(--sienna);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 20px;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: #fff; }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .footer-credit {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .footer-credit a {
+      color: var(--amber);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .footer-credit a:hover { color: #fff; }
+
+    .footer-contact-links {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: var(--transition);
+    }
+    .contact-link:hover {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border-color: rgba(255,255,255,0.25);
+    }
+    .contact-link svg { width: 15px; height: 15px; }
+
+    /* ===========================
+       DIVIDER
+    =========================== */
+    .section-divider {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ===========================
+       MOBILE NAV OVERLAY
+    =========================== */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(248,245,240,0.98);
+      backdrop-filter: blur(12px);
+      z-index: 800;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-nav.open {
+      display: flex;
+      opacity: 1;
+      pointer-events: all;
+    }
+    .mobile-nav a {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--ink);
+      transition: color 0.2s;
+    }
+    .mobile-nav a:hover { color: var(--sienna); }
+    .mobile-close {
+      position: absolute;
+      top: 24px; right: 32px;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--ink-mid);
+    }
+
+    /* ===========================
+       RESPONSIVE
+    =========================== */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-card { max-width: 600px; }
+      .posts-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-img-wrap { max-width: 360px; margin: 0 auto; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .header-inner { padding: 0 20px; height: 64px; }
+      .nav-pills { display: none; }
+      .hamburger { display: flex; }
+      .btn-subscribe { display: none; }
+
+      #hero { padding: 48px 20px 40px; }
+      .hero-stats { gap: 20px; }
+
+      .posts-grid { grid-template-columns: 1fr; }
+      #featured { padding: 60px 20px; }
+
+      #categories { padding: 48px 0; }
+      .categories-inner { padding: 0 20px; }
+
+      #newsletter { padding: 72px 20px; }
+      .newsletter-form { flex-direction: column; }
+      #subscribe-btn { width: 100%; }
+
+      #about { padding: 72px 20px; }
+      .about-img-badge { right: 0; }
+
+      #recent { padding: 60px 20px; }
+      .recent-grid { grid-template-columns: 1fr; }
+
+      #footer { padding: 48px 20px 28px; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-headline { font-size: 2rem; }
+      .hero-card-title { font-size: 1.2rem; }
+    }
+
+    /* Smooth scroll reveal utility */
+    .reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Highlight for active section */
+    .nav-pill.active { background: var(--sienna-pale); color: var(--sienna); }
+
+    /* Scroll-to-top button */
+    #scroll-top {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: var(--sienna);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(192,98,43,0.35);
+      opacity: 0; pointer-events: none;
+      transition: var(--transition);
+      z-index: 500;
+      font-size: 1.1rem;
+    }
+    #scroll-top.visible { opacity: 1; pointer-events: all; }
+    #scroll-top:hover { background: var(--sienna-dark); transform: translateY(-3px); }
+  </style>
+</head>
+<body>
+
+<!-- Reading Progress Bar -->
+<div id="progress-bar" role="progressbar" aria-label="Reading progress"></div>
+
+<!-- Scroll to Top -->
+<button id="scroll-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Mobile Nav Overlay -->
+<nav class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+  <span class="mobile-close" id="mobile-close" aria-label="Close menu">✕</span>
+  <a href="#hero">Home</a>
+  <a href="#featured">Travel</a>
+  <a href="#featured">Food</a>
+  <a href="#about">Lifestyle</a>
+  <a href="#recent">Tech</a>
+  <a href="#categories">Culture</a>
+  <a href="#newsletter">Subscribe</a>
+</nav>
+
+<!-- ============================
+     SECTION 1: HEADER
+============================= -->
+<header id="site-header" role="banner">
+  <div class="header-inner">
+    <a href="#" class="logo" aria-label="Inkflow home">Inkflow</a>
+
+    <nav class="nav-pills" role="navigation" aria-label="Category navigation">
+      <a href="#featured" class="nav-pill active">Travel</a>
+      <a href="#featured" class="nav-pill">Food</a>
+      <a href="#about"    class="nav-pill">Lifestyle</a>
+      <a href="#recent"   class="nav-pill">Tech</a>
+      <a href="#categories" class="nav-pill">Culture</a>
+      <a href="#recent"   class="nav-pill">Wellness</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn-subscribe" onclick="document.getElementById('newsletter').scrollIntoView({behavior:'smooth'})">Subscribe</button>
+      <div class="hamburger" id="hamburger" aria-label="Open menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================
+     SECTION 2: HERO
+============================= -->
+<section id="hero" aria-label="Hero — Featured stories">
+  <div class="hero-grid">
+
+    <!-- Left: Headline -->
+    <div class="hero-left">
+      <div class="hero-eyebrow">Personal Lifestyle Blog</div>
+      <h1 class="hero-headline">
+        Stories that<br><em>inspire.</em><br>Thoughts that<br>matter.
+      </h1>
+      <p class="hero-sub">
+        A curated space for the endlessly curious — travel dispatches, food stories, cultural deep-dives, and the quiet thoughts that define how we live.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">12K+</span>
+          <span class="stat-label">Readers</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">340+</span>
+          <span class="stat-label">Stories</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">18</span>
+          <span class="stat-label">Countries</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Featured Card -->
+    <div>
+      <a href="#" class="hero-card" id="hero-featured-card" aria-label="Read featured article: Varanasi at Dawn">
+        <div style="overflow:hidden;">
+          <img class="hero-card-img"
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop"
+            alt="Varanasi ghats at dawn with golden light" loading="eager" />
+        </div>
+        <div class="hero-card-badge">✦ Featured</div>
+        <div class="hero-card-body">
+          <div class="hero-card-meta">
+            <span>Culture</span>
+            <span class="dot"></span>
+            <span>June 28, 2025</span>
+            <span class="dot"></span>
+            <span>9 min read</span>
+          </div>
+          <h2 class="hero-card-title">Varanasi at Dawn: Where Time Folds Back on Itself</h2>
+          <p class="hero-card-excerpt">
+            Standing on the ghats as the Ganga caught fire with morning light, I understood why every Indian writer eventually ends up here — searching for the sentence that explains everything.
+          </p>
+          <div class="hero-card-footer">
+            <div class="author-chip">
+              <img class="author-avatar"
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&crop=face"
+                alt="Priya Nair, author" />
+              <span class="author-name">Priya Nair</span>
+            </div>
+            <span class="read-link">Read Article</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Marquee -->
+  <div class="marquee-wrapper" aria-hidden="true">
+    <div class="marquee-track" id="marquee-track">
+      <span class="marquee-tag accent">✈️ Travel</span>
+      <span class="marquee-tag">🍽️ Food & Culture</span>
+      <span class="marquee-tag">🌿 Wellness</span>
+      <span class="marquee-tag accent">📷 Photography</span>
+      <span class="marquee-tag">💼 Finance</span>
+      <span class="marquee-tag">🎨 Art & Design</span>
+      <span class="marquee-tag accent">📱 Technology</span>
+      <span class="marquee-tag">🏠 Slow Living</span>
+      <span class="marquee-tag">🧘 Mindfulness</span>
+      <span class="marquee-tag accent">🌏 South Asia</span>
+      <span class="marquee-tag">📚 Books</span>
+      <span class="marquee-tag">☕ Morning Reads</span>
+      <span class="marquee-tag accent">✈️ Travel</span>
+      <span class="marquee-tag">🍽️ Food & Culture</span>
+      <span class="marquee-tag">🌿 Wellness</span>
+      <span class="marquee-tag accent">📷 Photography</span>
+      <span class="marquee-tag">💼 Finance</span>
+      <span class="marquee-tag">🎨 Art & Design</span>
+      <span class="marquee-tag accent">📱 Technology</span>
+      <span class="marquee-tag">🏠 Slow Living</span>
+      <span class="marquee-tag">🧘 Mindfulness</span>
+      <span class="marquee-tag accent">🌏 South Asia</span>
+      <span class="marquee-tag">📚 Books</span>
+      <span class="marquee-tag">☕ Morning Reads</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     SECTION 3: FEATURED POSTS
+============================= -->
+<section id="featured" aria-labelledby="featured-heading">
+  <div class="featured-header">
+    <div>
+      <div class="section-label">Featured Stories</div>
+      <h2 class="section-title" id="featured-heading">Stories Worth Your Time</h2>
+      <p class="section-sub">Hand-picked pieces that stayed with us long after we wrote them.</p>
+    </div>
+    <a href="#" class="view-all">View All Stories</a>
+  </div>
+
+  <div class="posts-grid">
+
+    <!-- Card 1: Travel -->
+    <article class="blog-card" id="card-travel">
+      <div class="card-img-wrap">
+        <img class="card-img"
+          src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&auto=format&fit=crop"
+          alt="High altitude Ladakh landscape with mountains and blue sky"
+          loading="lazy" />
+        <span class="card-badge badge-travel">Travel</span>
+      </div>
+      <div class="card-body">
+        <span class="card-date">July 3, 2025</span>
+        <h3 class="card-title">A Week in Ladakh: India's Last Frontier</h3>
+        <p class="card-excerpt">
+          At 3,500 metres above sea level, the air is thin and everything else is vivid. We drove the Manali–Leh highway in June and found a landscape that humbles every traveller into silence.
+        </p>
+        <div class="card-footer">
+          <div class="card-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&auto=format&fit=crop&crop=face"
+              alt="Priya Nair" />
+            <div class="card-author-info">
+              <div class="card-author-name">Priya Nair</div>
+              <div class="card-read-time">8 min read</div>
+            </div>
+          </div>
+          <a href="#" class="card-read-link">Read Article</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 2: Food -->
+    <article class="blog-card" id="card-food">
+      <div class="card-img-wrap">
+        <img class="card-img"
+          src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600&auto=format&fit=crop"
+          alt="Colourful Indian spices and traditional kitchen ingredients"
+          loading="lazy" />
+        <span class="card-badge badge-food">Food</span>
+      </div>
+      <div class="card-body">
+        <span class="card-date">June 19, 2025</span>
+        <h3 class="card-title">The Secret Ingredient in Every Grandma's Kitchen</h3>
+        <p class="card-excerpt">
+          It isn't turmeric. It isn't the hand-ground masala. After visiting seven homes across Kerala, Tamil Nadu, and Rajasthan, I discovered it's something you can't find at the grocery store.
+        </p>
+        <div class="card-footer">
+          <div class="card-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&auto=format&fit=crop&crop=face"
+              alt="Priya Nair" />
+            <div class="card-author-info">
+              <div class="card-author-name">Priya Nair</div>
+              <div class="card-read-time">6 min read</div>
+            </div>
+          </div>
+          <a href="#" class="card-read-link">Read Article</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 3: Tech -->
+    <article class="blog-card" id="card-tech">
+      <div class="card-img-wrap">
+        <img class="card-img"
+          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop"
+          alt="Young professionals working with laptops in a modern coworking space"
+          loading="lazy" />
+        <span class="card-badge badge-tech">Tech × Culture</span>
+      </div>
+      <div class="card-body">
+        <span class="card-date">June 10, 2025</span>
+        <h3 class="card-title">Why India's Gen-Z is Rewriting the Rules of Work</h3>
+        <p class="card-excerpt">
+          They're leaving MNCs for substack newsletters, turning down promotions for sabbaticals, and building businesses from Tier-2 towns. Meet the generation that refused the script.
+        </p>
+        <div class="card-footer">
+          <div class="card-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&auto=format&fit=crop&crop=face"
+              alt="Priya Nair" />
+            <div class="card-author-info">
+              <div class="card-author-name">Priya Nair</div>
+              <div class="card-read-time">10 min read</div>
+            </div>
+          </div>
+          <a href="#" class="card-read-link">Read Article</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================
+     SECTION 4: CATEGORIES
+============================= -->
+<section id="categories" aria-labelledby="categories-heading">
+  <div class="categories-inner">
+    <div class="categories-header reveal">
+      <div class="section-label">Browse by Topic</div>
+      <h2 class="section-title" id="categories-heading">What are you curious about?</h2>
+    </div>
+    <div class="categories-scroll" role="list">
+      <div class="cat-pill reveal" role="listitem" tabindex="0">
+        <span class="emoji">✈️</span>
+        <span class="cat-label">Travel</span>
+        <span class="cat-count">64</span>
+      </div>
+      <div class="cat-pill reveal" role="listitem" tabindex="0">
+        <span class="emoji">🍽️</span>
+        <span class="cat-label">Food</span>
+        <span class="cat-count">48</span>
+      </div>
+      <div class="cat-pill reveal" role="listitem" tabindex="0">
+        <span class="emoji">🌿</span>
+        <span class="cat-label">Wellness</span>
+        <span class="cat-count">33</span>
+      </div>
+      <div class="cat-pill reveal" role="listitem" tabindex="0">
+        <span class="emoji">📷</span>
+        <span class="cat-label">Photography</span>
+        <span class="cat-count">27</span>
+      </div>
+      <div class="cat-pill reveal" role="listitem" tabindex="0">
+        <span class="emoji">💼</span>
+        <span class="cat-label">Finance</span>
+        <span class="cat-count">21</span>
+      </div>
+      <div class="cat-pill reveal" role="listitem" tabindex="0">
+        <span class="emoji">🎨</span>
+        <span class="cat-label">Culture</span>
+        <span class="cat-count">55</span>
+      </div>
+      <div class="cat-pill reveal" role="listitem" tabindex="0">
+        <span class="emoji">📱</span>
+        <span class="cat-label">Technology</span>
+        <span class="cat-count">42</span>
+      </div>
+      <div class="cat-pill reveal" role="listitem" tabindex="0">
+        <span class="emoji">🏠</span>
+        <span class="cat-label">Lifestyle</span>
+        <span class="cat-count">38</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     SECTION 5: NEWSLETTER
+============================= -->
+<section id="newsletter" aria-labelledby="newsletter-heading">
+  <div class="newsletter-inner">
+    <div class="newsletter-eyebrow">Weekly Dispatch</div>
+    <h2 class="newsletter-title" id="newsletter-heading">
+      Join 12,000+ <em>Curious Readers</em>
+    </h2>
+    <p class="newsletter-sub">
+      Every Sunday morning, we send one beautifully curated newsletter — a travel story, a food memory, something cultural, and a quiet thought to carry through your week. No noise. No spam. Just words that matter.
+    </p>
+
+    <div class="newsletter-form" id="newsletter-form">
+      <input type="email" id="email-input" placeholder="Your email address" aria-label="Email address for newsletter subscription" />
+      <button id="subscribe-btn" onclick="handleSubscribe()">Subscribe Free</button>
+    </div>
+
+    <div class="newsletter-success" id="newsletter-success" aria-live="polite">
+      <div class="success-icon">🎉</div>
+      <div class="success-msg">Welcome to the family!</div>
+      <div class="success-sub">Your first issue arrives this Sunday. Check your inbox.</div>
+    </div>
+
+    <p class="newsletter-trust" aria-label="Privacy assurance">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      No spam, ever. Unsubscribe anytime.
+    </p>
+  </div>
+</section>
+
+<!-- ============================
+     SECTION 6: ABOUT AUTHOR
+============================= -->
+<section id="about" aria-labelledby="about-heading">
+  <div class="about-grid">
+
+    <!-- Left: Photo -->
+    <div class="about-img-wrap reveal">
+      <div class="about-img-frame">
+        <img class="about-img"
+          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&auto=format&fit=crop&crop=face"
+          alt="Priya Nair, travel and lifestyle writer"
+          loading="lazy" />
+      </div>
+      <div class="about-img-deco"></div>
+      <div class="about-img-badge">
+        <span class="badge-stat">340+</span>
+        <span class="badge-label">Articles Published</span>
+      </div>
+    </div>
+
+    <!-- Right: Bio -->
+    <div class="about-content reveal">
+      <div class="section-label">The Voice Behind Inkflow</div>
+      <h2 class="about-name" id="about-heading">Priya Nair</h2>
+      <p class="about-title">Travel Writer · Cultural Chronicler · Food Storyteller</p>
+
+      <p class="about-bio">
+        I grew up between Mumbai's chaotic monsoons and my grandmother's quiet kitchen in Thrissur — two places that taught me everything about the art of paying attention. I've since carried that habit across 18 countries and most of India's states, writing about the way places shape people and people shape places.
+      </p>
+      <p class="about-bio">
+        Before starting Inkflow in 2020, I spent six years as a features writer for national publications, chasing stories from the Rann of Kutch to the living root bridges of Meghalaya. My work lives at the intersection of the personal and the universal — because I believe every great travel story is ultimately a story about what it means to be human.
+      </p>
+
+      <div class="about-featured">
+        <p class="featured-label">Featured In</p>
+        <div class="featured-badges">
+          <a href="#" class="pub-badge">The Hindu</a>
+          <a href="#" class="pub-badge">Vogue India</a>
+          <a href="#" class="pub-badge">National Geographic Traveller India</a>
+          <a href="#" class="pub-badge">Condé Nast Traveller</a>
+          <a href="#" class="pub-badge">The Indian Express</a>
+        </div>
+      </div>
+
+      <div class="about-social">
+        <a href="https://wa.me/918248599468" class="social-btn" target="_blank" rel="noopener" aria-label="Contact on WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://t.me/thoshotech" class="social-btn" target="_blank" rel="noopener" aria-label="Contact on Telegram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          Telegram
+        </a>
+        <a href="mailto:hello@inkflow.in" class="social-btn" aria-label="Send email to Priya">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Email
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     SECTION 7: RECENT POSTS
+============================= -->
+<section id="recent" aria-labelledby="recent-heading">
+  <div class="recent-inner">
+    <div class="featured-header reveal">
+      <div>
+        <div class="section-label">Latest Articles</div>
+        <h2 class="section-title" id="recent-heading">Fresh off the Press</h2>
+        <p class="section-sub">The newest additions to the Inkflow archive.</p>
+      </div>
+      <a href="#" class="view-all">All Articles</a>
+    </div>
+
+    <div class="recent-grid">
+
+      <!-- Recent 1 -->
+      <a href="#" class="recent-card" id="recent-1" aria-label="Read: Trekking Alone to Valley of Flowers">
+        <img class="recent-img"
+          src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop"
+          alt="Valley of flowers trek, Uttarakhand" loading="lazy" />
+        <div class="recent-info">
+          <span class="recent-badge">✈️ Travel</span>
+          <span class="recent-title">Trekking Alone to India's Valley of Flowers — A First-Timer's Honest Guide</span>
+          <span class="recent-date">July 5, 2025 · 7 min read</span>
+        </div>
+      </a>
+
+      <!-- Recent 2 -->
+      <a href="#" class="recent-card" id="recent-2" aria-label="Read: Morning Yoga & Ayurveda in Kerala">
+        <img class="recent-img"
+          src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&auto=format&fit=crop"
+          alt="Yoga and meditation practice at sunrise" loading="lazy" />
+        <div class="recent-info">
+          <span class="recent-badge">🌿 Wellness</span>
+          <span class="recent-title">14 Days of Ayurveda in Kerala: What Actually Changed (and What Didn't)</span>
+          <span class="recent-date">June 30, 2025 · 8 min read</span>
+        </div>
+      </a>
+
+      <!-- Recent 3 -->
+      <a href="#" class="recent-card" id="recent-3" aria-label="Read: Street Food Pilgrimage">
+        <img class="recent-img"
+          src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3df1?w=400&auto=format&fit=crop"
+          alt="Delicious street food spread" loading="lazy" />
+        <div class="recent-info">
+          <span class="recent-badge">🍽️ Food</span>
+          <span class="recent-title">A Street Food Pilgrimage Through Old Delhi's Hidden Bylanes</span>
+          <span class="recent-date">June 22, 2025 · 5 min read</span>
+        </div>
+      </a>
+
+      <!-- Recent 4 -->
+      <a href="#" class="recent-card" id="recent-4" aria-label="Read: Himalayas Photography Guide">
+        <img class="recent-img"
+          src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&auto=format&fit=crop"
+          alt="Dramatic Himalayan mountain landscape aerial view" loading="lazy" />
+        <div class="recent-info">
+          <span class="recent-badge">📷 Photography</span>
+          <span class="recent-title">How to Photograph the Himalayas Without a Professional Camera</span>
+          <span class="recent-date">June 15, 2025 · 6 min read</span>
+        </div>
+      </a>
+
+      <!-- Recent 5 -->
+      <a href="#" class="recent-card" id="recent-5" aria-label="Read: Minimalist Living Mumbai">
+        <img class="recent-img"
+          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&auto=format&fit=crop"
+          alt="Minimalist living room interior design" loading="lazy" />
+        <div class="recent-info">
+          <span class="recent-badge">🏠 Lifestyle</span>
+          <span class="recent-title">Living Minimally in Mumbai: What I Gave Up and What I Gained</span>
+          <span class="recent-date">June 8, 2025 · 9 min read</span>
+        </div>
+      </a>
+
+      <!-- Recent 6 -->
+      <a href="#" class="recent-card" id="recent-6" aria-label="Read: Offbeat Northeast India">
+        <img class="recent-img"
+          src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&auto=format&fit=crop"
+          alt="Lush green forest and nature in Northeast India" loading="lazy" />
+        <div class="recent-info">
+          <span class="recent-badge">✈️ Travel</span>
+          <span class="recent-title">Northeast India Is the World's Best-Kept Secret — and I'm Telling Everyone</span>
+          <span class="recent-date">May 29, 2025 · 11 min read</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     SECTION 8: FOOTER
+============================= -->
+<footer id="footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+
+      <!-- Brand column -->
+      <div class="footer-brand">
+        <div class="footer-logo">Inkflow</div>
+        <p class="footer-tagline">Stories that inspire. Thoughts that matter. A personal blog about life, travel, and everything in between.</p>
+        <div class="footer-social">
+          <a href="https://wa.me/918248599468" class="footer-social-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          </a>
+          <a href="https://t.me/thoshotech" class="footer-social-btn" target="_blank" rel="noopener" aria-label="Telegram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </a>
+          <a href="mailto:hello@inkflow.in" class="footer-social-btn" aria-label="Email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </a>
+          <a href="#" class="footer-social-btn" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Categories column -->
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#">✈️ Travel Stories</a></li>
+          <li><a href="#">🍽️ Food & Culture</a></li>
+          <li><a href="#">🌿 Wellness</a></li>
+          <li><a href="#">📷 Photography</a></li>
+          <li><a href="#">🎨 Art & Culture</a></li>
+          <li><a href="#">📱 Technology</a></li>
+        </ul>
+      </div>
+
+      <!-- Info column -->
+      <div class="footer-col">
+        <h4>Inkflow</h4>
+        <ul>
+          <li><a href="#about">About Priya</a></li>
+          <li><a href="#newsletter">Newsletter</a></li>
+          <li><a href="#">Work with Me</a></li>
+          <li><a href="#">Press Kit</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="https://wa.me/918248599468" target="_blank">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer bottom bar -->
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Inkflow. All rights reserved.</span>
+
+      <div class="footer-contact-links">
+        <a href="https://wa.me/918248599468" class="contact-link" target="_blank" rel="noopener" aria-label="WhatsApp Thosho Tech">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://t.me/thoshotech" class="contact-link" target="_blank" rel="noopener" aria-label="Telegram Thosho Tech">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          Telegram
+        </a>
+      </div>
+
+      <span class="footer-credit">
+        Designed &amp; Developed by
+        <a href="https://wa.me/918248599468" target="_blank" rel="noopener">Thosho Tech</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================
+     SCRIPTS
+============================= -->
+<!-- GSAP Core -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+<!-- GSAP ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+<script>
+  /* =====================
+     GSAP INIT (after load)
+  ===================== */
+  window.addEventListener('load', () => {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* Reading Progress Bar */
+    gsap.to('#progress-bar', {
+      width: '100%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: 'body',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.1
+      }
+    });
+
+    /* Hero left column entrance */
+    gsap.from('.hero-left > *', {
+      opacity: 0,
+      y: 40,
+      duration: 0.85,
+      ease: 'power3.out',
+      stagger: 0.12,
+      delay: 0.15
+    });
+
+    /* Hero card entrance */
+    gsap.from('#hero-featured-card', {
+      opacity: 0,
+      x: 60,
+      duration: 1,
+      ease: 'power3.out',
+      delay: 0.3
+    });
+
+    /* Blog cards animate up */
+    gsap.utils.toArray('.blog-card').forEach((card, i) => {
+      gsap.fromTo(card,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.75,
+          ease: 'power3.out',
+          delay: i * 0.1,
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+            onEnter: () => card.classList.add('animated')
+          }
+        }
+      );
+    });
+
+    /* Recent cards stagger */
+    gsap.utils.toArray('.recent-card').forEach((card, i) => {
+      gsap.fromTo(card,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.65,
+          ease: 'power3.out',
+          delay: i * 0.08,
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 90%',
+            toggleActions: 'play none none none',
+            onEnter: () => card.classList.add('animated')
+          }
+        }
+      );
+    });
+
+    /* Category pills cascade */
+    gsap.from('.cat-pill', {
+      opacity: 0,
+      y: 30,
+      duration: 0.55,
+      ease: 'power2.out',
+      stagger: 0.07,
+      scrollTrigger: {
+        trigger: '#categories',
+        start: 'top 85%'
+      }
+    });
+
+    /* About section */
+    gsap.from('.about-img-wrap', {
+      opacity: 0,
+      x: -60,
+      duration: 0.9,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#about',
+        start: 'top 80%'
+      }
+    });
+
+    gsap.from('.about-content > *', {
+      opacity: 0,
+      y: 30,
+      duration: 0.65,
+      ease: 'power3.out',
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: '#about',
+        start: 'top 75%'
+      }
+    });
+
+    /* Newsletter section entrance */
+    gsap.from('.newsletter-inner > *', {
+      opacity: 0,
+      y: 30,
+      duration: 0.65,
+      ease: 'power3.out',
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: '#newsletter',
+        start: 'top 80%'
+      }
+    });
+
+    /* Reveal utility class */
+    gsap.utils.toArray('.reveal').forEach(el => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.7,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+    });
+
+  });
+
+  /* =====================
+     FALLBACK: CSS-based reveal without GSAP
+  ===================== */
+  (function() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  })();
+
+  /* =====================
+     READING PROGRESS (pure JS fallback)
+  ===================== */
+  function updateProgress() {
+    const bar = document.getElementById('progress-bar');
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+
+  /* =====================
+     SCROLL TO TOP BUTTON
+  ===================== */
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('scroll-top');
+    if (window.scrollY > 400) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  /* =====================
+     MOBILE NAV
+  ===================== */
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  const mobileClose = document.getElementById('mobile-close');
+
+  function openMobileNav() {
+    mobileNav.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', openMobileNav);
+  hamburger.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openMobileNav(); });
+  mobileClose.addEventListener('click', closeMobileNav);
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileNav));
+
+  /* =====================
+     NEWSLETTER SUBSCRIBE
+  ===================== */
+  function handleSubscribe() {
+    const emailInput = document.getElementById('email-input');
+    const form = document.getElementById('newsletter-form');
+    const success = document.getElementById('newsletter-success');
+    const trust = document.querySelector('.newsletter-trust');
+
+    const email = emailInput.value.trim();
+    if (!email || !email.includes('@')) {
+      emailInput.style.borderColor = 'rgba(255,100,100,0.7)';
+      emailInput.placeholder = 'Please enter a valid email';
+      setTimeout(() => {
+        emailInput.style.borderColor = '';
+        emailInput.placeholder = 'Your email address';
+      }, 2000);
+      return;
+    }
+
+    /* Animate out form */
+    form.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    form.style.opacity = '0';
+    form.style.transform = 'translateY(-10px)';
+    if (trust) {
+      trust.style.transition = 'opacity 0.3s ease';
+      trust.style.opacity = '0';
+    }
+
+    setTimeout(() => {
+      form.style.display = 'none';
+      if (trust) trust.style.display = 'none';
+
+      success.style.display = 'flex';
+      success.style.opacity = '0';
+      success.style.transform = 'scale(0.85)';
+      success.style.transition = 'opacity 0.5s ease, transform 0.5s cubic-bezier(0.34,1.56,0.64,1)';
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          success.style.opacity = '1';
+          success.style.transform = 'scale(1)';
+        });
+      });
+
+      /* Bounce the success icon */
+      const icon = success.querySelector('.success-icon');
+      if (icon) {
+        icon.style.animation = 'none';
+        setTimeout(() => {
+          icon.style.animation = '';
+          icon.style.transition = 'transform 0.3s ease';
+          icon.style.transform = 'scale(1.3) rotate(10deg)';
+          setTimeout(() => { icon.style.transform = 'scale(1) rotate(0deg)'; }, 300);
+        }, 10);
+      }
+
+      if (typeof gsap !== 'undefined') {
+        gsap.from('#newsletter-success > *', {
+          opacity: 0,
+          y: 20,
+          duration: 0.5,
+          stagger: 0.12,
+          ease: 'power3.out',
+          delay: 0.1
+        });
+      }
+    }, 400);
+  }
+
+  /* Allow pressing Enter in email input */
+  document.getElementById('email-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') handleSubscribe();
+  });
+
+  /* =====================
+     ACTIVE NAV PILL (scroll spy)
+  ===================== */
+  const sections = ['hero', 'featured', 'categories', 'newsletter', 'about', 'recent'];
+  const navPills = document.querySelectorAll('.nav-pill');
+  const sectionOrder = ['hero', 'featured', 'featured', 'about', 'recent', 'categories'];
+
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navPills.forEach(p => p.classList.remove('active'));
+        const links = ['hero','featured','about','recent','categories'];
+        const idx = links.indexOf(id);
+        if (idx !== -1 && navPills[idx]) navPills[idx].classList.add('active');
+      }
+    });
+  }, { threshold: 0.3, rootMargin: '-10% 0px -60% 0px' });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) spyObserver.observe(el);
+  });
+
+  /* =====================
+     HEADER SCROLL SHADOW
+  ===================== */
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      header.style.boxShadow = '0 2px 20px rgba(26,26,26,0.08)';
+    } else {
+      header.style.boxShadow = 'none';
+    }
+  }, { passive: true });
+
+</script>
+
+</body>
 </html>

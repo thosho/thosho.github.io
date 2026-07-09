@@ -1,14 +1,2125 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>restaurant</title>
-    <script type="module" crossorigin src="./assets/index-Dm7Ta_n4.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CZGUOCBT.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saffron Table | Modern Indian Fine Dining – Hyderabad</title>
+  <meta name="description" content="Saffron Table is Hyderabad's premier modern Indian fine dining experience. Michelin-star inspired cuisine, crafted by Chef Arjun Sharma. Reserve your table in Banjara Hills today." />
+  <meta name="keywords" content="Indian fine dining Hyderabad, Saffron Table restaurant, luxury Indian restaurant, Banjara Hills restaurant, Chef Arjun Sharma" />
+  <meta property="og:title" content="Saffron Table | Modern Indian Fine Dining – Hyderabad" />
+  <meta property="og:description" content="An opulent journey through modern Indian cuisine. Open Tuesday–Sunday, 7 PM to 11 PM." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&auto=format&fit=crop&q=90" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+  <style>
+    /* =============================================
+       RESET & ROOT TOKENS
+    ============================================= */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:        #0a0800;
+      --card-bg:   #1a1500;
+      --gold:      #c9a84c;
+      --gold-light:#e8c96e;
+      --gold-dim:  rgba(201,168,76,0.18);
+      --cream:     #f5f0e8;
+      --cream-dim: rgba(245,240,232,0.65);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans:  'Lato', sans-serif;
+      --section-pad: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 5vw, 6rem);
+      --radius: 4px;
+      --transition: 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--cream);
+      font-family: var(--font-sans);
+      font-weight: 400;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; object-fit: cover; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* =============================================
+       SCROLLBAR
+    ============================================= */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* =============================================
+       UTILITY
+    ============================================= */
+    .section-tag {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.9rem;
+    }
+
+    .section-tag::before,
+    .section-tag::after {
+      content: '—';
+      margin: 0 0.5rem;
+      opacity: 0.6;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--cream);
+    }
+
+    .gold-line {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin: 1.4rem 0 2rem;
+    }
+
+    .gold-btn {
+      display: inline-block;
+      padding: 0.82em 2.2em;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: transparent;
+      transition: var(--transition);
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .gold-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+      z-index: -1;
+    }
+
+    .gold-btn:hover { color: var(--bg); }
+    .gold-btn:hover::before { transform: scaleX(1); }
+
+    .gold-btn--filled {
+      background: var(--gold);
+      color: var(--bg);
+    }
+    .gold-btn--filled::before { background: var(--gold-light); }
+    .gold-btn--filled:hover { color: var(--bg); }
+
+    /* =============================================
+       1. HEADER / NAV
+    ============================================= */
+    #header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1.2rem clamp(1.25rem, 5vw, 5rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    }
+
+    #header.scrolled {
+      background: rgba(10, 8, 0, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.5);
+      padding-top: 0.8rem;
+      padding-bottom: 0.8rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .nav-logo svg {
+      width: 24px;
+      height: 28px;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-text {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.4rem;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+
+    /* Mobile menu */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,8,0,0.98);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    .mobile-nav.open { display: flex; }
+
+    .mobile-nav a {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--cream);
+      transition: color var(--transition);
+    }
+
+    .mobile-nav a:hover { color: var(--gold); }
+
+    .mobile-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: none;
+      border: none;
+      color: var(--gold);
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* =============================================
+       2. HERO
+    ============================================= */
+    #hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&auto=format&fit=crop&q=90');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.08);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,8,0,0.55) 0%,
+        rgba(10,8,0,0.72) 60%,
+        rgba(10,8,0,0.92) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      padding: 0 1.5rem;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+      opacity: 0;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-weight: 700;
+      line-height: 1.02;
+      color: var(--cream);
+      margin-bottom: 1rem;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .hero-sub {
+      font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      margin-bottom: 2.5rem;
+      opacity: 0;
+    }
+
+    .hero-cta {
+      opacity: 0;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-ribbon {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      z-index: 3;
+      background: rgba(201,168,76,0.12);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(201,168,76,0.3);
+      padding: 0.9rem 2rem;
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0;
+    }
+
+    .hero-ribbon span { margin: 0 1.2rem; opacity: 0.4; }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0;
+    }
+
+    .scroll-indicator p {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+    }
+
+    .scroll-mouse {
+      width: 20px; height: 32px;
+      border: 1.5px solid rgba(201,168,76,0.5);
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      padding-top: 5px;
+    }
+
+    .scroll-mouse::after {
+      content: '';
+      width: 3px; height: 6px;
+      background: var(--gold);
+      border-radius: 2px;
+      animation: scrollDot 1.5s ease infinite;
+    }
+
+    @keyframes scrollDot {
+      0%   { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(10px); }
+    }
+
+    /* =============================================
+       3. ABOUT
+    ============================================= */
+    #about {
+      padding: var(--section-pad);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 7rem);
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about-image-wrapper {
+      position: relative;
+    }
+
+    .about-image-wrapper img {
+      width: 100%;
+      height: clamp(420px, 55vw, 620px);
+      object-fit: cover;
+      border-radius: 2px;
+      filter: brightness(0.88) saturate(0.9);
+    }
+
+    .about-image-frame {
+      position: absolute;
+      top: 1.4rem; left: -1.4rem;
+      right: 1.4rem; bottom: -1.4rem;
+      border: 1.5px solid rgba(201,168,76,0.35);
+      border-radius: 2px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .about-image-badge {
+      position: absolute;
+      bottom: -1.5rem; right: -1.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--gold-dim);
+      padding: 1.1rem 1.4rem;
+      text-align: center;
+      backdrop-filter: blur(8px);
+    }
+
+    .about-image-badge .badge-year {
+      font-family: var(--font-serif);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .about-image-badge .badge-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      margin-top: 0.2rem;
+    }
+
+    .about-content { }
+
+    .about-text {
+      font-size: 1.05rem;
+      color: var(--cream-dim);
+      margin-bottom: 1.4rem;
+      line-height: 1.85;
+    }
+
+    .chef-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      background: var(--card-bg);
+      border: 1px solid var(--gold-dim);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      margin: 2rem 0;
+    }
+
+    .chef-avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), #7a5c1a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      color: var(--bg);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .chef-info h4 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+
+    .chef-info p {
+      font-size: 0.88rem;
+      color: var(--cream-dim);
+    }
+
+    .awards {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .award-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: var(--card-bg);
+      border: 1px solid var(--gold-dim);
+      border-radius: var(--radius);
+      padding: 0.8rem 1.1rem;
+    }
+
+    .award-icon {
+      font-size: 1.5rem;
+    }
+
+    .award-text {
+      font-size: 0.78rem;
+    }
+
+    .award-text strong {
+      display: block;
+      color: var(--gold);
+      font-size: 0.88rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* =============================================
+       4. MENU
+    ============================================= */
+    #menu {
+      padding: var(--section-pad);
+      background: var(--card-bg);
+    }
+
+    .menu-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .menu-header .gold-line {
+      margin-left: auto;
+      margin-right: auto;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      width: 80px;
+    }
+
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 0.65em 1.8em;
+      border: 1px solid rgba(201,168,76,0.3);
+      background: transparent;
+      color: var(--cream-dim);
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+
+    .tab-btn:hover,
+    .tab-btn.active {
+      background: var(--gold);
+      color: var(--bg);
+      border-color: var(--gold);
+    }
+
+    .menu-panel { display: none; }
+    .menu-panel.active { display: grid; }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .menu-card {
+      background: var(--bg);
+      border: 1px solid rgba(201,168,76,0.12);
+      border-radius: var(--radius);
+      padding: 1.6rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 0;
+      background: var(--gold);
+      transition: height var(--transition);
+    }
+
+    .menu-card:hover { border-color: rgba(201,168,76,0.45); transform: translateY(-4px); }
+    .menu-card:hover::before { height: 100%; }
+
+    .menu-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.7rem;
+      gap: 1rem;
+    }
+
+    .menu-card-name {
+      font-family: var(--font-serif);
+      font-size: 1.12rem;
+      font-weight: 600;
+      color: var(--cream);
+      line-height: 1.3;
+    }
+
+    .menu-card-price {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--gold);
+      white-space: nowrap;
+      font-weight: 700;
+    }
+
+    .menu-card-desc {
+      font-size: 0.87rem;
+      color: var(--cream-dim);
+      line-height: 1.65;
+    }
+
+    .menu-card-tag {
+      display: inline-block;
+      margin-top: 0.9rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+      padding: 0.2em 0.7em;
+      border-radius: 20px;
+    }
+
+    /* =============================================
+       5. GALLERY
+    ============================================= */
+    #gallery {
+      padding: var(--section-pad);
+    }
+
+    .gallery-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .gallery-header .gold-line {
+      margin-left: auto;
+      margin-right: auto;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      width: 80px;
+    }
+
+    .masonry-grid {
+      column-count: 3;
+      column-gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+
+    .masonry-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .masonry-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 2px solid transparent;
+      transition: border-color 0.38s ease;
+      border-radius: var(--radius);
+    }
+
+    .masonry-item:hover img { transform: scale(1.07); }
+    .masonry-item:hover::after { border-color: var(--gold); }
+
+    .masonry-item .overlay-caption {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,8,0,0.82) 0%, transparent 55%);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.2rem;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .masonry-item:hover .overlay-caption { opacity: 1; }
+
+    .overlay-caption p {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--cream);
+    }
+
+    /* =============================================
+       6. TESTIMONIALS
+    ============================================= */
+    #testimonials {
+      padding: var(--section-pad);
+      background: var(--card-bg);
+    }
+
+    .testimonials-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .testimonials-header .gold-line {
+      margin-left: auto;
+      margin-right: auto;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      width: 80px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.8rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--bg);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: var(--radius);
+      padding: 2rem 1.8rem;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+
+    .testimonial-card .quote-mark {
+      font-family: var(--font-serif);
+      font-size: 5rem;
+      line-height: 0.6;
+      color: var(--gold);
+      opacity: 0.25;
+      position: absolute;
+      top: 1.5rem; left: 1.5rem;
+      pointer-events: none;
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-text {
+      font-size: 0.97rem;
+      color: var(--cream-dim);
+      line-height: 1.8;
+      margin-bottom: 1.6rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .author-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dim), rgba(201,168,76,0.4));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+      border: 1px solid var(--gold-dim);
+    }
+
+    .author-info strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--cream);
+      font-family: var(--font-serif);
+    }
+
+    .author-info span {
+      font-size: 0.75rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+    }
+
+    /* =============================================
+       7. RESERVATION
+    ============================================= */
+    #reservation {
+      padding: var(--section-pad);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #reservation::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .reservation-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .reservation-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .reservation-header .gold-line {
+      margin-left: auto;
+      margin-right: auto;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      width: 80px;
+    }
+
+    .res-form {
+      background: var(--card-bg);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius);
+      padding: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: var(--radius);
+      padding: 0.85em 1em;
+      color: var(--cream);
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+    }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a84c' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1em center;
+      padding-right: 2.5em;
+      background-color: rgba(255,255,255,0.04);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(245,240,232,0.3); }
+
+    /* Date input color fix */
+    .form-group input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(0.7) sepia(1) saturate(2) hue-rotate(10deg);
+      cursor: pointer;
+    }
+
+    .form-submit {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .form-submit .gold-btn {
+      font-size: 0.85rem;
+      padding: 1em 3em;
+    }
+
+    .form-note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--cream-dim);
+      margin-top: 1rem;
+      opacity: 0.7;
+    }
+
+    /* Form success */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    .form-success .success-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-success h3 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .form-success p {
+      color: var(--cream-dim);
+    }
+
+    /* =============================================
+       8. FOOTER
+    ============================================= */
+    #footer {
+      background: #050400;
+      border-top: 1px solid rgba(201,168,76,0.15);
+      padding: clamp(3.5rem, 7vw, 6rem) clamp(1.25rem, 5vw, 6rem) 2rem;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: clamp(2rem, 4vw, 4rem);
+      max-width: 1200px;
+      margin: 0 auto 4rem;
+    }
+
+    .footer-brand .nav-logo { margin-bottom: 1.2rem; }
+
+    .footer-brand p {
+      font-size: 0.87rem;
+      color: var(--cream-dim);
+      line-height: 1.8;
+      max-width: 280px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.4rem;
+    }
+
+    .social-link {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      color: var(--gold);
+      font-size: 1rem;
+    }
+
+    .social-link:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--bg);
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--cream);
+      margin-bottom: 1.2rem;
+      position: relative;
+      padding-bottom: 0.7rem;
+    }
+
+    .footer-col h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 30px; height: 1px;
+      background: var(--gold);
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.65rem;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.87rem;
+      color: var(--cream-dim);
+      transition: color var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-col ul li a:hover { color: var(--gold); }
+
+    .footer-col p {
+      font-size: 0.87rem;
+      color: var(--cream-dim);
+      line-height: 1.75;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .footer-contact-item .icon {
+      color: var(--gold);
+      font-size: 0.95rem;
+      margin-top: 0.12rem;
+      flex-shrink: 0;
+    }
+
+    .footer-contact-item span {
+      font-size: 0.87rem;
+      color: var(--cream-dim);
+      line-height: 1.65;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(201,168,76,0.1);
+      padding-top: 1.8rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.78rem;
+      color: rgba(245,240,232,0.4);
+    }
+
+    .footer-bottom a {
+      color: var(--gold);
+      transition: color var(--transition);
+    }
+
+    .footer-bottom a:hover { color: var(--gold-light); }
+
+    .footer-thosho {
+      font-size: 0.78rem;
+      color: rgba(245,240,232,0.4);
+    }
+
+    .footer-thosho a {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* =============================================
+       ANIMATIONS / REVEAL
+    ============================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+    }
+
+    /* =============================================
+       FLOATING WHATSAPP BUTTON
+    ============================================= */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      z-index: 900;
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 32px rgba(37,211,102,0.6);
+    }
+
+    .whatsapp-float svg { width: 28px; height: 28px; }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 1024px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-image-wrapper { max-width: 540px; margin: 0 auto; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-right .gold-btn { display: none; }
+      .hamburger { display: flex; }
+      .masonry-grid { column-count: 2; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .hero-ribbon span { display: block; margin: 0; }
+    }
+
+    @media (max-width: 480px) {
+      .masonry-grid { column-count: 1; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .awards { flex-direction: column; }
+    }
+
+    /* =============================================
+       LIGHTBOX
+    ============================================= */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0,0,0,0.95);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox-img {
+      max-width: min(90vw, 900px);
+      max-height: 85vh;
+      object-fit: contain;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: var(--radius);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: none;
+      border: none;
+      color: var(--gold);
+      font-size: 2.2rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: color var(--transition);
+    }
+
+    .lightbox-close:hover { color: var(--cream); }
+  </style>
+</head>
+<body>
+
+  <!-- =============================================
+       FLOATING WHATSAPP
+  ============================================= -->
+  <a href="https://wa.me/918248599468" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 1C7.716 1 1 7.716 1 16c0 2.637.668 5.119 1.836 7.28L1 31l7.924-2.075A14.947 14.947 0 0016 31c8.284 0 15-6.716 15-15S24.284 1 16 1zm0 27.333a12.27 12.27 0 01-6.367-1.78l-.456-.27-4.705 1.233 1.256-4.584-.299-.47A12.267 12.267 0 013.667 16C3.667 9.189 9.189 3.667 16 3.667S28.333 9.189 28.333 16 22.811 28.333 16 28.333zm6.72-9.177c-.368-.184-2.18-1.076-2.519-1.198-.338-.122-.585-.184-.83.184-.247.368-.954 1.198-1.17 1.444-.216.246-.43.276-.8.092-.368-.184-1.553-.573-2.958-1.826-1.094-.975-1.832-2.179-2.047-2.547-.215-.368-.023-.566.162-.749.166-.165.368-.43.552-.644.184-.215.245-.368.368-.614.122-.246.061-.46-.031-.644-.092-.184-.83-2.003-1.138-2.74-.3-.72-.604-.622-.83-.633l-.706-.013c-.246 0-.645.092-.982.46-.338.368-1.29 1.261-1.29 3.072 0 1.81 1.321 3.561 1.505 3.807.184.246 2.6 3.972 6.302 5.569.881.38 1.568.608 2.104.779.884.281 1.689.242 2.325.147.709-.105 2.18-.891 2.487-1.752.307-.86.307-1.597.215-1.752-.09-.153-.337-.245-.706-.43z"/>
+    </svg>
+  </a>
+
+  <!-- =============================================
+       MOBILE NAV
+  ============================================= -->
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <button class="mobile-close" id="mobileClose" aria-label="Close menu">&#215;</button>
+    <a href="#about" onclick="closeMobileNav()">About</a>
+    <a href="#menu" onclick="closeMobileNav()">Menu</a>
+    <a href="#gallery" onclick="closeMobileNav()">Gallery</a>
+    <a href="#testimonials" onclick="closeMobileNav()">Reviews</a>
+    <a href="#reservation" onclick="closeMobileNav()">Reserve</a>
+  </nav>
+
+  <!-- =============================================
+       1. HEADER
+  ============================================= -->
+  <header id="header" role="banner">
+    <a href="#hero" class="nav-logo" aria-label="Saffron Table Home">
+      <!-- Flame SVG -->
+      <svg viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 2C10 7 5 9 5 14.5C5 19.747 8.134 24 12 24C15.866 24 19 19.747 19 14.5C19 9 14 7 12 2Z" fill="#c9a84c" opacity="0.9"/>
+        <path d="M12 8C11 11 8.5 12.5 8.5 15.5C8.5 18.538 10.015 21 12 21C13.985 21 15.5 18.538 15.5 15.5C15.5 12.5 13 11 12 8Z" fill="#f5f0e8" opacity="0.85"/>
+        <path d="M12 13C11.5 14.5 10.5 15.5 10.5 17C10.5 18.381 11.172 19.5 12 19.5C12.828 19.5 13.5 18.381 13.5 17C13.5 15.5 12.5 14.5 12 13Z" fill="#c9a84c"/>
+      </svg>
+      <span class="nav-logo-text">Saffron Table</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#reservation">Reserve</a>
+    </nav>
+
+    <div class="nav-right">
+      <a href="#reservation" class="gold-btn" id="navReserveBtn">Reserve Table</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- =============================================
+       2. HERO
+  ============================================= -->
+  <section id="hero" aria-label="Hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <p class="hero-tag">Banjara Hills, Hyderabad</p>
+      <h1 class="hero-title">Saffron Table</h1>
+      <p class="hero-sub">Modern Indian Fine Dining &nbsp;•&nbsp; Hyderabad</p>
+      <div class="hero-cta">
+        <a href="#reservation" class="gold-btn gold-btn--filled">Reserve Your Table</a>
+        <a href="#menu" class="gold-btn">Explore Menu</a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <p>Scroll</p>
+      <div class="scroll-mouse"></div>
+    </div>
+
+    <div class="hero-ribbon">
+      7:00 PM – 11:00 PM
+      <span>|</span>
+      Tuesday – Sunday
+      <span>|</span>
+      Reservations Recommended
+    </div>
+  </section>
+
+  <!-- =============================================
+       3. ABOUT
+  ============================================= -->
+  <section id="about" aria-labelledby="about-title">
+    <div class="about-grid">
+      <div class="about-image-wrapper reveal">
+        <img
+          src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=700&auto=format&fit=crop"
+          alt="Chef Arjun Sharma at work in the Saffron Table kitchen"
+          loading="lazy"
+        />
+        <div class="about-image-frame" aria-hidden="true"></div>
+        <div class="about-image-badge" aria-label="Established in 2018">
+          <div class="badge-year">2018</div>
+          <div class="badge-label">Established</div>
+        </div>
+      </div>
+
+      <div class="about-content reveal">
+        <span class="section-tag">Our Story</span>
+        <h2 class="section-title" id="about-title">Where India's Soul<br>Meets Modern Mastery</h2>
+        <div class="gold-line"></div>
+
+        <p class="about-text">
+          Saffron Table was born from a singular conviction: that the complexity, layering, and emotional depth of Indian cuisine deserves a world-class stage. Nestled in the heart of Banjara Hills, our restaurant reimagines the subcontinent's most beloved culinary traditions through a modern lens — treating spices not as flavours but as narratives.
+        </p>
+
+        <p class="about-text">
+          Every element — from our hand-thrown terracotta serving pieces to our handwritten seasonal menus — is a deliberate act of reverence for the cuisines of India's 29 states, interpreted with the precision of a Michelin-trained kitchen.
+        </p>
+
+        <div class="chef-card reveal">
+          <div class="chef-avatar" aria-hidden="true">A</div>
+          <div class="chef-info">
+            <h4>Chef Arjun Sharma</h4>
+            <p>Executive Chef & Co-Founder. Formerly of The Taj Rambagh Palace Jaipur and Benares, London. Trained under Atul Kochhar. Arjun's philosophy centres on hyperlocal sourcing, classical Awadhi and Chettinad techniques, and the elegant restraint of less-is-more plating.</p>
+          </div>
+        </div>
+
+        <div class="awards reveal">
+          <div class="award-badge">
+            <div class="award-icon" aria-hidden="true">⭐</div>
+            <div class="award-text">
+              <strong>Michelin Star</strong>
+              Recommended 2024
+            </div>
+          </div>
+          <div class="award-badge">
+            <div class="award-icon" aria-hidden="true">🏆</div>
+            <div class="award-text">
+              <strong>Times Food Award</strong>
+              Best Fine Dining 2024
+            </div>
+          </div>
+          <div class="award-badge">
+            <div class="award-icon" aria-hidden="true">🌿</div>
+            <div class="award-text">
+              <strong>Slow Food</strong>
+              Certified Kitchen
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       4. MENU
+  ============================================= -->
+  <section id="menu" aria-labelledby="menu-title">
+    <div class="menu-header reveal">
+      <span class="section-tag">Culinary Journey</span>
+      <h2 class="section-title" id="menu-title">A Tasting of<br>Modern India</h2>
+      <div class="gold-line"></div>
+      <p style="color:var(--cream-dim); font-size:0.95rem; max-width:520px; margin:0 auto;">
+        Our menu changes seasonally, reflecting the finest produce from across the subcontinent. All prices are inclusive of GST.
+      </p>
+    </div>
+
+    <div class="menu-tabs" role="tablist" aria-label="Menu categories">
+      <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-starters" id="btn-starters" onclick="switchTab('starters')">Starters</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-mains" id="btn-mains" onclick="switchTab('mains')">Mains</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-desserts" id="btn-desserts" onclick="switchTab('desserts')">Desserts</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-beverages" id="btn-beverages" onclick="switchTab('beverages')">Beverages</button>
+    </div>
+
+    <!-- STARTERS -->
+    <div class="menu-panel active menu-grid" id="tab-starters" role="tabpanel" aria-labelledby="btn-starters">
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <h3 class="menu-card-name">Murgh Malai Tikka</h3>
+          <span class="menu-card-price">₹1,200</span>
+        </div>
+        <p class="menu-card-desc">Tender free-range chicken breast, 48-hour marinated in cultured cream, cardamom-rose water brine and Kashmiri saffron. Kissed by a charcoal tandoor, served with micro herb chutney and pickled green apple.</p>
+        <span class="menu-card-tag">Tandoor</span>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <h3 class="menu-card-name">Jhinga Ajwain</h3>
+          <span class="menu-card-price">₹1,500</span>
+        </div>
+        <p class="menu-card-desc">Bay of Bengal tiger prawns, dry-rubbed with carom seeds, raw mango powder and Tellicherry pepper, flash-grilled and finished with a clarified ghee and fresh dill compound butter. Served with coastal coconut-tomato relish.</p>
+        <span class="menu-card-tag">Signature</span>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <h3 class="menu-card-name">Pani Puri Sphere</h3>
+          <span class="menu-card-price">₹800</span>
+        </div>
+        <p class="menu-card-desc">A modern interpretation of India's most beloved street snack. A single, perfectly crisp semolina sphere presented tableside — the waiter pours iced tamarind-jaljeera water directly at the moment of service. A burst of nostalgia, reimagined.</p>
+        <span class="menu-card-tag">Avant-Garde</span>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <h3 class="menu-card-name">Dal Chawal Arancini</h3>
+          <span class="menu-card-price">₹900</span>
+        </div>
+        <p class="menu-card-desc">An East-meets-West ode to the great dal chawal. Crispy risotto-style rice balls bound with slow-cooked toor dal, filled with smoked mozzarella and deep-fried golden. Accompanied by a silky tomato-achaar coulis.</p>
+        <span class="menu-card-tag">Fusion</span>
+      </div>
+    </div>
+
+    <!-- MAINS -->
+    <div class="menu-panel menu-grid" id="tab-mains" role="tabpanel" aria-labelledby="btn-mains">
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <h3 class="menu-card-name">Dal Makhani Truffle</h3>
+          <span class="menu-card-price">₹1,800</span>
+        </div>
+        <p class="menu-card-desc">Our legendary 72-hour slow-cooked black lentil and kidney bean preparation, enriched with Amul cultured butter, Kashmiri cream and elevated with a finishing drizzle of black truffle oil. Served with house-made laccha paratha.</p>
+        <span class="menu-card-tag">Chef's Pride</span>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <h3 class="menu-card-name">Raan-e-Awadh</h3>
+          <span class="menu-card-price">₹3,200</span>
+        </div>
+        <p class="menu-card-desc">A whole slow-roasted leg of Rajasthani lamb, marinated for 36 hours in a regal blend of over 40 spices, braised in a sealed degchi and finished over smouldering coals. The dish that defines dum cooking. Serves two.</p>
+        <span class="menu-card-tag">Signature · Serves 2</span>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <h3 class="menu-card-name">Malabar Prawn Moilee</h3>
+          <span class="menu-card-price">₹2,800</span>
+        </div>
+        <p class="menu-card-desc">A refined coastal classic from the Malabar shores of Kerala. Jumbo king prawns simmered in a delicate first-press coconut milk broth, seasoned with turmeric and fresh green chillies. Served with fragrant Kerala red rice and crispy appam.</p>
+        <span class="menu-card-tag">Coastal</span>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <h3 class="menu-card-name">Paneer Shahi Korma</h3>
+          <span class="menu-card-price">₹1,600</span>
+        </div>
+        <p class="menu-card-desc">House-made organic milk paneer nestled in a velvety Mughal-era korma of blanched almond paste, saffron-milk reduction, caramelised onions and aromatic khoya. Finished with edible silver leaf and a rose petal garnish.</p>
+        <span class="menu-card-tag">Vegetarian</span>
+      </div>
+    </div>
+
+    <!-- DESSERTS -->
+    <div class="menu-panel menu-grid" id="tab-desserts" role="tabpanel" aria-labelledby="btn-desserts">
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <h3 class="menu-card-name">Rasmalai Brûlée</h3>
+          <span class="menu-card-price">₹900</span>
+        </div>
+        <p class="menu-card-desc">A seamless marriage of French technique and Bengali heritage. A cushion of hand-squeezed chhena set in cardamom-saffron rabdi cream, topped with a mirror-crack caramel brûlée crust. Served with pistachio praline crumble.</p>
+        <span class="menu-card-tag">Signature Dessert</span>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <h3 class="menu-card-name">Gulab Jamun Fondant</h3>
+          <span class="menu-card-price">₹850</span>
+        </div>
+        <p class="menu-card-desc">A warm, dark-chocolate fondant with a liquid rose-syrup gulab jamun centre. When cut, the jamun spills dramatically into the plate. Served with cold pistachio-cardamom ice cream and edible gold dust.</p>
+        <span class="menu-card-tag">Dramatic</span>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <h3 class="menu-card-name">Saffron Panna Cotta</h3>
+          <span class="menu-card-price">₹950</span>
+        </div>
+        <p class="menu-card-desc">Silken Italian panna cotta steeped with the finest Kashmiri saffron and a breath of cardamom, unmoulded tableside onto a shimmering pool of mango-chilli coulis. Garnished with candied fennel seeds and micro basil.</p>
+        <span class="menu-card-tag">Light</span>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <h3 class="menu-card-name">Thandai Tiramisu</h3>
+          <span class="menu-card-price">₹900</span>
+        </div>
+        <p class="menu-card-desc">Espresso-soaked ladyfingers reimagined with chilled thandai — a Rajasthani blend of almond, rose, melon seeds, fennel and pepper milk — layered with mascarpone whipped with white chocolate and finished with saffron dust.</p>
+        <span class="menu-card-tag">Festive</span>
+      </div>
+    </div>
+
+    <!-- BEVERAGES -->
+    <div class="menu-panel menu-grid" id="tab-beverages" role="tabpanel" aria-labelledby="btn-beverages">
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <h3 class="menu-card-name">Masala Chai Martini</h3>
+          <span class="menu-card-price">₹800</span>
+        </div>
+        <p class="menu-card-desc">A sophisticated cocktail for chai lovers. Cold-brew masala chai concentrate shaken with premium vodka, a dash of vanilla bitters and a touch of condensed milk foam. Garnished with a cinnamon-dusted dehydrated mandarin slice.</p>
+        <span class="menu-card-tag">Signature Cocktail</span>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <h3 class="menu-card-name">Rose Sharbat Spritz</h3>
+          <span class="menu-card-price">₹700</span>
+        </div>
+        <p class="menu-card-desc">House-pressed Kannauj rose sharbat, prosecco, fresh pomelo juice, lychee pearls and a hand-torn mint bouquet over crystal-clear artisanal ice. Utterly refreshing; deeply romantic. Available non-alcoholic on request.</p>
+        <span class="menu-card-tag">Non-Alcoholic Available</span>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <h3 class="menu-card-name">Jaljeera Mojito</h3>
+          <span class="menu-card-price">₹650</span>
+        </div>
+        <p class="menu-card-desc">India's greatest digestif, reimagined as a classic mojito. Fresh lime, raw cane sugar, premium white rum, muddled mint, Himalayan black salt and our house jaljeera tonic — a tamarind, cumin and dry mango brine. Effervescent and alive.</p>
+        <span class="menu-card-tag">Best Seller</span>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <h3 class="menu-card-name">Nimbu Pani Infusion</h3>
+          <span class="menu-card-price">₹600</span>
+        </div>
+        <p class="menu-card-desc">A grown-up homage to India's most democratic drink. Hand-squeezed hill lemon, young coconut water, kaffir lime leaf, pink Himalayan salt, a whisper of roasted cumin and fresh holy basil. Pure, clean and utterly restorative.</p>
+        <span class="menu-card-tag">Non-Alcoholic</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       5. GALLERY
+  ============================================= -->
+  <section id="gallery" aria-labelledby="gallery-title">
+    <div class="gallery-header reveal">
+      <span class="section-tag">Visual Journey</span>
+      <h2 class="section-title" id="gallery-title">A Feast<br>for the Eyes</h2>
+      <div class="gold-line"></div>
+      <p style="color:var(--cream-dim); font-size:0.95rem;">
+        Every plate is a canvas. Every space is a stage.
+      </p>
+    </div>
+
+    <div class="masonry-grid">
+      <div class="masonry-item reveal" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&auto=format&fit=crop" alt="Artfully plated Indian cuisine" loading="lazy" />
+        <div class="overlay-caption"><p>Chef's Table Selection</p></div>
+      </div>
+      <div class="masonry-item reveal" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?w=600&auto=format&fit=crop" alt="Fine dining restaurant interior" loading="lazy" />
+        <div class="overlay-caption"><p>The Dining Salon</p></div>
+      </div>
+      <div class="masonry-item reveal" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=600&auto=format&fit=crop" alt="Indian spices and ingredients" loading="lazy" />
+        <div class="overlay-caption"><p>Curated Spice Journey</p></div>
+      </div>
+      <div class="masonry-item reveal" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&auto=format&fit=crop" alt="Restaurant ambiance at night" loading="lazy" />
+        <div class="overlay-caption"><p>Evening Ambiance</p></div>
+      </div>
+      <div class="masonry-item reveal" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=600&auto=format&fit=crop" alt="Elegant dessert presentation" loading="lazy" />
+        <div class="overlay-caption"><p>Signature Desserts</p></div>
+      </div>
+      <div class="masonry-item reveal" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3df1?w=600&auto=format&fit=crop" alt="Fresh ingredients and produce" loading="lazy" />
+        <div class="overlay-caption"><p>Farm to Table</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image">&#215;</button>
+    <img src="" alt="" class="lightbox-img" id="lightboxImg" />
+  </div>
+
+  <!-- =============================================
+       6. TESTIMONIALS
+  ============================================= -->
+  <section id="testimonials" aria-labelledby="testimonials-title">
+    <div class="testimonials-header reveal">
+      <span class="section-tag">Guest Voices</span>
+      <h2 class="section-title" id="testimonials-title">Words That<br>Warm Our Hearts</h2>
+      <div class="gold-line"></div>
+    </div>
+
+    <div class="testimonials-grid">
+      <article class="testimonial-card reveal">
+        <div class="quote-mark" aria-hidden="true">"</div>
+        <div class="stars" aria-label="5 stars">★★★★★</div>
+        <p class="testimonial-text">
+          "Saffron Table did not just serve us dinner on our anniversary — it gave us a memory we will carry forever. The Raan-e-Awadh was revelatory. The theatre of it being carved tableside, the perfume of 40 spices filling the room... we were transported to a Mughal durbar. An extraordinary evening."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar" aria-hidden="true">R</div>
+          <div class="author-info">
+            <strong>Rahul & Priya Mehta</strong>
+            <span>Anniversary Dinner · April 2025</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="testimonial-card reveal">
+        <div class="quote-mark" aria-hidden="true">"</div>
+        <div class="stars" aria-label="5 stars">★★★★★</div>
+        <p class="testimonial-text">
+          "I have dined at some of the world's finest Indian restaurants — Gymkhana in London, Gaggan in Bangkok — and Saffron Table stands proudly among them. Chef Arjun's Pani Puri Sphere stopped our conversation cold. We simply looked at each other and burst out laughing with joy. Utterly brilliant."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar" aria-hidden="true">S</div>
+          <div class="author-info">
+            <strong>Siddharth Rao</strong>
+            <span>Business Dinner · February 2025</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="testimonial-card reveal">
+        <div class="quote-mark" aria-hidden="true">"</div>
+        <div class="stars" aria-label="5 stars">★★★★★</div>
+        <p class="testimonial-text">
+          "We celebrated my 30th birthday at Saffron Table and the team went above and beyond. The Gulab Jamun Fondant arrived with a personalised gold-leaf message. My mother, who is the most demanding critic of Indian food I know, declared the Dal Makhani Truffle the finest she has eaten in 60 years. Highest possible recommendation."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar" aria-hidden="true">A</div>
+          <div class="author-info">
+            <strong>Ananya Krishnaswamy</strong>
+            <span>Birthday Celebration · January 2025</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- =============================================
+       7. RESERVATION
+  ============================================= -->
+  <section id="reservation" aria-labelledby="reservation-title">
+    <div class="reservation-inner">
+      <div class="reservation-header reveal">
+        <span class="section-tag">Book Your Experience</span>
+        <h2 class="section-title" id="reservation-title">Reserve Your<br>Table</h2>
+        <div class="gold-line"></div>
+        <p style="color:var(--cream-dim); font-size:0.95rem;">
+          Reservations are strongly recommended. For parties of 8 or more, please call us directly.
+        </p>
+      </div>
+
+      <div class="res-form reveal">
+        <form id="reservationForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="res-name">Full Name</label>
+              <input type="text" id="res-name" name="name" placeholder="Your full name" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="res-phone">Phone Number</label>
+              <input type="tel" id="res-phone" name="phone" placeholder="+91 98765 43210" required autocomplete="tel" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="res-date">Date</label>
+              <input type="date" id="res-date" name="date" required />
+            </div>
+            <div class="form-group">
+              <label for="res-time">Preferred Time</label>
+              <select id="res-time" name="time" required>
+                <option value="" disabled selected>Select a time</option>
+                <option value="19:00">7:00 PM</option>
+                <option value="19:30">7:30 PM</option>
+                <option value="20:00">8:00 PM</option>
+                <option value="20:30">8:30 PM</option>
+                <option value="21:00">9:00 PM</option>
+                <option value="21:30">9:30 PM</option>
+                <option value="22:00">10:00 PM</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="res-guests">Number of Guests</label>
+              <select id="res-guests" name="guests" required>
+                <option value="" disabled selected>Select guests</option>
+                <option value="1">1 Guest</option>
+                <option value="2">2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="5">5 Guests</option>
+                <option value="6">6 Guests</option>
+                <option value="7">7 Guests</option>
+                <option value="8">8 Guests</option>
+                <option value="9">9 Guests</option>
+                <option value="10">10 Guests</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="res-occasion">Occasion</label>
+              <select id="res-occasion" name="occasion">
+                <option value="none">No Special Occasion</option>
+                <option value="birthday">Birthday Celebration</option>
+                <option value="anniversary">Anniversary Dinner</option>
+                <option value="business">Business Dinner</option>
+                <option value="proposal">Proposal</option>
+                <option value="family">Family Gathering</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full">
+              <label for="res-requests">Special Requests</label>
+              <textarea id="res-requests" name="requests" placeholder="Dietary requirements, allergies, seating preferences, decorations, or anything else we can do to make your evening perfect..."></textarea>
+            </div>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="gold-btn gold-btn--filled" id="submitBtn">Reserve Now</button>
+          </div>
+          <p class="form-note">You will receive a confirmation call within 2 hours. Reservation holds are valid for 15 minutes past your booking time.</p>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">🕯️</div>
+          <h3>Your Table Awaits</h3>
+          <p>Thank you for choosing Saffron Table. Our reservations team will call you within 2 hours to confirm your booking. We look forward to welcoming you.</p>
+          <br />
+          <a href="#menu" class="gold-btn" style="margin-top:1rem;">Explore Our Menu</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       8. FOOTER
+  ============================================= -->
+  <footer id="footer" role="contentinfo">
+    <div class="footer-top">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom:1.2rem;">
+          <svg viewBox="0 0 24 28" width="22" height="26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2C10 7 5 9 5 14.5C5 19.747 8.134 24 12 24C15.866 24 19 19.747 19 14.5C19 9 14 7 12 2Z" fill="#c9a84c" opacity="0.9"/>
+            <path d="M12 8C11 11 8.5 12.5 8.5 15.5C8.5 18.538 10.015 21 12 21C13.985 21 15.5 18.538 15.5 15.5C15.5 12.5 13 11 12 8Z" fill="#f5f0e8" opacity="0.85"/>
+            <path d="M12 13C11.5 14.5 10.5 15.5 10.5 17C10.5 18.381 11.172 19.5 12 19.5C12.828 19.5 13.5 18.381 13.5 17C13.5 15.5 12.5 14.5 12 13Z" fill="#c9a84c"/>
+          </svg>
+          <span class="nav-logo-text">Saffron Table</span>
+        </div>
+        <p>Hyderabad's premier destination for modern Indian fine dining. A journey across the subcontinent, curated one plate at a time by Chef Arjun Sharma.</p>
+        <div class="footer-socials">
+          <!-- WhatsApp -->
+          <a href="https://wa.me/918248599468" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 1C5.925 1 1 5.925 1 12c0 1.977.5 3.836 1.377 5.46L1 23l5.695-1.494A10.968 10.968 0 0012 23c6.075 0 11-4.925 11-11S18.075 1 12 1zm5.04 15.404c-.211.595-.679 1.083-1.186 1.198-.47.107-1.087.096-2.48-.486-2.49-1.008-4.105-3.528-4.23-3.69-.12-.162-.989-1.315-.989-2.509 0-1.194.626-1.782.848-2.023.222-.241.483-.301.644-.301l.465.009c.149.006.349-.057.546.416.204.487.694 1.695.754 1.818.061.123.101.268.02.432-.08.163-.12.264-.24.408-.119.143-.25.32-.358.43-.12.12-.244.252-.105.494.14.242.621 1.025 1.333 1.66.917.818 1.69 1.07 1.93 1.19.241.12.383.101.524-.061.14-.161.603-.703.763-.944.161-.241.322-.201.543-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.58-.15 1.219z"/>
+            </svg>
+          </a>
+          <!-- Telegram -->
+          <a href="https://t.me/ThoshoTech" target="_blank" rel="noopener" class="social-link" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zm5.52 7.57l-1.854 8.73c-.138.62-.503.77-.99.48l-2.73-2.01-1.318 1.27c-.145.145-.267.267-.548.267l.196-2.78 5.05-4.56c.22-.195-.047-.304-.34-.11l-6.24 3.93-2.69-.84c-.584-.183-.596-.584.122-.864l10.5-4.047c.487-.176.913.107.842.534z"/>
+            </svg>
+          </a>
+          <!-- Email -->
+          <a href="mailto:reservations@saffrontable.in" class="social-link" aria-label="Email us">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="M2 7l10 7 10-7"/>
+            </svg>
+          </a>
+          <!-- Instagram -->
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#menu">The Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#testimonials">Guest Reviews</a></li>
+          <li><a href="#reservation">Reserve a Table</a></li>
+        </ul>
+      </div>
+
+      <!-- Hours -->
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <ul>
+          <li style="color:var(--cream-dim); font-size:0.87rem; margin-bottom:0.4rem;">Tuesday – Sunday</li>
+          <li style="color:var(--gold); font-size:0.95rem; font-weight:700; margin-bottom:1.2rem;">7:00 PM – 11:00 PM</li>
+          <li style="color:var(--cream-dim); font-size:0.87rem; margin-bottom:0.4rem;">Monday</li>
+          <li style="color:var(--cream-dim); font-size:0.87rem;">Closed</li>
+        </ul>
+        <div style="margin-top:1.4rem; padding:1rem; background:var(--gold-dim); border-radius:var(--radius); border:1px solid var(--gold-dim);">
+          <p style="font-size:0.8rem; color:var(--cream-dim);">Last orders at <strong style="color:var(--gold);">10:30 PM</strong></p>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col">
+        <h4>Find Us</h4>
+        <div class="footer-contact-item">
+          <span class="icon" aria-hidden="true">📍</span>
+          <span>12, Jubilee Hills Road No. 36,<br>Near Filmnagar,<br>Banjara Hills, Hyderabad<br>Telangana – 500033</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon" aria-hidden="true">📞</span>
+          <span><a href="tel:+914066669999" style="color:var(--cream-dim); transition:color 0.3s;" onmouseover="this.style.color='#c9a84c'" onmouseout="this.style.color='rgba(245,240,232,0.65)'">+91 40 6666 9999</a></span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon" aria-hidden="true">✉️</span>
+          <span><a href="mailto:reservations@saffrontable.in" style="color:var(--cream-dim); transition:color 0.3s;" onmouseover="this.style.color='#c9a84c'" onmouseout="this.style.color='rgba(245,240,232,0.65)'">reservations@saffrontable.in</a></span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon" aria-hidden="true">💬</span>
+          <span>
+            <a href="https://wa.me/918248599468" target="_blank" rel="noopener" style="color:var(--cream-dim); transition:color 0.3s;" onmouseover="this.style.color='#c9a84c'" onmouseout="this.style.color='rgba(245,240,232,0.65)'">WhatsApp Us</a>
+            &nbsp;|&nbsp;
+            <a href="https://t.me/ThoshoTech" target="_blank" rel="noopener" style="color:var(--cream-dim); transition:color 0.3s;" onmouseover="this.style.color='#c9a84c'" onmouseout="this.style.color='rgba(245,240,232,0.65)'">Telegram</a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Saffron Table. All rights reserved. | <a href="#reservation">Privacy Policy</a> | <a href="#reservation">Terms of Service</a></p>
+      <p class="footer-thosho">
+        Designed &amp; Developed by <a href="https://wa.me/918248599468" target="_blank" rel="noopener">Thosho Tech</a>
+        &nbsp;·&nbsp;
+        <a href="https://wa.me/918248599468" target="_blank" rel="noopener">WhatsApp</a>
+        &nbsp;·&nbsp;
+        <a href="https://t.me/ThoshoTech" target="_blank" rel="noopener">Telegram</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- =============================================
+       SCRIPTS
+  ============================================= -->
+  <script>
+    // =============================================
+    // NAV: SCROLL BEHAVIOUR
+    // =============================================
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // =============================================
+    // MOBILE NAV
+    // =============================================
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileClose = document.getElementById('mobileClose');
+
+    hamburger.addEventListener('click', () => {
+      mobileNav.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    });
+
+    function closeMobileNav() {
+      mobileNav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    mobileClose.addEventListener('click', closeMobileNav);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeMobileNav();
+    });
+
+    // =============================================
+    // MENU TABS
+    // =============================================
+    function switchTab(tab) {
+      // Panels
+      document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.add('active');
+      // Buttons
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      const activeBtn = document.getElementById('btn-' + tab);
+      activeBtn.classList.add('active');
+      activeBtn.setAttribute('aria-selected', 'true');
+    }
+
+    // =============================================
+    // GALLERY LIGHTBOX
+    // =============================================
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+
+    function openLightbox(el) {
+      const img = el.querySelector('img');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+    });
+
+    // =============================================
+    // RESERVATION FORM
+    // =============================================
+    const form = document.getElementById('reservationForm');
+    const formSuccess = document.getElementById('formSuccess');
+
+    // Set min date to today
+    const dateInput = document.getElementById('res-date');
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.textContent = 'Reserving...';
+      btn.disabled = true;
+
+      // Simulate API call
+      setTimeout(() => {
+        form.style.display = 'none';
+        formSuccess.style.display = 'block';
+
+        // Animate success
+        if (window.gsap) {
+          gsap.from(formSuccess, { opacity: 0, y: 30, duration: 0.7, ease: 'power3.out' });
+        }
+      }, 1400);
+    });
+
+    // =============================================
+    // GSAP ANIMATIONS (Initialised after DOM)
+    // =============================================
+    window.addEventListener('load', () => {
+      if (!window.gsap) return;
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // ---- HERO STAGGER ----
+      const heroBg = document.querySelector('.hero-bg');
+      gsap.to(heroBg, { scale: 1, duration: 2.2, ease: 'power2.out', delay: 0.2 });
+
+      gsap.to('.hero-tag', { opacity: 1, y: 0, duration: 0.8, delay: 0.4, ease: 'power3.out' });
+      gsap.to('.hero-title', { opacity: 1, y: 0, duration: 1, delay: 0.7, ease: 'power3.out' });
+      gsap.to('.hero-sub', { opacity: 1, duration: 0.8, delay: 1.1, ease: 'power3.out' });
+      gsap.to('.hero-cta', { opacity: 1, duration: 0.8, delay: 1.35, ease: 'power3.out' });
+      gsap.to('.hero-ribbon', { opacity: 1, y: 0, duration: 0.8, delay: 1.6, ease: 'power3.out' });
+      gsap.to('.scroll-indicator', { opacity: 1, duration: 0.8, delay: 2, ease: 'power3.out' });
+
+      // ---- HERO PARALLAX ----
+      gsap.to('.hero-bg', {
+        yPercent: 30,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+
+      // ---- REVEAL ELEMENTS ----
+      gsap.utils.toArray('.reveal').forEach((el) => {
+        gsap.fromTo(el,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 88%',
+              toggleActions: 'play none none none'
+            }
+          }
+        );
+      });
+
+      // ---- MENU CARDS STAGGER ----
+      document.querySelectorAll('.menu-card').forEach((card, i) => {
+        gsap.fromTo(card,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: 'power3.out',
+            delay: (i % 4) * 0.12,
+            scrollTrigger: {
+              trigger: '#menu',
+              start: 'top 70%',
+              toggleActions: 'play none none none'
+            }
+          }
+        );
+      });
+
+      // ---- TESTIMONIAL STAGGER ----
+      gsap.utils.toArray('.testimonial-card').forEach((card, i) => {
+        gsap.fromTo(card,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: i * 0.18,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '#testimonials',
+              start: 'top 75%',
+              toggleActions: 'play none none none'
+            }
+          }
+        );
+      });
+
+      // ---- FOOTER REVEAL ----
+      gsap.fromTo('#footer',
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 1,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '#footer',
+            start: 'top 90%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+
+      // ---- GOLD LINE ANIMATION ----
+      gsap.utils.toArray('.gold-line').forEach(line => {
+        gsap.fromTo(line,
+          { width: 0 },
+          {
+            width: '60px',
+            duration: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: line,
+              start: 'top 90%',
+              toggleActions: 'play none none none'
+            }
+          }
+        );
+      });
+
+    });
+  </script>
+</body>
 </html>

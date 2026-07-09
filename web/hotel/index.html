@@ -1,14 +1,1008 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>hotel</title>
-    <script type="module" crossorigin src="./assets/index-BIiqK-Xp.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CwK4lD3L.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Resort & Spa | Luxury Awaits</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-light: #fafaf7;
+            --ocean-blue: #1e4d6b;
+            --ocean-blue-hover: #163a51;
+            --sand: #d4c5b2;
+            --text-dark: #2c2c2c;
+            --text-muted: #666666;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6, .brand-logo {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 8rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-size: 3.5rem;
+            color: var(--ocean-blue);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--ocean-blue);
+            color: var(--white);
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--ocean-blue-hover);
+        }
+
+        /* --- Header --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ocean-blue);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand-logo svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--sand);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-dark);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--sand);
+        }
+
+        /* --- Hero --- */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&auto=format&fit=crop&q=90') center/cover no-repeat;
+            background-attachment: fixed;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: var(--white);
+            margin-top: -5rem;
+        }
+
+        .hero h1 {
+            font-size: 6rem;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-style: italic;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* --- Booking Bar --- */
+        .booking-bar {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 4px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 1rem;
+            align-items: flex-end;
+            z-index: 20;
+            width: 90%;
+            max-width: 1000px;
+        }
+
+        .booking-field {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .booking-field label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .booking-field input, .booking-field select {
+            padding: 0.8rem;
+            border: 1px solid #e2e8f0;
+            background: var(--bg-light);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            outline: none;
+        }
+
+        .booking-bar .btn {
+            padding: 0.9rem 2rem;
+            white-space: nowrap;
+        }
+
+        /* --- Intro --- */
+        .intro-section {
+            padding-top: 10rem;
+            text-align: center;
+        }
+
+        .intro-quote {
+            font-size: 3rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--ocean-blue);
+            line-height: 1.3;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .intro-features {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+        }
+
+        .intro-feature {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--sand);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .intro-feature::before {
+            content: '✧';
+            font-size: 1.5rem;
+        }
+
+        /* --- Rooms --- */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .room-card {
+            background: var(--white);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.4s ease;
+        }
+
+        .room-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .room-img-wrapper {
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .room-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .room-card:hover .room-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .room-details {
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .room-details h3 {
+            font-size: 2.2rem;
+            color: var(--ocean-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .room-amenities {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .room-amenities span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .room-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--sand);
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Amenities Grid --- */
+        .amenities-section {
+            background-color: var(--ocean-blue);
+            color: var(--white);
+        }
+
+        .amenities-section .section-header h2 {
+            color: var(--white);
+        }
+
+        .amenities-section .section-header p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .amenity-item {
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: background 0.3s;
+        }
+
+        .amenity-item:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .amenity-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--sand);
+        }
+
+        .amenity-item h4 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* --- Gallery --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- Lightbox --- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox.active img {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* --- Testimonials --- */
+        .testimonials {
+            background: var(--white);
+        }
+
+        .testimonial-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            padding: 3rem;
+            background: var(--bg-light);
+            text-align: center;
+        }
+
+        .testimonial-card .stars {
+            color: var(--sand);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-card p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-author h4 {
+            color: var(--ocean-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-author span {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #111;
+            color: white;
+            padding: 6rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-col h4 {
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            color: var(--sand);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-col a {
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: var(--sand);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 992px) {
+            .booking-bar {
+                flex-direction: column;
+                position: static;
+                transform: none;
+                width: 100%;
+                box-shadow: none;
+                margin-top: 2rem;
+            }
+            .hero-content { margin-top: 0; }
+            .rooms-grid, .testimonial-cards, .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .amenities-grid, .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="brand-logo">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2.5-3.5l1.5 1.5 5-5-1.5-1.5-3.5 3.5-1.5-1.5-1.5 1.5z"/></svg>
+                Aura Resort & Spa
+            </a>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#rooms">Rooms</a>
+                <a href="#amenities">Amenities</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#booking" class="btn">Book Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="gsap-hero">Aura Resort & Spa</h1>
+            <p class="gsap-hero">Where Luxury Meets Serenity</p>
+        </div>
+        
+        <div class="booking-bar gsap-hero">
+            <div class="booking-field">
+                <label>Check In</label>
+                <input type="date">
+            </div>
+            <div class="booking-field">
+                <label>Check Out</label>
+                <input type="date">
+            </div>
+            <div class="booking-field">
+                <label>Guests</label>
+                <select>
+                    <option>1 Adult</option>
+                    <option selected>2 Adults</option>
+                    <option>2 Adults, 1 Child</option>
+                    <option>2 Adults, 2 Children</option>
+                </select>
+            </div>
+            <div class="booking-field">
+                <label>Room Type</label>
+                <select>
+                    <option>Deluxe Garden Room</option>
+                    <option>Ocean View Suite</option>
+                    <option>Presidential Villa</option>
+                </select>
+            </div>
+            <button class="btn" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Check Availability</button>
+        </div>
+    </section>
+
+    <!-- Intro -->
+    <section id="about" class="section intro-section">
+        <div class="container">
+            <h2 class="intro-quote gsap-fade">"A sanctuary crafted for those who seek the extraordinary, nestled where the ocean meets the sky."</h2>
+            <div class="intro-features gsap-fade">
+                <div class="intro-feature">150+ Acre Estate</div>
+                <div class="intro-feature">Private Beach</div>
+                <div class="intro-feature">Since 1987</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms -->
+    <section id="rooms" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Accommodations</h2>
+                <p>Designed for comfort, crafted for elegance</p>
+            </div>
+
+            <div class="rooms-grid">
+                <!-- Room 1 -->
+                <div class="room-card gsap-up">
+                    <div class="room-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&auto=format&fit=crop" alt="Deluxe Garden Room">
+                    </div>
+                    <div class="room-details">
+                        <h3>Deluxe Garden Room</h3>
+                        <div class="room-amenities">
+                            <span>🛏️ King Bed</span>
+                            <span>📐 450 sq.ft</span>
+                            <span>🌿 Garden View</span>
+                        </div>
+                        <div class="room-price">From ₹12,000 / night</div>
+                        <a href="#booking" class="btn btn-outline" style="color:var(--ocean-blue); border:1px solid var(--ocean-blue); background:transparent;">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Room 2 -->
+                <div class="room-card gsap-up">
+                    <div class="room-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&auto=format&fit=crop" alt="Ocean View Suite">
+                    </div>
+                    <div class="room-details">
+                        <h3>Ocean View Suite</h3>
+                        <div class="room-amenities">
+                            <span>🛏️ King Bed</span>
+                            <span>📐 650 sq.ft</span>
+                            <span>🌊 Sea View</span>
+                        </div>
+                        <div class="room-price">From ₹22,000 / night</div>
+                        <a href="#booking" class="btn btn-outline" style="color:var(--ocean-blue); border:1px solid var(--ocean-blue); background:transparent;">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Room 3 -->
+                <div class="room-card gsap-up">
+                    <div class="room-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1560347876-aeef00ee58a1?w=800&auto=format&fit=crop" alt="Presidential Villa">
+                    </div>
+                    <div class="room-details">
+                        <h3>Presidential Villa</h3>
+                        <div class="room-amenities">
+                            <span>🛏️ 2 Bedrooms</span>
+                            <span>📐 1200 sq.ft</span>
+                            <span>🏊‍♀️ Private Pool</span>
+                        </div>
+                        <div class="room-price">From ₹45,000 / night</div>
+                        <a href="#booking" class="btn btn-outline" style="color:var(--ocean-blue); border:1px solid var(--ocean-blue); background:transparent;">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Room 4 -->
+                <div class="room-card gsap-up">
+                    <div class="room-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=800&auto=format&fit=crop" alt="Honeymoon Cottage">
+                    </div>
+                    <div class="room-details">
+                        <h3>Honeymoon Cottage</h3>
+                        <div class="room-amenities">
+                            <span>🛏️ King Bed</span>
+                            <span>📐 550 sq.ft</span>
+                            <span>🍷 Oceanfront</span>
+                        </div>
+                        <div class="room-price">From ₹28,000 / night</div>
+                        <a href="#booking" class="btn btn-outline" style="color:var(--ocean-blue); border:1px solid var(--ocean-blue); background:transparent;">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities -->
+    <section id="amenities" class="section amenities-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Resort Amenities</h2>
+                <p>Everything you need for an unforgettable stay</p>
+            </div>
+
+            <div class="amenities-grid">
+                <div class="amenity-item gsap-amenity">
+                    <div class="amenity-icon">🏊‍♀️</div>
+                    <h4>Infinity Pool</h4>
+                </div>
+                <div class="amenity-item gsap-amenity">
+                    <div class="amenity-icon">💆‍♀️</div>
+                    <h4>Ayurvedic Spa</h4>
+                </div>
+                <div class="amenity-item gsap-amenity">
+                    <div class="amenity-icon">🍽️</div>
+                    <h4>Fine Dining</h4>
+                </div>
+                <div class="amenity-item gsap-amenity">
+                    <div class="amenity-icon">🏖️</div>
+                    <h4>Private Beach</h4>
+                </div>
+                <div class="amenity-item gsap-amenity">
+                    <div class="amenity-icon">🏋️‍♀️</div>
+                    <h4>Fitness Center</h4>
+                </div>
+                <div class="amenity-item gsap-amenity">
+                    <div class="amenity-icon">🎭</div>
+                    <h4>Conference Hall</h4>
+                </div>
+                <div class="amenity-item gsap-amenity">
+                    <div class="amenity-icon">🧸</div>
+                    <h4>Kids Club</h4>
+                </div>
+                <div class="amenity-item gsap-amenity">
+                    <div class="amenity-icon">✈️</div>
+                    <h4>Airport Transfer</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="section">
+        <div class="container-fluid" style="max-width: 1600px; margin: 0 auto;">
+            <div class="section-header">
+                <h2>The Aura Experience</h2>
+                <p>Glimpses of paradise</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=600&auto=format&fit=crop" alt="Resort View"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&auto=format&fit=crop" alt="Dining"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1583416750470-965b2707b355?w=600&auto=format&fit=crop" alt="Spa"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&auto=format&fit=crop" alt="Massage"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=600&auto=format&fit=crop" alt="Beach"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&auto=format&fit=crop" alt="Pool"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1551882547-ff40c0d509af?w=600&auto=format&fit=crop" alt="Restaurant"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop" alt="Sunset"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img src="" alt="Expanded Image">
+    </div>
+
+    <!-- Testimonials -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Guest Books</h2>
+                <p>What our visitors say</p>
+            </div>
+
+            <div class="testimonial-cards">
+                <div class="testimonial-card gsap-up">
+                    <div class="stars">★★★★★</div>
+                    <p>"An absolute dream. The attention to detail, the serene environment, and the world-class service made our anniversary unforgettable."</p>
+                    <div class="testimonial-author">
+                        <h4>Sarah & James</h4>
+                        <span>🇬🇧 United Kingdom • Oct 2025</span>
+                    </div>
+                </div>
+                <div class="testimonial-card gsap-up">
+                    <div class="stars">★★★★★</div>
+                    <p>"The Ayurvedic spa treatments were rejuvenating. The food was spectacular. This is truly the crown jewel of Kerala resorts."</p>
+                    <div class="testimonial-author">
+                        <h4>Rahul Verma</h4>
+                        <span>🇮🇳 New Delhi • Dec 2025</span>
+                    </div>
+                </div>
+                <div class="testimonial-card gsap-up">
+                    <div class="stars">★★★★★</div>
+                    <p>"We booked the Presidential Villa for our family vacation. Worth every penny. The private pool overlooking the ocean was mesmerizing."</p>
+                    <div class="testimonial-author">
+                        <h4>Elena Costa</h4>
+                        <span>🇪🇸 Spain • Feb 2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section id="booking" class="section" style="background: var(--bg-light); border-top: 1px solid #eaeaea;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Make a Reservation</h2>
+                <p>Secure your stay at Aura Resort & Spa</p>
+            </div>
+            
+            <form style="max-width: 800px; margin: 0 auto; background: white; padding: 3rem; box-shadow: 0 10px 40px rgba(0,0,0,0.05);" onsubmit="event.preventDefault(); alert('Reservation request sent successfully!');">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                    <div>
+                        <label style="display:block; margin-bottom:0.5rem; color:var(--text-muted); font-size:0.9rem;">First Name</label>
+                        <input type="text" required style="width:100%; padding:0.8rem; border:1px solid #ccc;">
+                    </div>
+                    <div>
+                        <label style="display:block; margin-bottom:0.5rem; color:var(--text-muted); font-size:0.9rem;">Last Name</label>
+                        <input type="text" required style="width:100%; padding:0.8rem; border:1px solid #ccc;">
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                    <div>
+                        <label style="display:block; margin-bottom:0.5rem; color:var(--text-muted); font-size:0.9rem;">Email Address</label>
+                        <input type="email" required style="width:100%; padding:0.8rem; border:1px solid #ccc;">
+                    </div>
+                    <div>
+                        <label style="display:block; margin-bottom:0.5rem; color:var(--text-muted); font-size:0.9rem;">Phone Number</label>
+                        <input type="tel" required style="width:100%; padding:0.8rem; border:1px solid #ccc;">
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                    <div>
+                        <label style="display:block; margin-bottom:0.5rem; color:var(--text-muted); font-size:0.9rem;">Check-in Date</label>
+                        <input type="date" required style="width:100%; padding:0.8rem; border:1px solid #ccc;">
+                    </div>
+                    <div>
+                        <label style="display:block; margin-bottom:0.5rem; color:var(--text-muted); font-size:0.9rem;">Check-out Date</label>
+                        <input type="date" required style="width:100%; padding:0.8rem; border:1px solid #ccc;">
+                    </div>
+                </div>
+                <div style="margin-bottom: 2rem;">
+                    <label style="display:block; margin-bottom:0.5rem; color:var(--text-muted); font-size:0.9rem;">Room Preference</label>
+                    <select style="width:100%; padding:0.8rem; border:1px solid #ccc;">
+                        <option>Deluxe Garden Room</option>
+                        <option>Ocean View Suite</option>
+                        <option>Presidential Villa</option>
+                        <option>Honeymoon Cottage</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 2rem;">
+                    <label style="display:block; margin-bottom:0.5rem; color:var(--text-muted); font-size:0.9rem;">Special Requests</label>
+                    <textarea style="width:100%; padding:0.8rem; border:1px solid #ccc; height:100px;"></textarea>
+                </div>
+                <button type="submit" class="btn" style="width:100%; text-align:center;">Submit Reservation Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col" style="grid-column: span 1;">
+                    <div class="brand-logo" style="margin-bottom: 1.5rem; color: white;">
+                        <svg viewBox="0 0 24 24" style="fill: var(--sand);"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2.5-3.5l1.5 1.5 5-5-1.5-1.5-3.5 3.5-1.5-1.5-1.5 1.5z"/></svg>
+                        Aura Resort
+                    </div>
+                    <p style="color:#999; font-size:0.9rem; margin-bottom:1rem;">1 Lighthouse Road, Kovalam Beach<br>Thiruvananthapuram, Kerala 695527<br>India</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Discover</h4>
+                    <ul>
+                        <li><a href="#about">The Resort</a></li>
+                        <li><a href="#rooms">Accommodations</a></li>
+                        <li><a href="#amenities">Spa & Wellness</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://wa.me/918248599468" target="_blank">WhatsApp Chat</a></li>
+                        <li><a href="#">Telegram</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Awards</h4>
+                    <p style="color:#999; font-size:0.8rem; margin-bottom:0.5rem;">🏆 TripAdvisor Travelers' Choice 2025</p>
+                    <p style="color:#999; font-size:0.8rem;">🏆 Leading Spa Resorts of India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Designed & Developed by <a href="https://thosho.github.io" target="_blank">Thosho Tech</a>. &copy; 2026 Aura Resort & Spa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Lightbox functionality
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = lightbox.querySelector('img');
+        const closeBtn = lightbox.querySelector('.lightbox-close');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                lightboxImg.src = item.src;
+                lightbox.classList.add('active');
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if(e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Animation
+        gsap.from(".gsap-hero", {
+            y: 30,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.3,
+            ease: "power3.out",
+            delay: 0.2
+        });
+
+        // Scroll animations
+        gsap.from(".gsap-fade", {
+            scrollTrigger: {
+                trigger: ".intro-section",
+                start: "top 80%"
+            },
+            y: 40,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2
+        });
+
+        gsap.from(".gsap-up", {
+            scrollTrigger: {
+                trigger: "#rooms",
+                start: "top 70%"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2
+        });
+
+        gsap.from(".gsap-amenity", {
+            scrollTrigger: {
+                trigger: ".amenities-section",
+                start: "top 70%"
+            },
+            scale: 0.8,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "back.out(1.7)"
+        });
+    </script>
+</body>
 </html>
