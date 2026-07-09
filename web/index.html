@@ -1,196 +1,170 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thosho Tech | Showcase</title>
-    <meta name="description" content="Explore a variety of premium web solutions developed by Thosho Tech, ranging from construction to e-commerce.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#6366f1',
-                        secondary: '#a855f7',
-                        dark: '#0f172a',
-                        card: 'rgba(30, 41, 59, 0.7)',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Outfit', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <title>Thosho Tech | Web Development Showcase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600&family=Roboto:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
-<body class="bg-dark text-slate-200 font-sans antialiased overflow-x-hidden selection:bg-primary selection:text-white">
-    
-    <!-- Animated Background -->
-    <div class="fixed inset-0 z-[-1]">
-        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/20 blur-[120px] animate-pulse"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-secondary/20 blur-[120px] animate-pulse" style="animation-delay: 2s;"></div>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav-wrapper">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-code"></i> Thosho<span>Tech</span>
+            </a>
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-menu" id="desktop-nav">
+                <a href="#portfolio">Demos</a>
+                <a href="archive.html">Archives</a>
+                <a href="https://wa.me/918248599468" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Get In Touch</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Sidebar -->
+    <div id="mobile-sidebar" class="mobile-sidebar">
+        <button id="mobile-close-btn" class="mobile-close-btn" aria-label="Close Menu">&times;</button>
+        <nav class="mobile-nav-links">
+            <a href="#portfolio">Demos</a>
+            <a href="archive.html">Archives</a>
+            <a href="https://wa.me/918248599468" target="_blank" rel="noopener noreferrer">Get In Touch</a>
+        </nav>
     </div>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300 border-b border-white/5 bg-dark/30 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-display font-bold text-white tracking-tight">
-                Thosho<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Tech</span>
-            </a>
-            <div class="hidden md:flex space-x-8">
-                <a href="#portfolio" class="text-sm font-medium hover:text-primary transition-colors">Portfolio</a>
-                <a href="#services" class="text-sm font-medium hover:text-primary transition-colors">Services</a>
-                <a href="#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
-            </div>
-            <a href="#contact" class="hidden md:inline-block px-6 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 backdrop-blur-md transition-all text-sm font-medium">Get in Touch</a>
-        </div>
-    </nav>
-
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
-            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8 animate-fade-in-up">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                <span class="text-xs font-medium text-emerald-400">Available for new projects globally</span>
-            </div>
-            <h1 class="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight animate-fade-in-up" style="animation-delay: 0.1s;">
-                Crafting Digital <br/>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-pink-500">Masterpieces</span>
-            </h1>
-            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 animate-fade-in-up" style="animation-delay: 0.2s;">
-                We build premium, high-performance web experiences tailored for diverse industries. From local Indian businesses to global enterprises.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s;">
-                <a href="#portfolio" class="px-8 py-4 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-medium hover:shadow-lg hover:shadow-primary/30 transition-all transform hover:-translate-y-1">
-                    Explore Demos
-                </a>
-                <a href="archive.html" class="px-8 py-4 rounded-full border border-white/20 text-white font-medium hover:bg-white/10 transition-all transform hover:-translate-y-1">
-                    View Published Projects
-                </a>
+    <section class="hero" style="padding-bottom: 80px;">
+        <div class="container hero-content">
+            <h1>Web Development Showcase</h1>
+            <p class="subtitle">Explore our premium, high-performance web experiences tailored for diverse industries. From local businesses to global enterprises.</p>
+            <div class="hero-buttons">
+                <a href="#portfolio" class="btn btn-primary">Explore Demos</a>
+                <!-- The view published projects button has been removed as requested -->
             </div>
         </div>
     </section>
 
     <!-- Portfolio Grid -->
-    <section id="portfolio" class="py-20 relative z-10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-end mb-12">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">Industry Solutions</h2>
-                    <p class="text-slate-400 max-w-lg">Discover our versatile capabilities across different business sectors.</p>
-                </div>
-            </div>
+    <section id="portfolio" class="section dark-section">
+        <div class="container">
+            <h2 class="section-title">Industry Solutions</h2>
+            <p class="section-desc">Click on any template to view the fully functional demo.</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="projects-grid">
                 
                 <!-- Construction -->
-                <a href="construction/" class="group relative block h-80 rounded-2xl overflow-hidden glass-card transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 border border-white/10 bg-white/5">
-                    <img src="assets/images/construction-thumb.jpg" alt="Construction Template" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80 mix-blend-overlay">
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-6 w-full">
-                        <div class="mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                            <span class="px-3 py-1 text-xs font-semibold bg-orange-500/20 text-orange-400 border border-orange-500/30 rounded-full backdrop-blur-md">Industrial</span>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-white mb-2">BuildCorp</h3>
-                        <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Construction & Builders Template</p>
+                <div class="project-card card" style="padding: 0; display: flex; flex-direction: column;">
+                    <div style="height: 200px; overflow: hidden; border-bottom: 1px solid var(--border-color);">
+                        <img src="assets/images/construction-thumb.jpg" alt="Construction Template" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                     </div>
-                </a>
+                    <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
+                        <h3 style="margin-bottom: 10px;">BuildCorp <span class="badge badge-published">Industrial</span></h3>
+                        <p style="flex-grow: 1; margin-bottom: 20px;">Construction & Builders Template</p>
+                        <a href="construction/" target="_blank" class="btn btn-outline" style="text-align: center;">View Demo</a>
+                    </div>
+                </div>
 
                 <!-- Restaurant -->
-                <a href="restaurant/" class="group relative block h-80 rounded-2xl overflow-hidden glass-card transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-red-500/20 border border-white/10 bg-white/5">
-                    <img src="assets/images/restaurant-thumb.jpg" alt="Restaurant Template" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80 mix-blend-overlay">
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-6 w-full">
-                        <div class="mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                            <span class="px-3 py-1 text-xs font-semibold bg-red-500/20 text-red-400 border border-red-500/30 rounded-full backdrop-blur-md">Hospitality</span>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-white mb-2">Spice Route</h3>
-                        <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Fine Dining & Restaurant Template</p>
+                <div class="project-card card" style="padding: 0; display: flex; flex-direction: column;">
+                    <div style="height: 200px; overflow: hidden; border-bottom: 1px solid var(--border-color);">
+                        <img src="assets/images/restaurant-thumb.jpg" alt="Restaurant Template" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                     </div>
-                </a>
+                    <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
+                        <h3 style="margin-bottom: 10px;">Spice Route <span class="badge badge-published">Hospitality</span></h3>
+                        <p style="flex-grow: 1; margin-bottom: 20px;">Fine Dining & Restaurant Template</p>
+                        <a href="restaurant/" target="_blank" class="btn btn-outline" style="text-align: center;">View Demo</a>
+                    </div>
+                </div>
 
                 <!-- Hotel -->
-                <a href="hotel/" class="group relative block h-80 rounded-2xl overflow-hidden glass-card transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 border border-white/10 bg-white/5">
-                    <img src="assets/images/hotel-thumb.jpg" alt="Hotel Template" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80 mix-blend-overlay">
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-6 w-full">
-                        <div class="mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                            <span class="px-3 py-1 text-xs font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30 rounded-full backdrop-blur-md">Booking</span>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-white mb-2">Oasis Stays</h3>
-                        <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Hotel & Resort Booking Template</p>
+                <div class="project-card card" style="padding: 0; display: flex; flex-direction: column;">
+                    <div style="height: 200px; overflow: hidden; border-bottom: 1px solid var(--border-color);">
+                        <img src="assets/images/hotel-thumb.jpg" alt="Hotel Template" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                     </div>
-                </a>
+                    <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
+                        <h3 style="margin-bottom: 10px;">Oasis Stays <span class="badge badge-published">Booking</span></h3>
+                        <p style="flex-grow: 1; margin-bottom: 20px;">Hotel & Resort Booking Template</p>
+                        <a href="hotel/" target="_blank" class="btn btn-outline" style="text-align: center;">View Demo</a>
+                    </div>
+                </div>
 
                 <!-- Travel -->
-                <a href="travel/" class="group relative block h-80 rounded-2xl overflow-hidden glass-card transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/20 border border-white/10 bg-white/5">
-                    <img src="assets/images/travel-thumb.jpg" alt="Travel Template" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80 mix-blend-overlay">
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-6 w-full">
-                        <div class="mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                            <span class="px-3 py-1 text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full backdrop-blur-md">Transportation</span>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-white mb-2">JourneyGo</h3>
-                        <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Car, Bus & Bike Rental Template</p>
+                <div class="project-card card" style="padding: 0; display: flex; flex-direction: column;">
+                    <div style="height: 200px; overflow: hidden; border-bottom: 1px solid var(--border-color);">
+                        <img src="assets/images/travel-thumb.jpg" alt="Travel Template" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                     </div>
-                </a>
+                    <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
+                        <h3 style="margin-bottom: 10px;">JourneyGo <span class="badge badge-published">Transport</span></h3>
+                        <p style="flex-grow: 1; margin-bottom: 20px;">Car, Bus & Bike Rental Template</p>
+                        <a href="travel/" target="_blank" class="btn btn-outline" style="text-align: center;">View Demo</a>
+                    </div>
+                </div>
 
                 <!-- Blog -->
-                <a href="blog/" class="group relative block h-80 rounded-2xl overflow-hidden glass-card transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 border border-white/10 bg-white/5">
-                    <img src="assets/images/blog-thumb.jpg" alt="Blog Template" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80 mix-blend-overlay">
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-6 w-full">
-                        <div class="mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                            <span class="px-3 py-1 text-xs font-semibold bg-purple-500/20 text-purple-400 border border-purple-500/30 rounded-full backdrop-blur-md">Content</span>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-white mb-2">Chronicle</h3>
-                        <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Personal & Lifestyle Blog Template</p>
+                <div class="project-card card" style="padding: 0; display: flex; flex-direction: column;">
+                    <div style="height: 200px; overflow: hidden; border-bottom: 1px solid var(--border-color);">
+                        <img src="assets/images/blog-thumb.jpg" alt="Blog Template" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                     </div>
-                </a>
+                    <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
+                        <h3 style="margin-bottom: 10px;">Chronicle <span class="badge badge-published">Content</span></h3>
+                        <p style="flex-grow: 1; margin-bottom: 20px;">Personal & Lifestyle Blog Template</p>
+                        <a href="blog/" target="_blank" class="btn btn-outline" style="text-align: center;">View Demo</a>
+                    </div>
+                </div>
 
                 <!-- News Magazine -->
-                <a href="news/" class="group relative block h-80 rounded-2xl overflow-hidden glass-card transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/20 border border-white/10 bg-white/5">
-                    <img src="assets/images/news-thumb.jpg" alt="News Template" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80 mix-blend-overlay">
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-6 w-full">
-                        <div class="mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                            <span class="px-3 py-1 text-xs font-semibold bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 rounded-full backdrop-blur-md">Media</span>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-white mb-2">The Daily Scope</h3>
-                        <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">News & Magazine Portal Template</p>
+                <div class="project-card card" style="padding: 0; display: flex; flex-direction: column;">
+                    <div style="height: 200px; overflow: hidden; border-bottom: 1px solid var(--border-color);">
+                        <img src="assets/images/news-thumb.jpg" alt="News Template" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                     </div>
-                </a>
+                    <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
+                        <h3 style="margin-bottom: 10px;">The Scope <span class="badge badge-published">Media</span></h3>
+                        <p style="flex-grow: 1; margin-bottom: 20px;">News & Magazine Portal Template</p>
+                        <a href="news/" target="_blank" class="btn btn-outline" style="text-align: center;">View Demo</a>
+                    </div>
+                </div>
+                
+                <!-- Movie Story -->
+                <div class="project-card card" style="padding: 0; display: flex; flex-direction: column;">
+                    <div style="height: 200px; overflow: hidden; border-bottom: 1px solid var(--border-color); background: #000; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-headphones" style="font-size: 5rem; color: var(--accent-color);"></i>
+                    </div>
+                    <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
+                        <h3 style="margin-bottom: 10px;">Movie Story <span class="badge badge-published">Podcast</span></h3>
+                        <p style="flex-grow: 1; margin-bottom: 20px;">Audio Movie Podcast & Discovery Platform.</p>
+                        <a href="https://moviestory.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="text-align: center;">View Project</a>
+                    </div>
+                </div>
 
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-white/10 mt-20 relative z-10 bg-dark/50 backdrop-blur-lg">
-        <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-6 md:mb-0">
-                <a href="#" class="text-2xl font-display font-bold text-white">
-                    Thosho<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Tech</span>
+    <footer id="contact" class="footer">
+        <div class="container footer-content" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <div class="footer-brand">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-code"></i> Thosho<span>Tech</span>
                 </a>
-                <p class="text-slate-400 text-sm mt-2">Empowering businesses with cutting-edge web solutions.</p>
+                <p>Empowering businesses through innovative technology.</p>
             </div>
-            <div class="flex space-x-6 text-slate-400">
-                <a href="#" class="hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="hover:text-white transition-colors"><i class="fab fa-github"></i></a>
-                <a href="#" class="hover:text-white transition-colors"><i class="fab fa-linkedin"></i></a>
+            <div class="footer-social">
+                <h4>Contact Us</h4>
+                <a href="https://t.me/thosho" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram-plane"></i> Telegram</a>
+                <a href="https://wa.me/918248599468" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="mailto:thosho.tech@gmail.com"><i class="fas fa-envelope"></i> Email</a>
             </div>
         </div>
-        <div class="border-t border-white/10 py-6 text-center text-sm text-slate-500">
-            <p>&copy; 2026 Thosho Tech. Designed and developed by Thosho Tech.</p>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Thosho Tech. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="../app.js"></script>
 </body>
 </html>
