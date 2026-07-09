@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildCorp | Industrial Construction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Roboto', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+    
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-black text-orange-600 tracking-tighter uppercase">BuildCorp.</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="text-gray-600 hover:text-orange-600 font-bold transition">About Us</a>
+                <a href="#services" class="text-gray-600 hover:text-orange-600 font-bold transition">Services</a>
+                <a href="#projects" class="text-gray-600 hover:text-orange-600 font-bold transition">Projects</a>
+                <a href="#contact" class="text-gray-600 hover:text-orange-600 font-bold transition">Contact</a>
+            </div>
+            <a href="#contact" class="px-6 py-2 bg-orange-600 text-white font-bold hover:bg-orange-700 transition shadow-lg">Get a Quote</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="relative h-screen flex items-center justify-center">
+        <div class="absolute inset-0 z-0">
+            <img src="../assets/images/construction-thumb.jpg" alt="Construction Site" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gray-900 bg-opacity-70"></div>
+        </div>
+        <div class="relative z-10 text-center px-6 max-w-4xl">
+            <h1 class="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight leading-tight">Building The Future <br/><span class="text-orange-500">With Excellence</span></h1>
+            <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light">We deliver world-class infrastructure and commercial construction projects on time and under budget.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#services" class="px-8 py-4 bg-orange-600 text-white font-bold hover:bg-orange-700 transition uppercase tracking-wide">Our Services</a>
+                <a href="#contact" class="px-8 py-4 bg-transparent border-2 border-white text-white font-bold hover:bg-white hover:text-gray-900 transition uppercase tracking-wide">Contact Us</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black text-gray-900 uppercase">Core Services</h2>
+                <div class="w-24 h-1 bg-orange-600 mx-auto mt-4"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 shadow-sm hover:shadow-xl transition border-b-4 border-orange-600">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Commercial Build</h3>
+                    <p class="text-gray-600 leading-relaxed">High-rise offices, retail spaces, and corporate campuses engineered for maximum efficiency and modern aesthetics.</p>
+                </div>
+                <div class="bg-gray-50 p-8 shadow-sm hover:shadow-xl transition border-b-4 border-orange-600">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Civil Engineering</h3>
+                    <p class="text-gray-600 leading-relaxed">Roads, bridges, and heavy infrastructure built to withstand the test of time and support growing communities.</p>
+                </div>
+                <div class="bg-gray-50 p-8 shadow-sm hover:shadow-xl transition border-b-4 border-orange-600">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Renovation</h3>
+                    <p class="text-gray-600 leading-relaxed">Complete structural overhauls and modernization of existing properties to meet current safety and design standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center border-b border-gray-800 pb-8 mb-8">
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <a href="#" class="text-3xl font-black text-white tracking-tighter uppercase">BuildCorp.</a>
+                <p class="text-gray-500 mt-2 max-w-sm">Leading the industry in safety, quality, and innovation.</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="text-gray-400 hover:text-white transition">Facebook</a>
+                <a href="#" class="text-gray-400 hover:text-white transition">Twitter</a>
+                <a href="#" class="text-gray-400 hover:text-white transition">LinkedIn</a>
+            </div>
+        </div>
+        <div class="text-center">
+            <p class="text-gray-500 text-sm">&copy; 2026 BuildCorp Template. Designed and developed by Thosho Tech.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spice Route | Fine Dining</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-sans { font-family: 'Lato', sans-serif; }
+    </style>
+</head>
+<body class="bg-[#faf8f5] text-gray-800 font-sans antialiased">
+    
+    <!-- Navigation -->
+    <nav class="absolute w-full z-50 py-6">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="text-3xl font-serif font-bold text-white tracking-widest">SPICE ROUTE</a>
+            <div class="hidden md:flex space-x-12">
+                <a href="#menu" class="text-white/80 hover:text-white uppercase tracking-widest text-sm transition">Menu</a>
+                <a href="#about" class="text-white/80 hover:text-white uppercase tracking-widest text-sm transition">Our Story</a>
+                <a href="#reservation" class="text-white/80 hover:text-white uppercase tracking-widest text-sm transition">Reservations</a>
+            </div>
+            <a href="#reservation" class="px-6 py-2 border border-white text-white hover:bg-white hover:text-black transition uppercase tracking-widest text-sm">Book a Table</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="relative h-screen flex items-center justify-center">
+        <div class="absolute inset-0 z-0">
+            <img src="../assets/images/restaurant-thumb.jpg" alt="Restaurant Interior" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
+        <div class="relative z-10 text-center px-6 mt-16">
+            <span class="block text-[#d4af37] tracking-[0.3em] uppercase text-sm mb-4 font-bold">Experience Culinary Excellence</span>
+            <h1 class="text-6xl md:text-8xl font-serif text-white mb-6 leading-none">A Journey of<br/><i class="font-serif">Flavors</i></h1>
+            <p class="text-lg text-gray-200 mb-10 max-w-xl mx-auto font-light">Authentic Indian fusion cuisine presented in an ambiance of unparalleled luxury.</p>
+        </div>
+    </header>
+
+    <!-- Menu Highlight -->
+    <section id="menu" class="py-24">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <span class="block text-[#d4af37] tracking-[0.2em] uppercase text-xs mb-2 font-bold">Discover</span>
+            <h2 class="text-4xl font-serif text-gray-900 mb-16">Our Signature Dishes</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12 text-left">
+                <!-- Item -->
+                <div class="flex justify-between items-baseline border-b border-gray-200 pb-4">
+                    <div>
+                        <h3 class="text-xl font-serif text-gray-900">Saffron Infused Biryani</h3>
+                        <p class="text-gray-500 text-sm mt-1">Basmati rice, tender lamb, exotic spices, rose water</p>
+                    </div>
+                    <span class="text-[#d4af37] font-bold">₹1250</span>
+                </div>
+                <!-- Item -->
+                <div class="flex justify-between items-baseline border-b border-gray-200 pb-4">
+                    <div>
+                        <h3 class="text-xl font-serif text-gray-900">Truffle Butter Chicken</h3>
+                        <p class="text-gray-500 text-sm mt-1">Charcoal smoked chicken, tomato fenugreek gravy, black truffle</p>
+                    </div>
+                    <span class="text-[#d4af37] font-bold">₹1100</span>
+                </div>
+                <!-- Item -->
+                <div class="flex justify-between items-baseline border-b border-gray-200 pb-4">
+                    <div>
+                        <h3 class="text-xl font-serif text-gray-900">Cardamom Panna Cotta</h3>
+                        <p class="text-gray-500 text-sm mt-1">Italian classic infused with green cardamom and pistachio praline</p>
+                    </div>
+                    <span class="text-[#d4af37] font-bold">₹550</span>
+                </div>
+                <!-- Item -->
+                <div class="flex justify-between items-baseline border-b border-gray-200 pb-4">
+                    <div>
+                        <h3 class="text-xl font-serif text-gray-900">Tandoori Lobster</h3>
+                        <p class="text-gray-500 text-sm mt-1">Fresh catch marinated in hung curd, yellow chili, garlic</p>
+                    </div>
+                    <span class="text-[#d4af37] font-bold">₹2800</span>
+                </div>
+            </div>
+            
+            <div class="mt-16">
+                <a href="#" class="inline-block border-b-2 border-[#d4af37] text-gray-900 pb-1 uppercase tracking-widest text-sm hover:text-[#d4af37] transition">View Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#111] text-gray-400 py-16 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-serif text-white tracking-widest mb-8">SPICE ROUTE</h2>
+            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-12 mb-12 text-sm tracking-wider">
+                <p>123 Culinary Boulevard, New Delhi</p>
+                <p>+91 98765 43210</p>
+                <p>reservations@spiceroute.com</p>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-xs tracking-widest uppercase">
+                <p>&copy; 2026 Spice Route Template. Designed and developed by Thosho Tech.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

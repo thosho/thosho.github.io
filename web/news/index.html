@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Daily Scope | News</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;500;700;900&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        .font-sans { font-family: 'Libre Franklin', sans-serif; }
+        .font-serif { font-family: 'Lora', serif; }
+    </style>
+</head>
+<body class="bg-white text-gray-900 font-sans antialiased">
+    
+    <!-- Top Bar -->
+    <div class="bg-gray-900 text-white text-xs py-2 px-6 flex justify-between">
+        <span>Tuesday, July 9, 2026</span>
+        <div class="space-x-4">
+            <a href="#" class="hover:text-cyan-400 transition">Subscribe</a>
+            <a href="#" class="hover:text-cyan-400 transition">Log In</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="border-b-4 border-black py-8 px-6 text-center">
+        <a href="#" class="text-6xl md:text-7xl font-serif font-black tracking-tighter uppercase">The Daily Scope</a>
+    </header>
+    <nav class="border-b border-gray-300 py-3 px-6 flex justify-center space-x-6 md:space-x-10 text-sm font-bold uppercase tracking-wider overflow-x-auto whitespace-nowrap">
+        <a href="#" class="text-red-600">Breaking News</a>
+        <a href="#" class="hover:text-cyan-600 transition">Politics</a>
+        <a href="#" class="hover:text-cyan-600 transition">Business</a>
+        <a href="#" class="hover:text-cyan-600 transition">Technology</a>
+        <a href="#" class="hover:text-cyan-600 transition">India</a>
+        <a href="#" class="hover:text-cyan-600 transition">World</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <!-- Lead Story -->
+        <article class="lg:col-span-2">
+            <img src="../assets/images/news-thumb.jpg" alt="Newsroom" class="w-full h-auto object-cover mb-4">
+            <h1 class="text-4xl md:text-5xl font-serif font-bold mb-4 leading-tight">Global Markets Rally as Tech Innovations Propel New Economic Era</h1>
+            <p class="text-gray-700 text-lg font-serif leading-relaxed mb-4">In an unprecedented surge, markets across Asia and Europe have hit record highs today following breakthrough announcements in AI and green energy infrastructure. Analysts predict this momentum will reshape the global economy for the next decade...</p>
+            <a href="#" class="text-cyan-700 font-bold hover:underline">Read Full Story &rarr;</a>
+        </article>
+
+        <!-- Sidebar News -->
+        <aside class="flex flex-col space-y-6">
+            <h2 class="text-xl font-black uppercase border-b-2 border-black pb-2">Latest Updates</h2>
+            
+            <article class="border-b border-gray-200 pb-4">
+                <span class="text-xs font-bold text-red-600 uppercase">Politics</span>
+                <h3 class="text-lg font-serif font-bold mt-1 hover:text-cyan-700 cursor-pointer">Major policy shift announced ahead of upcoming elections</h3>
+            </article>
+            
+            <article class="border-b border-gray-200 pb-4">
+                <span class="text-xs font-bold text-blue-600 uppercase">Technology</span>
+                <h3 class="text-lg font-serif font-bold mt-1 hover:text-cyan-700 cursor-pointer">New smart city initiative breaks ground in Bengaluru</h3>
+            </article>
+
+            <article class="border-b border-gray-200 pb-4">
+                <span class="text-xs font-bold text-green-600 uppercase">Sports</span>
+                <h3 class="text-lg font-serif font-bold mt-1 hover:text-cyan-700 cursor-pointer">National team secures historic victory in world championship</h3>
+            </article>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-10 text-center border-t border-gray-300">
+        <div class="max-w-4xl mx-auto px-6 text-sm text-gray-500 font-sans">
+            <p>&copy; 2026 The Daily Scope. Designed and developed by Thosho Tech.</p>
+        </div>
+    </footer>
+</body>
+</html>

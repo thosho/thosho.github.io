@@ -1,196 +1,196 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thosho Tech | Designed Websites Archive</title>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600&family=Roboto:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-color: #121212;
-            --card-color: #1E1E1E;
-            --primary-text-color: #E0E0E0;
-            --secondary-text-color: #BDBDBD;
-            --accent-color: #03A9F4;
-            --border-color: #333333;
-            --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--primary-text-color);
-            margin: 0;
-            padding: 40px 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-family: 'Share Tech Mono', monospace;
-            color: var(--accent-color);
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: var(--secondary-text-color);
-            font-size: 1.1rem;
-            margin-bottom: 50px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background-color: var(--card-color);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent-color);
-            box-shadow: 0 12px 30px rgba(3, 169, 244, 0.2);
-        }
-
-        .thumbnail {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            object-position: top;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .content {
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .title {
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 1.4rem;
-            margin: 0 0 10px 0;
-            color: #fff;
-        }
-
-        .desc {
-            color: var(--secondary-text-color);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin: 0 0 20px 0;
-            flex-grow: 1;
-        }
-
-        .link {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'Exo 2', sans-serif;
-            transition: color 0.2s ease;
-        }
-
-        .link:hover {
-            color: #0288D1;
-        }
-
-        .loader {
-            grid-column: 1 / -1;
-            text-align: center;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 1.5rem;
-            color: var(--secondary-text-color);
-            padding: 50px 0;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Thosho Tech | Designed Websites</h1>
-        <p class="subtitle">An archive of web projects designed and developed by Thosho Tech.</p>
-        
-        <div id="portfolio-container" class="grid">
-            <div class="loader"><i class="fas fa-spinner fa-spin"></i> Loading archive...</div>
-        </div>
-    </div>
-
+    <title>Thosho Tech | Showcase</title>
+    <meta name="description" content="Explore a variety of premium web solutions developed by Thosho Tech, ranging from construction to e-commerce.">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        const designedWebsites = [
-            "https://clanfit.in",
-            "https://moviestory.vercel.app",
-            "https://jampictures.in",
-            "https://janakikanagaraj.github.io/demo/",
-            "https://janakikanagaraj.github.io/in/",
-            "https://www.ovor.in/2024/01/about.html",
-            "https://tamilreaders.github.io/tamil-library-app/",
-            "https://hmsfruits.com"
-        ];
-
-        async function fetchPortfolioSites() {
-            const container = document.getElementById('portfolio-container');
-            if (!container) return;
-
-            container.innerHTML = ''; // Clear loader
-
-            for (const url of designedWebsites) {
-                try {
-                    const response = await fetch(`https://api.microlink.io?url=${encodeURIComponent(url)}&screenshot=true&meta=true&waitForTimeout=5000`);
-                    const data = await response.json();
-                    
-                    if (data.status === 'success') {
-                        const meta = data.data;
-                        const title = meta.title || url;
-                        const desc = meta.description ? meta.description.substring(0, 120) + '...' : 'Visit the website to learn more.';
-                        
-                        let img = 'https://via.placeholder.com/600x400/1E1E1E/03A9F4?text=Website+Preview';
-                        if (meta.screenshot && meta.screenshot.url) {
-                            img = meta.screenshot.url;
-                        } else if (meta.image && meta.image.url) {
-                            img = meta.image.url;
-                        } else if (meta.logo && meta.logo.url) {
-                            img = meta.logo.url;
-                        }
-
-                        const cardHTML = `
-                            <article class="card">
-                                <img src="${img}" alt="${title}" class="thumbnail" loading="lazy">
-                                <div class="content">
-                                    <h3 class="title">${title}</h3>
-                                    <p class="desc">${desc}</p>
-                                    <a href="${url}" target="_blank" rel="noopener noreferrer" class="link">
-                                        Visit Website <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </article>
-                        `;
-                        container.innerHTML += cardHTML;
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#a855f7',
+                        dark: '#0f172a',
+                        card: 'rgba(30, 41, 59, 0.7)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
                     }
-                } catch (error) {
-                    console.error('Error fetching preview for:', url, error);
                 }
             }
         }
-
-        document.addEventListener('DOMContentLoaded', fetchPortfolioSites);
     </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-dark text-slate-200 font-sans antialiased overflow-x-hidden selection:bg-primary selection:text-white">
+    
+    <!-- Animated Background -->
+    <div class="fixed inset-0 z-[-1]">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/20 blur-[120px] animate-pulse"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-secondary/20 blur-[120px] animate-pulse" style="animation-delay: 2s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300 border-b border-white/5 bg-dark/30 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-display font-bold text-white tracking-tight">
+                Thosho<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Tech</span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#portfolio" class="text-sm font-medium hover:text-primary transition-colors">Portfolio</a>
+                <a href="#services" class="text-sm font-medium hover:text-primary transition-colors">Services</a>
+                <a href="#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
+            </div>
+            <a href="#contact" class="hidden md:inline-block px-6 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 backdrop-blur-md transition-all text-sm font-medium">Get in Touch</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8 animate-fade-in-up">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span class="text-xs font-medium text-emerald-400">Available for new projects globally</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight animate-fade-in-up" style="animation-delay: 0.1s;">
+                Crafting Digital <br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-pink-500">Masterpieces</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 animate-fade-in-up" style="animation-delay: 0.2s;">
+                We build premium, high-performance web experiences tailored for diverse industries. From local Indian businesses to global enterprises.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s;">
+                <a href="#portfolio" class="px-8 py-4 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-medium hover:shadow-lg hover:shadow-primary/30 transition-all transform hover:-translate-y-1">
+                    Explore Demos
+                </a>
+                <a href="archive.html" class="px-8 py-4 rounded-full border border-white/20 text-white font-medium hover:bg-white/10 transition-all transform hover:-translate-y-1">
+                    View Published Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section id="portfolio" class="py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">Industry Solutions</h2>
+                    <p class="text-slate-400 max-w-lg">Discover our versatile capabilities across different business sectors.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Construction -->
+                <a href="construction/" class="group relative block h-80 rounded-2xl overflow-hidden glass-card transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 border border-white/10 bg-white/5">
+                    <img src="assets/images/construction-thumb.jpg" alt="Construction Template" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80 mix-blend-overlay">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <div class="mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <span class="px-3 py-1 text-xs font-semibold bg-orange-500/20 text-orange-400 border border-orange-500/30 rounded-full backdrop-blur-md">Industrial</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-2">BuildCorp</h3>
+                        <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Construction & Builders Template</p>
+                    </div>
+                </a>
+
+                <!-- Restaurant -->
+                <a href="restaurant/" class="group relative block h-80 rounded-2xl overflow-hidden glass-card transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-red-500/20 border border-white/10 bg-white/5">
+                    <img src="assets/images/restaurant-thumb.jpg" alt="Restaurant Template" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80 mix-blend-overlay">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <div class="mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <span class="px-3 py-1 text-xs font-semibold bg-red-500/20 text-red-400 border border-red-500/30 rounded-full backdrop-blur-md">Hospitality</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-2">Spice Route</h3>
+                        <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Fine Dining & Restaurant Template</p>
+                    </div>
+                </a>
+
+                <!-- Hotel -->
+                <a href="hotel/" class="group relative block h-80 rounded-2xl overflow-hidden glass-card transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 border border-white/10 bg-white/5">
+                    <img src="assets/images/hotel-thumb.jpg" alt="Hotel Template" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80 mix-blend-overlay">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <div class="mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <span class="px-3 py-1 text-xs font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30 rounded-full backdrop-blur-md">Booking</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-2">Oasis Stays</h3>
+                        <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Hotel & Resort Booking Template</p>
+                    </div>
+                </a>
+
+                <!-- Travel -->
+                <a href="travel/" class="group relative block h-80 rounded-2xl overflow-hidden glass-card transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/20 border border-white/10 bg-white/5">
+                    <img src="assets/images/travel-thumb.jpg" alt="Travel Template" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80 mix-blend-overlay">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <div class="mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <span class="px-3 py-1 text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full backdrop-blur-md">Transportation</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-2">JourneyGo</h3>
+                        <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Car, Bus & Bike Rental Template</p>
+                    </div>
+                </a>
+
+                <!-- Blog -->
+                <a href="blog/" class="group relative block h-80 rounded-2xl overflow-hidden glass-card transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 border border-white/10 bg-white/5">
+                    <img src="assets/images/blog-thumb.jpg" alt="Blog Template" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80 mix-blend-overlay">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <div class="mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <span class="px-3 py-1 text-xs font-semibold bg-purple-500/20 text-purple-400 border border-purple-500/30 rounded-full backdrop-blur-md">Content</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-2">Chronicle</h3>
+                        <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Personal & Lifestyle Blog Template</p>
+                    </div>
+                </a>
+
+                <!-- News Magazine -->
+                <a href="news/" class="group relative block h-80 rounded-2xl overflow-hidden glass-card transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/20 border border-white/10 bg-white/5">
+                    <img src="assets/images/news-thumb.jpg" alt="News Template" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80 mix-blend-overlay">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <div class="mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <span class="px-3 py-1 text-xs font-semibold bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 rounded-full backdrop-blur-md">Media</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-2">The Daily Scope</h3>
+                        <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">News & Magazine Portal Template</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 mt-20 relative z-10 bg-dark/50 backdrop-blur-lg">
+        <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0">
+                <a href="#" class="text-2xl font-display font-bold text-white">
+                    Thosho<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Tech</span>
+                </a>
+                <p class="text-slate-400 text-sm mt-2">Empowering businesses with cutting-edge web solutions.</p>
+            </div>
+            <div class="flex space-x-6 text-slate-400">
+                <a href="#" class="hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fab fa-github"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="border-t border-white/10 py-6 text-center text-sm text-slate-500">
+            <p>&copy; 2026 Thosho Tech. Designed and developed by Thosho Tech.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
