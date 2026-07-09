@@ -152,6 +152,46 @@
         </div>
     </section>
 
+    <!-- Detailed Summary Section -->
+    <section id="detailed-summary" class="section">
+        <div class="container" style="max-width: 800px; margin: 0 auto; line-height: 1.8; color: var(--secondary-text-color);">
+            <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">Detailed Summary</h2>
+            
+            <h3 style="color: var(--primary-text-color); margin-top: 30px; margin-bottom: 10px;">1. Dual AI Execution Modes (Local & Cloud)</h3>
+            <p><strong>Local On-Device AI:</strong> Engaine can run Large Language Models (LLMs) completely offline using your phone's processor. It integrates a custom-compiled llama.cpp engine to run modern .gguf models, and Google's MediaPipe engine to run specialized .task models.</p>
+            <p><strong>Privacy First:</strong> Your data never leaves your device when using local models.</p>
+            <p><strong>Cloud AI API Support:</strong> If your phone lacks the RAM for a large model, you can instantly toggle to Cloud Mode. The app supports secure API connections to Google Gemini, Groq, and HuggingFace, allowing you to use state-of-the-art models over the internet.</p>
+
+            <h3 style="color: var(--primary-text-color); margin-top: 30px; margin-bottom: 10px;">2. Intelligent Hardware Diagnostics</h3>
+            <p><strong>RAM & Device Safety:</strong> Local AI requires significant memory. Engaine actively monitors your phone's available RAM in real-time.</p>
+            <p><strong>Auto-Scaling:</strong> If you are on a lower-end device (like a 4GB RAM phone), the app automatically limits the AI's context length and thread count to prevent the Android system from crashing.</p>
+            <p><strong>Smart Recommendations:</strong> The dashboard provides live diagnostics, telling you exactly how much free RAM you have and recommending the maximum model size your phone can handle safely.</p>
+
+            <h3 style="color: var(--primary-text-color); margin-top: 30px; margin-bottom: 10px;">3. Isolated "Brain" Architecture</h3>
+            <p>AI models can sometimes crash if they run out of memory. Engaine solves this by running the AI engine in a completely isolated background process (:brain). If an imported model causes a fatal memory crash, only the background "brain" dies. The main user interface stays perfectly alive, catches the crash, and displays a user-friendly error message telling you how to fix it.</p>
+
+            <h3 style="color: var(--primary-text-color); margin-top: 30px; margin-bottom: 10px;">4. RAG (Retrieval-Augmented Generation)</h3>
+            <p>Engaine includes a built-in document analysis system. You can import your own documents or text files, and the app will generate embeddings for them. You can then chat directly with your documents. The AI will read your files and answer questions based specifically on the information contained within them.</p>
+
+            <h3 style="color: var(--primary-text-color); margin-top: 30px; margin-bottom: 10px;">5. UI and Model Management</h3>
+            <p><strong>Glassmorphic Design:</strong> The app features a highly modern, dark-mode, translucent "glass" user interface built entirely in Jetpack Compose.</p>
+            <p><strong>Model Registry:</strong> A built-in file manager allows you to easily import .gguf or .task files from your phone's downloads folder, organize them, and delete old ones to save storage space.</p>
+            <p><strong>Test Playground:</strong> A dedicated chat interface to test out the capabilities of the currently loaded model (whether local or cloud) with real-time response generation.</p>
+        </div>
+    </section>
+
+    <!-- License Section -->
+    <section id="license" class="section dark-section">
+        <div class="container" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <div style="font-size: 3rem; color: var(--accent-color); margin-bottom: 20px;">
+                <i class="fas fa-file-contract"></i>
+            </div>
+            <h2 class="section-title">License & Usage</h2>
+            <p style="color: var(--secondary-text-color); line-height: 1.6; margin-bottom: 20px;">Engaine is an open-source project by Thosho Tech. You are free to view, study, and contribute to the source code on GitHub. For specific distribution or commercial usage rights, please refer to the LICENSE file in the official repository.</p>
+            <a href="https://github.com/thosho/engaine/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Full License</a>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer id="contact" class="footer">
         <div class="container footer-content">
