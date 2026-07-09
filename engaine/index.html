@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engaine | AI Model Runner by Thosho Tech</title>
+    <meta name="description" content="Engaine is an advanced, privacy-focused Android application designed to run and manage AI models directly on your mobile device.">
+    
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600&family=Roboto:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .glass-card {
+            background: rgba(30, 30, 40, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+        .glass-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .glass-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .glass-card ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+            color: var(--secondary-text-color);
+            line-height: 1.6;
+        }
+        .glass-card ul li::before {
+            content: '•';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav-wrapper">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-code"></i> Thosho<span>Tech</span>
+            </a>
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-menu" id="desktop-nav">
+                <a href="#features">Features</a>
+                <a href="../index.html" class="btn btn-outline">Back to Thosho Tech</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Sidebar -->
+    <div id="mobile-sidebar" class="mobile-sidebar">
+        <button id="mobile-close-btn" class="mobile-close-btn" aria-label="Close Menu">&times;</button>
+        <nav class="mobile-nav-links">
+            <a href="#features">Features</a>
+            <a href="../index.html">Back to Thosho Tech</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" style="padding: 120px 0 60px;">
+        <div class="container hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <div style="font-size: 4rem; color: var(--accent-color); margin-bottom: 20px;">
+                <i class="fas fa-brain"></i>
+            </div>
+            <h1 style="font-size: 3.5rem; margin-bottom: 20px;">Engaine</h1>
+            <p class="subtitle" style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 30px;">An advanced, privacy-focused Android application designed to run and manage AI models directly on your mobile device, while offering the flexibility to connect to powerful cloud-based AI APIs.</p>
+            <p style="color: var(--secondary-text-color); margin-bottom: 40px;">Built using modern Android development practices (Kotlin, Jetpack Compose) and a robust background service architecture.</p>
+            <div class="hero-buttons" style="justify-content: center;">
+                <a href="https://github.com/thosho/engaine" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fab fa-github"></i> View on GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section dark-section">
+        <div class="container">
+            <h2 class="section-title">Core Features & Capabilities</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 50px;">
+                
+                <!-- Dual AI Execution Modes -->
+                <div class="glass-card">
+                    <h3><i class="fas fa-microchip"></i> Dual AI Execution Modes</h3>
+                    <ul>
+                        <li><strong>Local On-Device AI:</strong> Engaine runs LLMs offline using your phone's processor. Integrates custom-compiled llama.cpp for .gguf models and Google's MediaPipe for .task models.</li>
+                        <li><strong>Privacy First:</strong> Your data never leaves your device when using local models.</li>
+                        <li><strong>Cloud AI API Support:</strong> Instantly toggle to Cloud Mode. Supports secure API connections to Google Gemini, Groq, and HuggingFace for state-of-the-art models.</li>
+                    </ul>
+                </div>
+
+                <!-- Intelligent Hardware Diagnostics -->
+                <div class="glass-card">
+                    <h3><i class="fas fa-tachometer-alt"></i> Hardware Diagnostics</h3>
+                    <ul>
+                        <li><strong>RAM & Device Safety:</strong> Actively monitors your phone's available RAM in real-time.</li>
+                        <li><strong>Auto-Scaling:</strong> On lower-end devices (e.g., 4GB RAM), it automatically limits the AI's context length and thread count to prevent Android system crashes.</li>
+                        <li><strong>Smart Recommendations:</strong> Live dashboard diagnostics tell you exactly how much free RAM you have and recommend maximum model sizes.</li>
+                    </ul>
+                </div>
+
+                <!-- Isolated Brain Architecture -->
+                <div class="glass-card">
+                    <h3><i class="fas fa-shield-alt"></i> Isolated "Brain" Architecture</h3>
+                    <ul>
+                        <li>AI engines run in a completely isolated background process (:brain).</li>
+                        <li>If a massive imported model causes a fatal memory crash, only the background "brain" dies.</li>
+                        <li>The main UI stays perfectly alive, catches the crash, and displays a user-friendly error message telling you how to fix it.</li>
+                    </ul>
+                </div>
+
+                <!-- RAG -->
+                <div class="glass-card">
+                    <h3><i class="fas fa-file-alt"></i> RAG (Retrieval-Augmented Gen)</h3>
+                    <ul>
+                        <li>Built-in document analysis system to generate embeddings for imported text files.</li>
+                        <li>Chat directly with your documents. The AI reads your files and answers questions based specifically on the contained information.</li>
+                    </ul>
+                </div>
+
+                <!-- UI and Model Management -->
+                <div class="glass-card">
+                    <h3><i class="fas fa-mobile-alt"></i> UI & Model Management</h3>
+                    <ul>
+                        <li><strong>Glassmorphic Design:</strong> Highly modern, dark-mode, translucent "glass" UI built entirely in Jetpack Compose.</li>
+                        <li><strong>Model Registry:</strong> Built-in file manager to import .gguf or .task files from downloads, organize them, and delete old ones to save storage.</li>
+                        <li><strong>Test Playground:</strong> Dedicated chat interface to test out loaded models (local or cloud) with real-time response generation.</li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-code"></i> Thosho<span>Tech</span>
+                </a>
+                <p>Empowering businesses through innovative technology.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="../index.html">Home</a>
+                <a href="../index.html#services">Services</a>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <a href="https://t.me/thosho" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram-plane"></i> @thosho</a>
+                <a href="https://wa.me/thosho" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> @thosho</a>
+                <a href="mailto:contact@thoshotech.com"><i class="fas fa-envelope"></i> contact@thoshotech.com</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Thosho Tech. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../app.js"></script>
+</body>
+</html>
