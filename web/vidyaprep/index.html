@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VidyaPrep | Premium EdTech Platform</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#0f172a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icons/icon-192.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <div class="brand-icon">V</div>
+                <h1 id="brand-name">VidyaPrep</h1>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-link active"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="#" class="nav-link"><i class="fas fa-book-open"></i> My Courses</a>
+                <a href="#" class="nav-link"><i class="fas fa-chart-line"></i> Analytics</a>
+                <a href="#" class="nav-link"><i class="fas fa-flask"></i> Mock Tests</a>
+                <a href="#" class="nav-link"><i class="fas fa-medal"></i> Leaderboard</a>
+                <a href="#" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+            </nav>
+            
+            <div class="user-profile">
+                <img src="" alt="User" class="user-avatar" id="ui-user-avatar">
+                <div class="user-info">
+                    <h4 id="ui-user-name">Student</h4>
+                    <p id="ui-user-exam">Target Exam</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            
+            <!-- TOPBAR -->
+            <header class="topbar">
+                <button class="mobile-menu-btn" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search courses, topics, or mentors...">
+                </div>
+                
+                <div class="topbar-actions">
+                    <button class="action-btn">
+                        <i class="far fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <button class="action-btn"><i class="far fa-comment-dots"></i></button>
+                </div>
+            </header>
+
+            <!-- WELCOME & STREAK -->
+            <section class="welcome-banner">
+                <div class="welcome-text">
+                    <h2>Welcome back, <span id="welcome-name" style="color:var(--primary-light)">Aditya</span>! 👋</h2>
+                    <p>You're in the top 5% of students this week. Keep up the momentum to crush the JEE Advanced!</p>
+                </div>
+                <div class="streak-card">
+                    <div class="streak-number" id="ui-streak">🔥 14</div>
+                    <div class="streak-text">Day Streak</div>
+                </div>
+            </section>
+
+            <!-- GRID CONTENT -->
+            <div class="dashboard-grid">
+                
+                <!-- LEFT COLUMN: VIDEO PLAYER & CURRICULUM -->
+                <div class="grid-left">
+                    
+                    <div class="section-header">
+                        <h3>Continue Learning</h3>
+                        <button class="btn-primary">Go to Course</button>
+                    </div>
+                    
+                    <div class="video-container">
+                        <div class="video-player">
+                            <img src="" id="ui-video-thumb" class="video-thumbnail" alt="Video Thumbnail">
+                            <div class="play-button"><i class="fas fa-play"></i></div>
+                            <div class="video-progress-bar">
+                                <div class="video-progress-fill" id="ui-video-progress"></div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-meta">
+                                <span class="tag" id="ui-video-subject">Physics</span>
+                                <span class="tag" id="ui-video-duration"><i class="far fa-clock"></i> 1h 15m</span>
+                            </div>
+                            <h2 class="video-title" id="ui-video-title">Rotational Mechanics - Part 1</h2>
+                            <div class="video-instructor" id="ui-video-instructor">
+                                <i class="fas fa-chalkboard-teacher"></i> Dr. H.C. Verma Alumni
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="curriculum-list" id="curriculum-container">
+                        <!-- Rendered via JS -->
+                    </div>
+
+                </div>
+
+                <!-- RIGHT COLUMN: ANALYTICS & LEADERBOARD -->
+                <div class="grid-right">
+                    
+                    <!-- Analytics Widget -->
+                    <div class="widget">
+                        <h4 class="widget-title">Performance Analytics <i class="fas fa-ellipsis-h" style="color:var(--text-muted)"></i></h4>
+                        <div class="analytics-radial">
+                            <div class="radial-chart" id="ui-radial">
+                                <div class="radial-inner">
+                                    <h3 id="ui-overall-score">78%</h3>
+                                    <span>Avg Score</span>
+                                </div>
+                            </div>
+                            <div class="subject-bars" id="subject-bars-container">
+                                <!-- Rendered via JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Leaderboard Widget -->
+                    <div class="widget">
+                        <h4 class="widget-title">Top Rankers <i class="fas fa-trophy" style="color:var(--warning)"></i></h4>
+                        <div class="leaderboard-list" id="leaderboard-container">
+                            <!-- Rendered via JS -->
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    
+    <script>
+        // Basic PWA Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch(err => {
+                    console.log('Service Worker registration failed:', err);
+                });
+            });
+        }
+    </script>
+</body>
+</html>

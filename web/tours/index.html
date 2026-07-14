@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BharatYatra — Smart Travel Budget Planner for India</title>
+    <meta name="description" content="Plan your perfect Indian holiday. Calculate real travel budgets for Goa, Kerala, Rajasthan, Ladakh & more. Compare flights, hotels, packages with live deals.">
+    <meta name="keywords" content="India travel budget calculator, Goa trip cost, Kerala tour package price, Rajasthan budget, Ladakh trip, Indian travel planner, BharatYatra">
+    <meta name="theme-color" content="#ff6b35">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="BharatYatra — Smart Travel Budget Planner">
+    <meta property="og:description" content="Calculate your India trip budget instantly. Live deals on flights, hotels & packages.">
+    <meta property="og:type" content="website">
+</head>
+<body>
+
+
+
+<!-- ── HEADER ───────────────────────────────────────────────── -->
+<nav id="main-nav">
+    <div class="container nav-inner">
+        <a href="#" class="nav-logo">Bharat<span>Yatra</span> 🇮🇳</a>
+        <div class="nav-links">
+            <a href="#destinations">Destinations</a>
+            <a href="#calculator">Budget Planner</a>
+            <a href="#deals">Deals</a>
+            <a href="#packages">Packages</a>
+            <a href="#calculator" class="btn-cta">Plan My Trip →</a>
+        </div>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Open Menu"><i class="fas fa-bars"></i></button>
+    </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div id="mobile-nav">
+    <button class="mobile-close" id="mobile-close" aria-label="Close"><i class="fas fa-times"></i></button>
+    <a href="#destinations">🗺️ Destinations</a>
+    <a href="#calculator">🧮 Budget Planner</a>
+    <a href="#deals">🎟️ Deals</a>
+    <a href="#packages">📦 Packages</a>
+</div>
+
+<!-- ── HERO ─────────────────────────────────────────────────── -->
+<section class="hero">
+    <div class="container" style="display:flex;align-items:center;width:100%;padding-top:2rem">
+        <div class="hero-content">
+            <div class="hero-eyebrow">
+                <span>🇮🇳</span> India's Smartest Travel Budget Tool
+            </div>
+            <h1>
+                Plan Your Dream<br>
+                <span class="accent">Indian Holiday</span><br>
+                Know the Real Cost.
+            </h1>
+            <p>Compare live flight deals, hotel rates & packages. Get a personalised budget breakdown for 10+ top Indian destinations — in seconds.</p>
+
+            <div class="hero-search">
+                <input type="text" id="hero-search" placeholder="Search: Goa, Kerala, Ladakh, Rajasthan..." autocomplete="off">
+                <button id="hero-search-btn">Search ✈️</button>
+            </div>
+
+            <div class="hero-pills">
+                <span class="hero-pill" onclick="planTo('goa')">🏖️ Goa</span>
+                <span class="hero-pill" onclick="planTo('kerala')">🌴 Kerala</span>
+                <span class="hero-pill" onclick="planTo('rajasthan')">🏰 Rajasthan</span>
+                <span class="hero-pill" onclick="planTo('ladakh')">🏔️ Ladakh</span>
+                <span class="hero-pill" onclick="planTo('andaman')">🤿 Andaman</span>
+                <span class="hero-pill" onclick="planTo('himachal')">❄️ Himachal</span>
+            </div>
+
+            <div class="hero-stats">
+                <div class="hero-stat"><strong>10+</strong><span>Destinations</span></div>
+                <div class="hero-stat"><strong>₹0</strong><span>Planner Cost</span></div>
+                <div class="hero-stat"><strong>Live</strong><span>Weather & Rates</span></div>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <div class="float-card">
+                <div class="fc-title">✈️ IndiGo Delhi → Goa</div>
+                <div class="fc-val">₹3,299</div>
+                <div class="fc-sub">↓ 25% with INDIGO25</div>
+            </div>
+            <div class="float-card">
+                <div class="fc-title">🏨 Goa Beach Resort</div>
+                <div class="fc-val">₹2,499/night</div>
+                <div class="fc-sub">↓ 30% off on Treebo</div>
+            </div>
+            <div class="float-card">
+                <div class="fc-title">📦 Kerala 5N Package</div>
+                <div class="fc-val">₹19,999</div>
+                <div class="fc-sub">Save ₹8,001 (Thomas Cook)</div>
+            </div>
+            <div class="float-card">
+                <div class="fc-title">🌤️ Current Temp · Goa</div>
+                <div class="fc-val" data-weather="goa">Loading...</div>
+                <div class="fc-sub">Best Nov–Mar</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── DESTINATIONS ──────────────────────────────────────────── -->
+<section id="destinations" class="section">
+    <div class="container">
+        <h2 class="section-title">Top Indian Destinations</h2>
+        <p class="section-sub">Tap any destination to start planning your budget instantly</p>
+        <div id="dest-grid"></div>
+    </div>
+</section>
+
+<!-- ── CALCULATOR ────────────────────────────────────────────── -->
+<section id="calculator" class="section">
+    <div class="container">
+        <h2 class="section-title">🧮 Smart Budget Calculator</h2>
+        <p class="section-sub">Get a personalised trip budget in under 2 minutes</p>
+
+        <div class="calc-wrapper">
+            <div class="calc-top">
+                <h2>Plan Your Perfect Trip</h2>
+                <p>Answer 4 quick questions and we'll calculate your complete budget</p>
+                <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                <div class="progress-label" id="progress-label">Step 1 of 5</div>
+            </div>
+
+            <div id="calc-steps">
+                <div id="step-container"></div>
+            </div>
+
+            <div id="calc-result" style="display:none"></div>
+
+            <div class="calc-footer" id="calc-footer">
+                <button id="calc-prev" class="btn-ghost" style="display:none">← Back</button>
+                <div></div>
+                <button id="calc-next" class="btn-primary">Next →</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── DEALS ─────────────────────────────────────────────────── -->
+<section id="deals" class="section">
+    <div class="container">
+        <h2 class="section-title">🎟️ Live Deals & Discounts</h2>
+        <p class="section-sub">Current offers from top Indian airlines and hotel chains</p>
+
+        <div class="deals-tabs">
+            <button class="deals-tab active" onclick="switchTab('airlines', this)">✈️ Airlines</button>
+            <button class="deals-tab" onclick="switchTab('hotels', this)">🏨 Hotels</button>
+        </div>
+
+        <div id="tab-airlines" class="deals-panel active">
+            <div id="airline-deals"></div>
+        </div>
+        <div id="tab-hotels" class="deals-panel">
+            <div id="hotel-deals"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ── PACKAGES ──────────────────────────────────────────────── -->
+<section id="packages" class="section">
+    <div class="container">
+        <h2 class="section-title">📦 Curated Holiday Packages</h2>
+        <p class="section-sub">Handpicked packages from IRCTC Tourism, Thomas Cook & more</p>
+        <div id="packages-grid"></div>
+    </div>
+</section>
+
+<!-- ── CURRENCY STRIP ───────────────────────────────────────── -->
+<div class="currency-strip" style="border-top: 1px solid var(--border); border-bottom: none;">
+    <div class="container" style="justify-content: center;">
+        <span style="color:#f7c948;font-weight:600;font-size:0.78rem;">💱 Live Rates:</span>
+        <div id="currency-strip" style="display:contents">
+            <span class="rate-item" style="color:#94a3b8">Loading rates...</span>
+        </div>
+    </div>
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <span class="nav-logo">Bharat<span>Yatra</span> 🇮🇳</span>
+                <p>India's smartest travel budget planner. Plan smarter, travel better. Discover the magic of Incredible India without breaking the bank.</p>
+                <p style="margin-top:0.8rem;font-size:0.8rem;color:#475569">Designed & Developed by <a href="https://thoshotech.com" target="_blank" style="color:var(--teal-light)">Thosho Tech</a></p>
+            </div>
+            <div class="footer-col">
+                <h4>Destinations</h4>
+                <a href="#" onclick="planTo('goa');return false">Goa</a>
+                <a href="#" onclick="planTo('kerala');return false">Kerala</a>
+                <a href="#" onclick="planTo('rajasthan');return false">Rajasthan</a>
+                <a href="#" onclick="planTo('ladakh');return false">Ladakh</a>
+                <a href="#" onclick="planTo('himachal');return false">Himachal</a>
+                <a href="#" onclick="planTo('andaman');return false">Andaman</a>
+            </div>
+            <div class="footer-col">
+                <h4>Plan & Save</h4>
+                <a href="#calculator">Budget Calculator</a>
+                <a href="#deals">Airline Deals</a>
+                <a href="#deals">Hotel Discounts</a>
+                <a href="#packages">Tour Packages</a>
+                <a href="https://wa.me/918248599468" target="_blank">📱 WhatsApp Us</a>
+                <a href="https://t.me/thosho" target="_blank">💬 Telegram</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 BharatYatra by <a href="https://thoshotech.com">Thosho Tech</a>. All rights reserved.</p>
+            <p>Prices are indicative estimates. Always confirm with official booking portals.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ── TOAST ─────────────────────────────────────────────────── -->
+<div id="toast" class="toast"></div>
+
+<!-- ── SCRIPTS ───────────────────────────────────────────────── -->
+<script src="./js/data.js"></script>
+<script src="./js/api.js"></script>
+<script src="./js/calculator.js"></script>
+<script src="./js/app.js"></script>
+
+<script>
+// Deals Tab switcher
+function switchTab(tab, btn) {
+    document.querySelectorAll('.deals-tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.deals-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + tab)?.classList.add('active');
+}
+
+// Mobile nav close
+document.getElementById('mobile-close')?.addEventListener('click', () => {
+    document.getElementById('mobile-nav').classList.remove('open');
+    document.getElementById('menu-toggle').classList.remove('active');
+});
+
+// PWA Install
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault(); deferredPrompt = e;
+    const btn = document.createElement('button');
+    btn.textContent = '📲 Install BharatYatra App';
+    btn.style.cssText = 'position:fixed;bottom:1rem;right:1rem;background:var(--saffron);color:#fff;border:none;padding:0.7rem 1.2rem;border-radius:50px;font-weight:700;font-size:0.85rem;cursor:pointer;z-index:9998;box-shadow:0 4px 15px rgba(255,107,53,0.4)';
+    document.body.appendChild(btn);
+    btn.addEventListener('click', () => { deferredPrompt.prompt(); btn.remove(); });
+});
+
+// Service Worker
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>RigForge | Build Your Dream PC</title>
+    <meta name="description" content="Configure your perfect custom PC, get an instant price estimate, and order via WhatsApp in minutes.">
+    <meta name="theme-color" content="#070810">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icons/icon-192.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────────────── -->
+<nav class="nav">
+    <div class="nav-brand">
+        <div class="nav-logo">R</div>
+        <span class="nav-name">RigForge</span>
+    </div>
+    <div class="nav-links">
+        <a href="#presets">Presets</a>
+        <a href="#builder">Builder</a>
+        <a href="#trust">Why Us</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#builder" class="nav-cta">Build Now</a>
+    </div>
+    <button class="nav-mobile-btn"><i class="fas fa-bars"></i></button>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────────── -->
+<section class="hero">
+    <div class="hero-bg">
+        <img src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=1600&auto=format&fit=crop" alt="PC Build Hero">
+    </div>
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+
+    <div class="hero-content">
+        <div class="hero-text">
+            <div class="hero-badge">
+                <i class="fas fa-bolt"></i> India's #1 PC Configurator
+            </div>
+            <h1 class="hero-title">
+                Build Your<br><span>Dream Rig.</span>
+            </h1>
+            <p class="hero-sub">
+                Pick your parts, see instant pricing, and get a WhatsApp quote in seconds. No jargon, no confusion — just the perfect PC for you.
+            </p>
+            <div class="hero-actions">
+                <a href="#builder" class="btn-primary"><i class="fas fa-tools"></i> Start Building</a>
+                <a href="#presets" class="btn-outline"><i class="fas fa-layer-group"></i> View Presets</a>
+            </div>
+        </div>
+        <div class="hero-chips">
+            <div class="spec-chip">
+                <div class="chip-icon">⚡</div>
+                <div>
+                    <div class="chip-label">Latest Gen</div>
+                    <div class="chip-value">Intel & AMD CPUs</div>
+                </div>
+            </div>
+            <div class="spec-chip">
+                <div class="chip-icon">🎮</div>
+                <div>
+                    <div class="chip-label">Top GPUs Available</div>
+                    <div class="chip-value">RTX 4090 &amp; RX 7900</div>
+                </div>
+            </div>
+            <div class="spec-chip">
+                <div class="chip-icon">🚀</div>
+                <div>
+                    <div class="chip-label">Fast Delivery</div>
+                    <div class="chip-value">48 Hours Across City</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── STATS BAR ─────────────────────────────────────────────── -->
+<div class="stats-bar">
+    <div class="stats-inner">
+        <div class="stat-item">
+            <div class="stat-num">500+</div>
+            <div class="stat-label">Builds Delivered</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">48h</div>
+            <div class="stat-label">Avg Delivery Time</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">1 Year</div>
+            <div class="stat-label">Build Warranty</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">4.9★</div>
+            <div class="stat-label">Customer Rating</div>
+        </div>
+    </div>
+</div>
+
+<!-- ── PRESETS ────────────────────────────────────────────────── -->
+<section id="presets" class="section">
+    <div class="section-tag"><i class="fas fa-layer-group"></i> Quick Starts</div>
+    <h2 class="section-title">Choose a Preset Build</h2>
+    <p class="section-sub">Not sure where to start? Pick a curated build below and it will auto-fill your configurator instantly.</p>
+    <div class="presets-grid" id="presets-container"></div>
+</section>
+
+<!-- ── BUILDER ────────────────────────────────────────────────── -->
+<section id="builder">
+    <div class="section" style="padding-bottom: 1rem;">
+        <div class="section-tag"><i class="fas fa-tools"></i> Configurator</div>
+        <h2 class="section-title">Build Your Custom PC</h2>
+        <p class="section-sub">Select one component from each category. Prices update instantly in your build summary.</p>
+    </div>
+
+    <div class="builder-wrap">
+        <!-- Left: Steps + Categories -->
+        <div class="builder-left">
+            <div class="step-tracker" id="step-tracker"></div>
+            <div id="builder-container"></div>
+        </div>
+
+        <!-- Right: Summary Sidebar -->
+        <aside class="summary-sidebar">
+            <div class="summary-header">
+                <span class="summary-title">Your Build</span>
+                <span class="summary-count" id="parts-count">0 / 7</span>
+            </div>
+            <div class="summary-list" id="summary-list">
+                <div class="summary-empty">
+                    <i class="fas fa-laptop-code"></i>
+                    <p>Your selected parts will appear here</p>
+                </div>
+            </div>
+            <div class="summary-footer">
+                <div class="summary-total-row">
+                    <span class="summary-total-label">Estimated Total</span>
+                    <span class="summary-total-val" id="ui-total">₹0</span>
+                </div>
+                <button class="btn-quote" id="btn-quote" disabled>
+                    <i class="fab fa-whatsapp"></i> Get WhatsApp Quote
+                </button>
+                <p class="progress-text" id="progress-text">Select all 7 components to unlock</p>
+            </div>
+        </aside>
+    </div>
+</section>
+
+<!-- ── TRUST ──────────────────────────────────────────────────── -->
+<section id="trust" class="section">
+    <div class="section-tag"><i class="fas fa-shield-alt"></i> Why Choose Us</div>
+    <h2 class="section-title">Built With Trust. Delivered With Care.</h2>
+    <p class="section-sub">Every build that leaves our shop is hand-tested and guaranteed to work perfectly out of the box.</p>
+    <div class="trust-grid">
+        <div class="trust-card reveal">
+            <div class="trust-icon"><i class="fas fa-tools"></i></div>
+            <h3>Expert Assembly</h3>
+            <p>Every PC is hand-built and stress-tested by certified hardware engineers before delivery.</p>
+        </div>
+        <div class="trust-card reveal">
+            <div class="trust-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>1-Year Warranty</h3>
+            <p>All components carry a minimum 1-year warranty. We handle all replacements, no questions asked.</p>
+        </div>
+        <div class="trust-card reveal">
+            <div class="trust-icon"><i class="fas fa-rocket"></i></div>
+            <h3>48-Hour Delivery</h3>
+            <p>Order today, gaming tomorrow. Express delivery available across the city in 48 hours.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ── REVIEWS ────────────────────────────────────────────────── -->
+<section id="reviews" class="section">
+    <div class="section-tag"><i class="fas fa-star"></i> Testimonials</div>
+    <h2 class="section-title">What Our Customers Say</h2>
+    <p class="section-sub">Hundreds of happy gamers, creators, and professionals trust RigForge for their dream builds.</p>
+    <div class="reviews-grid" id="reviews-container"></div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div>
+            <div class="nav-brand" style="margin-bottom:0.75rem">
+                <div class="nav-logo">R</div>
+                <span class="nav-name">RigForge</span>
+            </div>
+            <p class="footer-brand-desc">Bengaluru's premier custom PC builder. We believe everyone deserves a machine built exactly for them.</p>
+        </div>
+        <div>
+            <h4 class="footer-heading">Quick Links</h4>
+            <div class="footer-links">
+                <a href="#presets">Preset Builds</a>
+                <a href="#builder">PC Configurator</a>
+                <a href="#trust">Why RigForge</a>
+                <a href="#reviews">Reviews</a>
+            </div>
+        </div>
+        <div>
+            <h4 class="footer-heading">Contact</h4>
+            <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i> Shop 14, SP Road, Bengaluru — 560002</div>
+            <div class="footer-contact-item"><i class="fas fa-phone"></i> +91 98765 43210</div>
+            <div class="footer-contact-item"><i class="fas fa-envelope"></i> builds@rigforge.in</div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© 2026 RigForge. All rights reserved.</span>
+        <span>Powered by <a href="https://thosho.github.io" style="color:var(--accent)">Thosho Tech</a></span>
+    </div>
+</footer>
+
+<!-- ── QUOTE MODAL ────────────────────────────────────────────── -->
+<div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="modal-title">Your Build Summary</span>
+            <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="modal-build-list" id="modal-build-list"></div>
+            <div class="modal-total">
+                <span class="modal-total-label">Total Estimate</span>
+                <span class="modal-total-val" id="modal-total-val">₹0</span>
+            </div>
+            <button class="btn-whatsapp" id="btn-whatsapp">
+                <i class="fab fa-whatsapp" style="font-size:1.2rem"></i>
+                Send Quote on WhatsApp
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('sw.js').catch(console.error);
+        });
+    }
+</script>
+</body>
+</html>

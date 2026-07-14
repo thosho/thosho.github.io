@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanNest — India's Premium Property Platform</title>
+    <meta name="description" content="Discover verified luxury apartments, villas & commercial spaces in Mumbai, Bangalore and Gurgaon. RERA compliant. Virtual tours. EMI calculator.">
+    <meta name="theme-color" content="#0D0F14">
+    <!-- Open Graph -->
+    <meta property="og:title" content="UrbanNest — India's Premium Property Platform">
+    <meta property="og:description" content="Find your dream luxury property across India's top cities.">
+    <meta property="og:image" content="./images/hero1.jpg">
+    <meta property="og:type" content="website">
+    <!-- PWA -->
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Styles -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"RealEstateAgent","name":"UrbanNest","url":"https://urbannest.in","telephone":"+91-98765-43210","address":{"@type":"PostalAddress","addressLocality":"Gurgaon","addressRegion":"Haryana","addressCountry":"IN"}}
+    </script>
+</head>
+<body>
+
+<!-- ── NAVBAR ────────────────────────────────────────────── -->
+<nav id="navbar">
+    <div class="container nav-inner">
+        <a href="#" class="nav-logo" id="brand-logo">Urban<span class="accent">Nest</span></a>
+
+        <div class="nav-links">
+            <a href="#properties" id="nav-properties">Properties</a>
+            <a href="#stats">Why Us</a>
+            <a href="#testimonials">Reviews</a>
+            <a href="#contact-section">Contact</a>
+        </div>
+
+        <div class="nav-actions">
+            <button class="wishlist-icon" id="wishlist-nav-btn" title="Saved Properties">
+                <i class="fa-regular fa-heart"></i>
+                <span class="wishlist-count" id="wish-count">0</span>
+            </button>
+            <a href="tel:+919876543210" class="btn btn-gold btn-sm" id="nav-cta">
+                <i class="fas fa-phone-volume"></i> Call Us
+            </a>
+            <button class="btn-hamburger" id="hamburger" aria-label="Open menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- ── MOBILE NAV DRAWER ──────────────────────────────────── -->
+<div id="nav-overlay"></div>
+<div id="mobile-nav" aria-hidden="true">
+    <div class="mobile-nav-header">
+        <span class="nav-logo">Urban<span class="accent">Nest</span></span>
+        <button id="mobile-close" aria-label="Close menu">
+            <i class="fas fa-times" style="font-size:1.2rem;color:var(--text-muted)"></i>
+        </button>
+    </div>
+    <nav class="mobile-nav-links">
+        <a href="#properties">🏢 Properties</a>
+        <a href="#stats">📊 Why UrbanNest</a>
+        <a href="#testimonials">⭐ Reviews</a>
+        <a href="#contact-section">📞 Contact</a>
+    </nav>
+    <div class="mobile-nav-footer">
+        <a href="tel:+919876543210" class="btn btn-gold" style="width:100%;justify-content:center">
+            <i class="fas fa-phone-volume"></i> Call Now
+        </a>
+    </div>
+</div>
+
+<!-- ── HERO ──────────────────────────────────────────────── -->
+<section class="hero" id="home">
+    <!-- Slideshow backgrounds injected by JS -->
+    <div id="hero-slides"></div>
+
+    <!-- Location caption -->
+    <div class="hero-caption" id="hero-caption">📍 Worli, Mumbai</div>
+
+    <!-- Slide dots -->
+    <div class="hero-dots" id="hero-dots"></div>
+
+    <div class="container hero-content">
+        <div class="hero-eyebrow">
+            <i class="fas fa-gem"></i> India's Most Trusted PropTech Platform
+        </div>
+        <h1>
+            Find Luxury Homes<br>
+            in <span class="typed-city" id="typed-city">Mumbai</span><span class="cursor"></span>
+        </h1>
+        <p class="hero-sub">
+            Discover RERA-verified luxury apartments, villas &amp; commercial spaces with virtual tours, transparent pricing, and expert guidance.
+        </p>
+        <div class="hero-actions">
+            <a href="#properties" class="btn btn-gold">
+                <i class="fas fa-search"></i> Explore Properties
+            </a>
+            <button class="btn btn-ghost" id="hero-tour-btn">
+                <i class="fas fa-cube"></i> Watch Virtual Tour
+            </button>
+        </div>
+
+        <!-- Search Panel -->
+        <div class="search-panel" id="search-panel">
+            <div class="search-field">
+                <label>City</label>
+                <select id="filter-city">
+                    <option value="All">All Cities</option>
+                </select>
+            </div>
+            <div class="search-field">
+                <label>Property Type</label>
+                <select id="filter-type">
+                    <option value="All">All Types</option>
+                </select>
+            </div>
+            <div class="search-field">
+                <label>Status</label>
+                <select id="filter-status">
+                    <option value="All">Any Status</option>
+                </select>
+            </div>
+            <div class="search-field">
+                <label>Max Budget</label>
+                <select id="filter-budget">
+                    <option value="999000000">No Limit</option>
+                    <option value="10000000">₹ 1 Crore</option>
+                    <option value="30000000">₹ 3 Crores</option>
+                    <option value="60000000">₹ 6 Crores</option>
+                    <option value="100000000">₹ 10 Crores</option>
+                    <option value="200000000">₹ 20 Crores</option>
+                </select>
+            </div>
+            <button class="btn-search-main" id="btn-search">
+                <i class="fas fa-search"></i> Search
+            </button>
+        </div>
+    </div>
+
+    <!-- Stats Row at bottom of hero -->
+    <div class="hero-stats-row" id="hero-stats-row"></div>
+</section>
+
+<!-- ── PROPERTIES ─────────────────────────────────────────── -->
+<section class="section" id="properties">
+    <div class="container">
+        <div class="props-header">
+            <div>
+                <span class="section-label">Featured Listings</span>
+                <h2 class="section-title" style="margin-bottom:0.25rem">Curated Properties</h2>
+                <p class="text-muted" style="font-size:0.9rem" id="results-count">
+                    Showing <span>10</span> verified listings
+                </p>
+            </div>
+            <div style="display:flex;gap:0.75rem;align-items:center">
+                <select id="sort-select" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text);border-radius:var(--r-sm);padding:0.5rem 1rem;font-size:0.85rem;outline:none;">
+                    <option value="default">Sort: Featured</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="area-desc">Area: Largest First</option>
+                </select>
+                <div class="view-toggle">
+                    <button class="view-btn active" id="btn-grid" title="Grid View"><i class="fas fa-grip"></i></button>
+                    <button class="view-btn" id="btn-map" title="Map View"><i class="fas fa-map-location-dot"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid View -->
+        <div id="grid-view"></div>
+
+        <!-- Map View -->
+        <div id="map-view">
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3677616!2d76.8!3d19.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1718500000000!5m2!1sen!2sin"
+                    allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Property Map India">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── STATS COUNTER ──────────────────────────────────────── -->
+<section class="stats-section section" id="stats">
+    <div class="container">
+        <div style="text-align:center;margin-bottom:3.5rem">
+            <span class="section-label">By The Numbers</span>
+            <h2 class="section-title">Why India Trusts UrbanNest</h2>
+        </div>
+        <div class="stats-grid" id="stats-grid"></div>
+    </div>
+</section>
+
+<!-- ── TESTIMONIALS ───────────────────────────────────────── -->
+<section class="section" id="testimonials">
+    <div class="container">
+        <div style="text-align:center;margin-bottom:3.5rem">
+            <span class="section-label">Client Stories</span>
+            <h2 class="section-title">Trusted by Thousands</h2>
+            <p class="section-sub" style="margin-inline:auto">Real stories from real buyers who found their dream homes through UrbanNest.</p>
+        </div>
+        <div class="testi-track" id="testi-track"></div>
+    </div>
+</section>
+
+<!-- ── DEVELOPER PARTNERS ─────────────────────────────────── -->
+<section class="partners-section" id="partners">
+    <div class="container" style="margin-bottom:1.5rem;text-align:center">
+        <p style="font-size:0.78rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim)">
+            Premium Developer Partners
+        </p>
+    </div>
+    <div class="marquee-wrap">
+        <div class="marquee-track" id="marquee-track"></div>
+    </div>
+</section>
+
+<!-- ── CONTACT FOOTER AREA ────────────────────────────────── -->
+<div id="contact-section"></div>
+<footer>
+    <div class="container">
+        <div class="footer-grid" id="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-logo" id="footer-logo">Urban<span class="accent">Nest</span></div>
+                <p class="footer-tagline" id="footer-tagline">
+                    Elevating the standard of living with premium, verified properties across India's top urban centres.
+                </p>
+                <div class="footer-social" id="footer-social"></div>
+            </div>
+            <div class="footer-col">
+                <h5>Quick Links</h5>
+                <a href="#properties">Properties</a>
+                <a href="#stats">About Us</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#">Post a Property</a>
+                <a href="#">Careers</a>
+            </div>
+            <div class="footer-col">
+                <h5>Legal</h5>
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">RERA Guidelines</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+            <div class="footer-col footer-contact" id="footer-contact">
+                <h5>Get In Touch</h5>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p id="footer-copy">&copy; 2026 UrbanNest PropTech. All rights reserved.</p>
+            <div style="display:flex;gap:1.5rem">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">RERA</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ── PROPERTY DETAIL DRAWER ─────────────────────────────── -->
+<div id="drawer-overlay"></div>
+<div id="detail-drawer" aria-modal="true" role="dialog" aria-label="Property Details">
+    <div class="drawer-handle"></div>
+    <div class="drawer-inner" id="drawer-inner"></div>
+</div>
+
+<!-- ── VIRTUAL TOUR MODAL ─────────────────────────────────── -->
+<div id="tour-modal" aria-modal="true" role="dialog" aria-label="Virtual Tour">
+    <div class="tour-content">
+        <button class="tour-close" id="tour-close"><i class="fas fa-times"></i></button>
+        <img id="tour-img" src="" alt="Virtual Tour">
+        <div class="tour-play"><i class="fas fa-play"></i></div>
+        <p class="tour-label">🎯 360° Virtual Tour — Click Play to Begin</p>
+    </div>
+</div>
+
+<!-- ── PWA INSTALL BANNER ─────────────────────────────────── -->
+<div id="pwa-banner" role="complementary" aria-label="Install App">
+    <img src="./icons/icon-192.png" class="pwa-icon" alt="App Icon">
+    <div class="pwa-text">
+        <strong>Add UrbanNest to Home Screen</strong>
+        <span>Browse properties offline, anytime</span>
+    </div>
+    <button class="btn btn-gold btn-sm" id="pwa-install">Install</button>
+    <button id="pwa-dismiss" aria-label="Dismiss">
+        <i class="fas fa-times"></i>
+    </button>
+</div>
+
+<!-- Scripts -->
+<script src="./js/config.js"></script>
+<script src="./js/data.js"></script>
+<script src="./js/app.js"></script>
+</body>
+</html>

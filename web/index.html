@@ -101,6 +101,30 @@
                     </div>
                 </div>
 
+                <!-- VidyaPrep -->
+                <div class="project-card card" style="padding: 0; display: flex; flex-direction: column;">
+                    <div style="height: 200px; overflow: hidden; border-bottom: 1px solid var(--border-color);">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format&fit=crop" alt="VidyaPrep" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    </div>
+                    <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
+                        <h3 style="margin-bottom: 10px;">VidyaPrep <span class="badge badge-published">EdTech</span></h3>
+                        <p style="flex-grow: 1; margin-bottom: 20px;">Premium PWA LMS & Competitive Exam Portal</p>
+                        <a href="vidyaprep/" target="_blank" class="btn btn-outline" style="text-align: center;">View Demo</a>
+                    </div>
+                </div>
+
+                <!-- RigForge -->
+                <div class="project-card card" style="padding: 0; display: flex; flex-direction: column;">
+                    <div style="height: 200px; overflow: hidden; border-bottom: 1px solid var(--border-color);">
+                        <img src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=800&auto=format&fit=crop" alt="RigForge PC Builder" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    </div>
+                    <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
+                        <h3 style="margin-bottom: 10px;">RigForge <span class="badge badge-published">Hardware</span></h3>
+                        <p style="flex-grow: 1; margin-bottom: 20px;">Custom PC Builder & Quotation PWA</p>
+                        <a href="pcbuilder/" target="_blank" class="btn btn-outline" style="text-align: center;">View Demo</a>
+                    </div>
+                </div>
+
                 <!-- ToSpace -->
                 <div class="project-card card" style="padding: 0; display: flex; flex-direction: column;">
                     <div style="height: 200px; overflow: hidden; border-bottom: 1px solid var(--border-color);">
@@ -211,5 +235,14 @@
     </footer>
 
     <script src="../app.js"></script>
+    <script>
+        // Unregister any stale service workers from demo subfolders
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(registrations => {
+                registrations.forEach(reg => reg.unregister());
+            });
+            caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
+        }
+    </script>
 </body>
 </html>
