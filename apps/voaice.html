@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voaice - AI Voice Notes & TTS | Thosho Tech</title>
+    <meta name="description" content="Voaice : AI Voice Notes & TTS by Thosho Tech. Your All-in-One AI Voice & Text Studio App.">
+    
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600&family=Roboto:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .app-hero {
+            padding-top: 150px;
+            padding-bottom: 80px;
+            text-align: center;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .app-icon {
+            font-size: 5rem;
+            color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.05);
+            width: 150px;
+            height: 150px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+        }
+        .app-title {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 3.5rem;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+        .store-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        .store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 30px;
+            background: var(--card-color);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .store-btn:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(3, 169, 244, 0.3);
+        }
+        .store-btn i {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav-wrapper">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-code"></i> Thosho<span>Tech</span>
+            </a>
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-menu" id="desktop-nav">
+                <a href="../index.html#services">Services</a>
+                <a href="../index.html#projects">Apps</a>
+                <a href="../index.html#software">Softwares</a>
+                <a href="../web/index.html">Websites</a>
+                <a href="../web/index.html#portfolio">Demos</a>
+                <a href="../index.html#blog">Blog</a>
+                <a href="../index.html#contact" class="btn btn-outline">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Sidebar -->
+    <div id="mobile-sidebar" class="mobile-sidebar">
+        <button id="mobile-close-btn" class="mobile-close-btn" aria-label="Close Menu">&times;</button>
+        <nav class="mobile-nav-links">
+            <a href="../index.html#services">Services</a>
+            <a href="../index.html#projects">Apps</a>
+            <a href="../index.html#software">Softwares</a>
+            <a href="../web/index.html">Websites</a>
+            <a href="../web/index.html#portfolio">Demos</a>
+            <a href="../index.html#blog">Blog</a>
+            <a href="../index.html#contact">Contact Us</a>
+        </nav>
+    </div>
+
+    <!-- Content Section -->
+    <section class="section app-hero">
+        <div class="container">
+            <div class="app-icon">
+                <i class="fas fa-microphone-alt"></i>
+            </div>
+            <h1 class="app-title">Voaice : AI Voice Notes & TTS</h1>
+            
+            <div class="app-description" style="text-align: left; max-width: 800px; margin: 0 auto 40px auto; background: var(--card-color); padding: 40px; border-radius: 20px; border: 1px solid var(--border-color);">
+                <p style="font-size: 1.2rem; margin-bottom: 20px; text-align: center; color: var(--accent-color); font-weight: 500;">
+                    Your All-in-One AI Voice & Text Studio App
+                </p>
+                <p style="margin-bottom: 30px;">
+                    Transform the way you capture ideas with Voaice. Whether you are a student, writer, or busy professional, Voaice bridges the gap between spoken words and polished content. Record live, transcribe existing files, and use advanced AI to refine your writing—all in one powerful native app.
+                </p>
+
+                <h3 style="color: var(--text-color); font-family: 'Exo 2', sans-serif; margin-top: 30px; margin-bottom: 15px;"><i class="fas fa-lightbulb" style="color: var(--accent-color);"></i> Key Features</h3>
+                <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 20px;">
+                    <li style="margin-bottom: 10px;"><strong>🎙️ Live Voice Typing:</strong> Say goodbye to slow typing. Capture your thoughts in real-time with high-accuracy speech-to-text for instant note-taking.</li>
+                    <li style="margin-bottom: 10px;"><strong>📂 Audio-to-Text Converter:</strong> Have an existing recording? Upload your audio files and get a precise, editable transcript in seconds.</li>
+                    <li style="margin-bottom: 10px;"><strong>🤖 AI Proofreader & Editor:</strong> Take your text to the next level. Our built-in AI fixes grammar, summarizes long notes, and optimizes text to sound natural when read aloud.</li>
+                    <li style="margin-bottom: 10px;"><strong>🔊 Natural Text-to-Speech (TTS):</strong> Convert any text into high-quality, human-like audio. Perfect for creating voiceovers or listening to your notes on the go.</li>
+                    <li style="margin-bottom: 10px;"><strong>⏺️ Professional Sound Recorder:</strong> A dedicated tool for quick, high-fidelity audio capture whenever inspiration strikes.</li>
+                    <li style="margin-bottom: 10px;"><strong>📤 Export & Share:</strong> Save your work as text or audio files and share them across your favorite platforms with a single tap.</li>
+                </ul>
+
+                <h3 style="color: var(--text-color); font-family: 'Exo 2', sans-serif; margin-top: 30px; margin-bottom: 15px;"><i class="fas fa-star" style="color: var(--accent-color);"></i> Why Choose Voaice?</h3>
+                <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 20px;">
+                    <li style="margin-bottom: 10px;"><strong>Productivity First:</strong> Move from a spoken idea to a polished, professional document faster than ever.</li>
+                    <li style="margin-bottom: 10px;"><strong>AI-Enhanced:</strong> Don’t just transcribe—improve. Use AI to summarize and format your notes so they are ready for emails, scripts, or reports.</li>
+                    <li style="margin-bottom: 10px;"><strong>Seamless Workflow:</strong> Record, Edit, and Convert back to audio without switching between multiple apps.</li>
+                </ul>
+
+                <p style="margin-top: 30px; font-weight: 500; text-align: center; color: var(--accent-color); font-size: 1.2rem;">
+                    Stop typing and start talking. Download Voaice today and experience the future of voice-driven productivity!
+                </p>
+            </div>
+            
+            <div class="store-buttons">
+                <a href="https://play.google.com/store/apps/details?id=com.thosho.voise&hl=en_IN" target="_blank" rel="noopener noreferrer" class="store-btn">
+                    <i class="fab fa-google-play"></i>
+                    <span>Get it on Google Play</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-code"></i> Thosho<span>Tech</span>
+                </a>
+                <p>Empowering businesses through innovative technology.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="../index.html#services">Services</a>
+                <a href="../index.html#blog">Blog</a>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <a href="https://t.me/thosho" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram-plane"></i> @thosho</a>
+                <a href="https://wa.me/thosho" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> @thosho</a>
+                <a href="mailto:contact@thoshotech.com"><i class="fas fa-envelope"></i> contact@thoshotech.com</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Thosho Tech. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../app.js"></script>
+</body>
+</html>
