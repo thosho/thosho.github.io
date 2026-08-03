@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy for Wraiter Extension | Thosho Tech</title>
+    <meta name="description" content="Privacy Policy for Wraiter : AI Writing Assistant, an application developed by Thosho Tech.">
+    
+    <link rel="stylesheet" href="../../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600&family=Roboto:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .privacy-content {
+            background: var(--card-color);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 40px;
+            line-height: 1.8;
+            font-family: 'Roboto', sans-serif;
+            color: var(--secondary-text-color);
+            text-align: left;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .privacy-content h1 {
+            color: var(--text-color);
+            font-family: 'Exo 2', sans-serif;
+            margin-bottom: 5px;
+            font-size: 2.5rem;
+        }
+        .privacy-content h2 {
+            color: var(--text-color);
+            font-family: 'Exo 2', sans-serif;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        .privacy-content h3 {
+            color: var(--text-color);
+            font-family: 'Exo 2', sans-serif;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        .privacy-content p {
+            margin-bottom: 15px;
+        }
+        .privacy-content .effective-date {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--accent-color);
+            margin-bottom: 30px;
+            display: block;
+        }
+        .privacy-content ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .privacy-content li {
+            margin-bottom: 10px;
+        }
+        .privacy-content strong {
+            color: var(--text-color);
+        }
+        .privacy-content a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        .privacy-content a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav-wrapper">
+            <a href="../../index.html" class="logo">
+                <i class="fas fa-code"></i> Thosho<span>Tech</span>
+            </a>
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-menu" id="desktop-nav">
+                <a href="../../index.html#services">Services</a>
+                <a href="../../index.html#projects">Apps</a>
+                <a href="../../index.html#software">Softwares</a>
+                <a href="../../web/index.html">Websites</a>
+                <a href="../../web/index.html#portfolio">Demos</a>
+                <a href="../../index.html#blog">Blog</a>
+                <a href="../../index.html#contact" class="btn btn-outline">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Sidebar -->
+    <div id="mobile-sidebar" class="mobile-sidebar">
+        <button id="mobile-close-btn" class="mobile-close-btn" aria-label="Close Menu">&times;</button>
+        <nav class="mobile-nav-links">
+            <a href="../../index.html#services">Services</a>
+            <a href="../../index.html#projects">Apps</a>
+            <a href="../../index.html#software">Softwares</a>
+            <a href="../../web/index.html">Websites</a>
+            <a href="../../web/index.html#portfolio">Demos</a>
+            <a href="../../index.html#blog">Blog</a>
+            <a href="../../index.html#contact">Contact Us</a>
+        </nav>
+    </div>
+
+    <!-- Content Section -->
+    <section class="section" style="padding-top: 120px; min-height: 70vh;">
+        <div class="container">
+            
+            <div class="privacy-content">
+                <h1>Privacy Policy for Wraiter</h1>
+                <span class="effective-date">AI Writing Assistant<br>Effective Date: August 4, 2026<br>Developed by: Thosho Tech (<a href="https://thoshotech.com/">thoshotech.com</a>)</span>
+                
+                <p>At Thosho Tech ("we," "us," or "our"), your privacy is our top priority. This Privacy Policy outlines our practices regarding data privacy and explains how <strong>Wraiter : AI Writing Assistant</strong> (the "Extension") operates on your browser. Our fundamental design commitment is local-first privacy and zero server surveillance: we do not collect, monitor, store, or transmit your personal data or writing drafts to any servers owned or operated by Thosho Tech.</p>
+
+                <h2>1. Data Collection and Usage</h2>
+                <h3>What We Do NOT Collect</h3>
+                <ul>
+                    <li><strong>No Server Telemetry:</strong> Thosho Tech does not host intermediary logging, tracking, or data-harvesting servers.</li>
+                    <li><strong>No Browsing History:</strong> The Extension does not monitor, collect, or store your web browsing history, visited URLs, timestamps, or personal communications.</li>
+                    <li><strong>No Background Scraping:</strong> The Extension only acts upon text that you explicitly highlight and submit by activating an AI writing tool (e.g., via the browser context menu, keyboard shortcut, or side panel buttons). Unselected text and background page contents are entirely untouched.</li>
+                </ul>
+
+                <h3>Local Browser Storage (chrome.storage)</h3>
+                <p>To function seamlessly, the Extension utilizes Google Chrome’s secure local and sync storage APIs (<code>chrome.storage.sync</code> and <code>chrome.storage.session</code>) on your own device to retain:</p>
+                <ul>
+                    <li>Your selected AI engine preferences and model names.</li>
+                    <li>Your personally entered third-party API keys (e.g., Google Gemini, Anthropic Claude, OpenAI, DeepSeek, Groq, OpenRouter).</li>
+                    <li>Custom API endpoint overrides or local port configurations (e.g., LM Studio).</li>
+                    <li>Temporary session text buffers generated during active drafting or summarization sessions.</li>
+                </ul>
+                <p>All stored preferences remain strictly within your local Chrome ecosystem and under your complete control.</p>
+
+                <h2>2. Third-Party AI Providers and Offline Local AI</h2>
+                <p>Because Wraiter acts as a direct, multi-engine writing client, when you request an AI operation (such as Proofread, Rewrite, Summarize, or Translate), your selected text is processed according to your chosen mode:</p>
+                
+                <h3>A. Cloud AI Providers (Gemini, Claude, DeepSeek, OpenAI, Groq, OpenRouter)</h3>
+                <p>When utilizing a cloud-based AI provider, the Extension initiates a direct, secure HTTPS/TLS encrypted API request from your local browser directly to the respective official endpoint of your chosen provider. Your text is governed by the individual terms of service and data privacy agreements of that provider:</p>
+                <ul>
+                    <li><a href="https://policies.google.com/privacy" target="_blank">Google Privacy & API Terms</a></li>
+                    <li><a href="https://www.anthropic.com/privacy" target="_blank">Anthropic Privacy Policy</a></li>
+                    <li><a href="https://openai.com/policies/privacy-policy" target="_blank">OpenAI Privacy Policy</a></li>
+                    <li><a href="https://www.deepseek.com/privacy" target="_blank">DeepSeek Privacy Policy</a></li>
+                    <li><a href="https://groq.com/privacy-policy/" target="_blank">Groq Privacy Policy</a></li>
+                    <li><a href="https://openrouter.ai/privacy" target="_blank">OpenRouter Privacy Policy</a></li>
+                </ul>
+                <p>Thosho Tech never acts as an intermediary relay for these requests and has zero visibility into your prompts or API responses.</p>
+                
+                <h3>B. 100% Offline Local AI (LM Studio)</h3>
+                <p>When connected to local offline servers (such as LM Studio operating on <code>http://localhost:1234</code> or <code>127.0.0.1</code>), all text processing occurs strictly on your local computer CPU/GPU. In this offline mode, your drafts, confidential notes, and proprietary ideas never travel across the internet or exit your personal workspace.</p>
+                
+                <h2>3. Chrome Permission Justifications & Transparency</h2>
+                <p>Our extension manifest requires certain standard Chrome permissions solely to enable intended product features:</p>
+                <ul>
+                    <li><strong>storage:</strong> Used exclusively to store your AI provider settings, API keys, and active drafting text in your local browser profile.</li>
+                    <li><strong>contextMenus:</strong> Allows you to right-click selected text on any webpage to instantly summon the AI writing assistant.</li>
+                    <li><strong>sidePanel:</strong> Renders our primary AI writing workspace natively inside Chrome's browser side panel for ergonomic multitasking.</li>
+                    <li><strong>activeTab & tabs:</strong> Permits the Extension to identify the currently active tab solely when you explicitly trigger the keyboard shortcut (Ctrl+Shift+Y / Cmd+Shift+Y) or context menu option, allowing it to retrieve your highlighted text.</li>
+                    <li><strong>scripting:</strong> Utilized solely when you click the "✨ Replace in Page" action button to inject a localized DOM replacement command that pushes your polished text back into your active input box or web editor.</li>
+                    <li><strong>Host permissions (&lt;all_urls&gt;, http://localhost/*, http://127.0.0.1/*):</strong> Broad host capabilities are required because writing occurs across diverse websites (Gmail, Google Docs, Notion, WordPress, etc.). Localhost permissions ensure our background worker can communicate directly with your offline LLM servers (LM Studio) and cloud endpoints without triggering cross-origin (CORS) network failures.</li>
+                </ul>
+                
+                <h2>4. Google Chrome Web Store "Limited Use" Compliance</h2>
+                <p>In adherence to the <a href="https://developer.chrome.com/docs/webstore/program-policies/" target="_blank">Chrome Web Store Developer Program Policies</a> and Limited Use requirements, we explicitly affirm the following certifications:</p>
+                <ul>
+                    <li><strong>No Data Sale:</strong> We do not sell, rent, lease, or transfer user data or personal text to any third parties, data brokers, or advertising networks.</li>
+                    <li><strong>Dedicated Single Purpose:</strong> We do not use, transfer, or process user data for any purposes unrelated to the primary single purpose of the Extension (assisting, revising, translating, and polishing user-selected text via user-configured AI models).</li>
+                    <li><strong>No Financial Scoring:</strong> We do not use, process, or transfer user data to evaluate creditworthiness, determine credit scores, or for lending and financial profiling purposes.</li>
+                </ul>
+
+                <h2>5. User Control and Data Deletion</h2>
+                <p>You maintain complete ownership over your configuration and drafting history:</p>
+                <ul>
+                    <li><strong>Clear Settings:</strong> You can clear or update your API keys and custom endpoints at any time via the extension settings page (options.html).</li>
+                    <li><strong>Clear Temporary Drafts:</strong> You can instantly clear active text buffers by clicking the "🗑️ Clear" button within the side panel interface.</li>
+                    <li><strong>Full Removal:</strong> Uninstalling or deleting the Extension from Google Chrome automatically wipes all associated local storage values, API keys, and session data from your computer.</li>
+                </ul>
+
+                <h2>6. Updates to This Policy</h2>
+                <p>We may occasionally update this Privacy Policy to reflect software enhancements, regulatory updates, or new AI provider integrations. Whenever modifications occur, we will update the "Effective Date" at the top of this document and reflect the latest terms on our official website.</p>
+
+                <h2>7. Contact Us</h2>
+                <p>If you have any questions, inquiries, or security reports regarding this Privacy Policy or the Wraiter : AI Writing Assistant extension, please reach out to our team at:</p>
+                <ul>
+                    <li><strong>Developer:</strong> Thosho Tech</li>
+                    <li><strong>Website:</strong> <a href="https://thoshotech.com/">https://thoshotech.com/</a></li>
+                    <li><strong>Email:</strong> <a href="mailto:contact@thoshotech.com">contact@thoshotech.com</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="../../index.html" class="logo">
+                    <i class="fas fa-code"></i> Thosho<span>Tech</span>
+                </a>
+                <p>Empowering businesses through innovative technology.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="../../index.html#services">Services</a>
+                <a href="../../index.html#blog">Blog</a>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <a href="https://t.me/thosho" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram-plane"></i> @thosho</a>
+                <a href="https://wa.me/thosho" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> @thosho</a>
+                <a href="mailto:contact@thoshotech.com"><i class="fas fa-envelope"></i> contact@thoshotech.com</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Thosho Tech. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../app.js"></script>
+</body>
+</html>
